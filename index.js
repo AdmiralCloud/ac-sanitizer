@@ -70,6 +70,18 @@ const sanitizer = function() {
           error = { message: fieldName + '_notanAllowedValue' }
         }
       }
+      else if (field.type === 'boolean') {
+        // GET params are strings -> try to make the boolean
+        if (_.indexOf(['true', 'false'], value) > -1) {
+          // convert string to bool params
+          if (value === 'true') value = true
+          else value = false
+          _.set(paramsToCheck, fieldName, value)
+        }
+        if (!_.isBoolean(value)) {
+          error = { message: fieldName + '_notBoolean' }
+        }
+      }
       else if (field.type === 'hashids') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
         const hashids = new Hashids()
