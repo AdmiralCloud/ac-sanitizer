@@ -19,5 +19,10 @@ module.exports = {
       tests.ip.test()
     })
 
+    describe('EMAIL', function() {
+      this.timeout(timeOut)
+      tests.email.test()
+    })
+
   }
 }

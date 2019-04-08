@@ -97,7 +97,7 @@ const sanitizer = function() {
         const version = _.get(field, 'version', '4')
         if (!validator.isIP(value, version)) error = { message: fieldName + '_notAnIP', additionalInfo: { version } }
       }
-      else if (r.type === 'email') {
+      else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_notAValidEmailAddress' }
       }
       else if (field.type) {
