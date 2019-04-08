@@ -1,3 +1,14 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/mmpro/ac-sanitizer/compare/v1.0.1...v1.0.2) (2019-04-08 09:31)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Minor fix for email | MP ([da5e3ad](https://github.com/mmpro/ac-sanitizer/commit/da5e3ad))    
+  Minor typo fix for email. Added tests for email
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/mmpro/ac-sanitizer/compare/v1.0.0...v1.0.1) (2019-04-08 09:22)
 
