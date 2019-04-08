@@ -1,3 +1,14 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/mmpro/ac-sanitizer/compare/v1.0.2...v1.0.3) (2019-04-08 18:06)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add support for array and plain object | MP ([986207d](https://github.com/mmpro/ac-sanitizer/commit/986207d))    
+  Add support for array and plain object
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/mmpro/ac-sanitizer/compare/v1.0.1...v1.0.2) (2019-04-08 09:31)
 
