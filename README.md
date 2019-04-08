@@ -32,6 +32,7 @@ Type | Options | Remarks
 float | | 0 - 2^31
 integer | | 0 - 2^31
 ip | version | version can be "4" or "6", defaults to "4"
+email | | a@b.c
 hashids | | HashIds - https://hashids.org
 long | | 0 - 2^63
 number | | Should no be used - use integer, long, short, floag

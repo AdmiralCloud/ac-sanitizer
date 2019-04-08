@@ -97,6 +97,9 @@ const sanitizer = function() {
         const version = _.get(field, 'version', '4')
         if (!validator.isIP(value, version)) error = { message: fieldName + '_notAnIP', additionalInfo: { version } }
       }
+      else if (r.type === 'email') {
+        if (!validator.isEmail(value)) error = { message: fieldName + '_notAValidEmailAddress' }
+      }
       else if (field.type) {
         // type is set but not defined here
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)
