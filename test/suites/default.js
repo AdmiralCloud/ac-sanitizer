@@ -13,7 +13,17 @@ module.exports = {
       tests.number.test()
     })
 
+    describe('ARRAY', function() {
+      this.timeout(timeOut)
+      tests.array.test()
+    })
     
+    describe('OBJECT', function() {
+      this.timeout(timeOut)
+      tests.object.test()
+    })
+    
+
     describe('IP', function() {
       this.timeout(timeOut)
       tests.ip.test()

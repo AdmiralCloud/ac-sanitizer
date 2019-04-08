@@ -82,6 +82,23 @@ const sanitizer = function() {
           error = { message: fieldName + '_notBoolean' }
         }
       }
+      else if (field.type === 'array') {
+        if (!_.isArray(value)) error = { message: fieldName + '_notAnArray' }
+        if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
+
+        const schema = field.schema
+        if (!error && _.isFunction(_.get(schema, 'verify'))) {
+          error = schema.verify(value)
+        }
+      }
+      else if (field.type === 'object') {
+        if (!_.isPlainObject(value)) error = { message: fieldName + '_notAPlainObject' }
+
+        const schema = field.schema
+        if (!error && _.isFunction(_.get(schema, 'verify'))) {
+          error = schema.verify(value)
+        }
+      }
       else if (field.type === 'hashids') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
         const hashids = new Hashids()
