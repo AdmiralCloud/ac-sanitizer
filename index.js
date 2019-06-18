@@ -16,7 +16,7 @@ const sanitizer = function() {
 
   const checkAndSanitizeValues = (params) => {
     const paramsToCheck = params.params
-    if (!_.isObject(paramsToCheck) || _.isEmpty(paramsToCheck)) return { error: { message: 'params_required' } }
+    if (!_.isObject(paramsToCheck)) return { error: { message: 'params_required' } }
     const fields = params.fields
     if (!_.isArray(fields) || !_.size(fields)) return { error: { message: 'fields_required' } }
 
