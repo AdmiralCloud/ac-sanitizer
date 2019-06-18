@@ -32,7 +32,7 @@
     "test-jenkins": "JUNIT_REPORT_PATH=./report.xml mocha --colors --reporter mocha-jenkins-reporter --reporter-options junit_report_name='ByteConverter'"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "config": {
     "commitizen": {
