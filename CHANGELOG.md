@@ -1,3 +1,14 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/mmpro/ac-sanitizer/compare/v1.0.3...v1.0.4) (2019-06-18 20:44)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Allow params to be an empty object | MP ([e5baba7](https://github.com/mmpro/ac-sanitizer/commit/e5baba7))    
+  Allow params to be an empty object
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/mmpro/ac-sanitizer/compare/v1.0.2...v1.0.3) (2019-04-08 18:06)
 
