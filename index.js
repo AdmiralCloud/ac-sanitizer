@@ -21,6 +21,7 @@ const sanitizer = function() {
     if (!_.isArray(fields) || !_.size(fields)) return { error: { message: 'fields_required' } }
 
     let error
+    let deprecated = []
     _.some(fields, (field) => {
       // FIELD definitions
       let fieldName = field.field
@@ -28,6 +29,10 @@ const sanitizer = function() {
       let allowedValues = _.get(field, 'isMemberOf.group')
 
       let value = _.get(paramsToCheck, fieldName)
+
+      // mark deprecated fields
+      if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
+
       if (field.required && !_.has(paramsToCheck, fieldName)) error = { message: 'field_' + fieldName + '_required' }
       else if (_.isNil(_.get(paramsToCheck, fieldName))) {
         // do nothing -> the value is optional and not present
@@ -117,6 +122,10 @@ const sanitizer = function() {
       else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_notAValidEmailAddress' }
       }
+      else if (field.type === 'uuid') {
+        const uuidVersion = _.get(field, 'uuidVersion', 4)
+        if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_notAValidUUID', additionalInfo: { uuidVersion } }
+      }
       else if (field.type) {
         // type is set but not defined here
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)
@@ -134,7 +143,8 @@ const sanitizer = function() {
 
     return {
       params: (params.ignoreUnknownFields ? paramsToCheck : sanitizedParams),
-      error
+      error,
+      deprecated
     }
   }
 
