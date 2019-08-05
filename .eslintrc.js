@@ -12,7 +12,8 @@ let config = {
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
     "no-useless-escape": 0,
     "standard/no-callback-literal": 0,
-    "new-cap": 0
+    "new-cap": 0,
+    "no-console": ["error", { allow: ["error"] }]
   },
   'parserOptions': {
     'ecmaVersion': 2018
