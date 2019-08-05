@@ -7,6 +7,7 @@
   "version": "1.0.4",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
+    "debug": "^4.1.1",
     "hashids": "^1.2.2",
     "lodash": "^4.17.15",
     "validator": "^11.1.0"
