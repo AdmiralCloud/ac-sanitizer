@@ -8,23 +8,18 @@
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
     "hashids": "^1.2.2",
-    "lodash": "^4.17.11",
-    "validator": "^10.11.0"
+    "lodash": "^4.17.15",
+    "validator": "^11.1.0"
   },
   "devDependencies": {
     "ac-conventional-changelog-template": "git+https://github.com/mmpro/ac-conventional-changelog-template.git",
     "corp-semantic-release": "git+https://github.com/mmpro/corp-semantic-release.git",
     "cz-customizable": "git+https://github.com/mmpro/cz-customizable.git",
     "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.x",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^8.x",
-    "eslint-plugin-promise": "^4.x",
-    "eslint-plugin-standard": "^4.x",
     "expect": "^24.x",
-    "mocha": "^6.x",
+    "mocha": "^6.2.x",
     "mocha-jenkins-reporter": "github:mmpro/mocha-jenkins-reporter",
-    "mocha-junit-reporter": "^1.21.0",
+    "mocha-junit-reporter": "^1.23.1",
     "mocha-multi-reporters": "^1.1.4"
   },
   "scripts": {
