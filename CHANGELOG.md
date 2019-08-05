@@ -1,3 +1,14 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/mmpro/ac-sanitizer/compare/v1.0.4...v1.0.5) (2019-08-05 13:37)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add uuid check | MP ([767675e](https://github.com/mmpro/ac-sanitizer/commit/767675e))    
+  Add uuid check
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/mmpro/ac-sanitizer/compare/v1.0.3...v1.0.4) (2019-06-18 20:44)
 
