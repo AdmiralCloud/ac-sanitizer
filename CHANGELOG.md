@@ -1,3 +1,14 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/mmpro/ac-sanitizer/compare/v1.0.5...v1.0.6) (2019-11-04 18:29)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add test for emails like xy+123@abc.de | MP ([b87b96503acb880a91ae73536a2fb52a4c84c4f8](https://github.com/mmpro/ac-sanitizer/commit/b87b96503acb880a91ae73536a2fb52a4c84c4f8))    
+  Add test for emails like xy+123@abc.de
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/mmpro/ac-sanitizer/compare/v1.0.4...v1.0.5) (2019-08-05 13:37)
 
