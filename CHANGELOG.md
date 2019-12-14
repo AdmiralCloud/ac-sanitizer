@@ -1,3 +1,15 @@
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/mmpro/ac-sanitizer/compare/v1.0.6...v1.0.7) (2019-12-14 10:24)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add base64 check | MP ([e650c7eaa4486c048952e1048266d6cc9c332441](https://github.com/mmpro/ac-sanitizer/commit/e650c7eaa4486c048952e1048266d6cc9c332441))    
+  You can now check a string for base64. If it is, it will be returned as the original/converted
+string
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/mmpro/ac-sanitizer/compare/v1.0.5...v1.0.6) (2019-11-04 18:29)
 
