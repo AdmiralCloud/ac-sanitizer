@@ -1,3 +1,14 @@
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/mmpro/ac-sanitizer/compare/v1.0.7...v1.0.8) (2019-12-14 11:16)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add support for countryCodes | MP ([9d3f6037e3d9d66285bed93038436803fe56f996](https://github.com/mmpro/ac-sanitizer/commit/9d3f6037e3d9d66285bed93038436803fe56f996))    
+  Add support for countryCodes
+
+
+
 <a name="1.0.7"></a>
 ## [1.0.7](https://github.com/mmpro/ac-sanitizer/compare/v1.0.6...v1.0.7) (2019-12-14 10:24)
 
