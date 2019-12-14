@@ -34,5 +34,10 @@ module.exports = {
       tests.email.test()
     })
 
+    describe('BASE64', function() {
+      this.timeout(timeOut)
+      tests.base64.test()
+    })
+
   }
 }

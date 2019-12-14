@@ -104,6 +104,13 @@ const sanitizer = function() {
           error = schema.verify(value)
         }
       }
+      else if (field.type === 'base64') {
+        if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
+        else if (!validator.isBase64(value)) error = { message: fieldName + '_notABase64String' }
+        else {
+          _.set(paramsToCheck, fieldName, Buffer.from(value, 'base64').toString())
+        }
+      }
       else if (field.type === 'hashids') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
         const hashids = new Hashids()
