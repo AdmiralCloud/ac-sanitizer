@@ -2,6 +2,8 @@ const _ = require('lodash')
 const validator = require('validator')
 const Hashids = require('hashids')
 
+const acCountryList = require('ac-countrylist')
+
 const sanitizer = function() {
   /**
    * Checks and sanitizes inputs
@@ -109,6 +111,11 @@ const sanitizer = function() {
         else if (!validator.isBase64(value)) error = { message: fieldName + '_notABase64String' }
         else {
           _.set(paramsToCheck, fieldName, Buffer.from(value, 'base64').toString())
+        }
+      }
+      else if (field.type === 'countryCode') {
+        if (!acCountryList.query({ iso2: value })) {
+          error = { message: fieldName + '_notAValidCountryCode' }
         }
       }
       else if (field.type === 'hashids') {
