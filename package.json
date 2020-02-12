@@ -9,7 +9,7 @@
   "dependencies": {
     "ac-countrylist": "^1.0.1",
     "debug": "^4.1.1",
-    "hashids": "^1.2.2",
+    "hashids": "^2.2.1",
     "lodash": "^4.17.15",
     "validator": "^12.0.0"
   },
@@ -17,9 +17,9 @@
     "ac-conventional-changelog-template": "git+https://github.com/mmpro/ac-conventional-changelog-template.git",
     "corp-semantic-release": "git+https://github.com/mmpro/corp-semantic-release.git",
     "cz-customizable": "git+https://github.com/mmpro/cz-customizable.git",
-    "eslint": "^5.16.0",
-    "expect": "^24.x",
-    "mocha": "^6.2.x",
+    "eslint": "^6.8.0",
+    "expect": "^25.1.0",
+    "mocha": "^7.0.1",
     "mocha-jenkins-reporter": "github:mmpro/mocha-jenkins-reporter",
     "mocha-junit-reporter": "^1.23.1",
     "mocha-multi-reporters": "^1.1.4"
