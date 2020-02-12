@@ -11,8 +11,10 @@ let fieldsToCheck = {
     stringVar: 'This is a string'
   },
   fields: [
-    { field: 'stringVar', type: 'string, required: true }
-  ]
+    { field: 'stringVar', type: 'string, required: true },
+    { field: 'forceJob', type: 'boolean', adminLevel: 64 }
+  ],
+  adminLevel: 32 // optional adminLevel of the user - must be at least the one defined in fields
 }
 let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
 ```
@@ -24,6 +26,7 @@ Parameter | Type | Remarks
 field | string | Name of the field
 type | string | Type of the field to sanitize, see below for available values
 required | [boolean] | Set to true if requried
+adminLevel | [integer] | Optional adminLevel required for this field
 
 ## Available types
 

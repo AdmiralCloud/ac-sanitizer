@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const validator = require('validator')
-const Hashids = require('hashids')
+const Hashids = require('hashids/cjs')
 
 const acCountryList = require('ac-countrylist')
 
@@ -11,6 +11,7 @@ const sanitizer = function() {
    *
    * @param params.params OBJECT params object (e.g. from body paylod) to sanitize (example { id: 1, user: 'tom' })
    * @param params.fields ARRAY array of field definitions
+   * @param params.adminLevel INT level of the requesting user, will be compared against field's adminLevel
    *
    * @param return.error OBJECT returned error message (if there is an error)
    * @param return.params OBJECT returned sanitized object (invalid keys are removed)
@@ -29,6 +30,7 @@ const sanitizer = function() {
       let fieldName = field.field
       let minLength = _.isNumber(field.minLength) ? field.minLength : 2
       let allowedValues = _.get(field, 'isMemberOf.group')
+      let adminLevel = _.get(params, 'adminLevel')
 
       let value = _.get(paramsToCheck, fieldName)
 
@@ -44,6 +46,9 @@ const sanitizer = function() {
       }
       else if (allowedValues && _.indexOf(allowedValues, value) < 0) {
         error = { message: fieldName + '_notanAllowedValue' }
+      }
+      else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
+        error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
         if (!_.isFinite(parseInt(value))) error = { message: fieldName + '_notaFiniteNumber' }
