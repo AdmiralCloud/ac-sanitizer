@@ -1,3 +1,14 @@
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/mmpro/ac-sanitizer/compare/v1.0.8...v1.0.9) (2020-02-12 16:26)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Add field "adminLevel" for fields and params | MP ([520c37d4f86ce8e8a64abd002a93f8687187f0ab](https://github.com/mmpro/ac-sanitizer/commit/520c37d4f86ce8e8a64abd002a93f8687187f0ab))    
+  With adminLevel you can define a "level" a user needs to access/send a certain field in the payload
+
+
+
 <a name="1.0.8"></a>
 ## [1.0.8](https://github.com/mmpro/ac-sanitizer/compare/v1.0.7...v1.0.8) (2019-12-14 11:16)
 
