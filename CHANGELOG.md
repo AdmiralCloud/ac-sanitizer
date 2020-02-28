@@ -1,3 +1,19 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/mmpro/ac-sanitizer/compare/v1.0.9...v2.0.0) (2020-02-28 12:56)
+
+
+### Bug Fixes
+
+* **AC Sanitizer:** Base64 only returns string as option | MP ([17e779d43cecdbab7727c77ecb4b7e4a3a77e427](https://github.com/mmpro/ac-sanitizer/commit/17e779d43cecdbab7727c77ecb4b7e4a3a77e427))    
+  Set field option "convert" to true, to automatically convert base64 to string
+
+
+### BREAKING CHANGES
+
+* **AC Sanitizer:** Base64 is no longer automatically converted to string
+
+
+
 <a name="1.0.9"></a>
 ## [1.0.9](https://github.com/mmpro/ac-sanitizer/compare/v1.0.8...v1.0.9) (2020-02-12 16:26)
 
