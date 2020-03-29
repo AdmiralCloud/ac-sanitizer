@@ -11,32 +11,24 @@
     "debug": "^4.1.1",
     "hashids": "^2.2.1",
     "lodash": "^4.17.15",
-    "validator": "^12.0.0"
+    "validator": "^13.0.0"
   },
   "devDependencies": {
-    "ac-conventional-changelog-template": "git+https://github.com/mmpro/ac-conventional-changelog-template.git",
-    "corp-semantic-release": "git+https://github.com/mmpro/corp-semantic-release.git",
-    "cz-customizable": "git+https://github.com/mmpro/cz-customizable.git",
+    "ac-semantic-release": "^0.1.1",
     "eslint": "^6.8.0",
     "expect": "^25.1.0",
-    "mocha": "^7.0.1",
-    "mocha-jenkins-reporter": "github:mmpro/mocha-jenkins-reporter",
-    "mocha-junit-reporter": "^1.23.1",
-    "mocha-multi-reporters": "^1.1.4"
+    "husky": "^4.2.3",
+    "mocha": "^7.0.1"
   },
   "scripts": {
-    "test": "mocha --reporter spec",
-    "test-jenkins": "JUNIT_REPORT_PATH=./report.xml mocha --colors --reporter mocha-jenkins-reporter --reporter-options junit_report_name='ByteConverter'"
+    "test": "mocha --reporter spec"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "make lint-check"
+    }
   },
   "engines": {
     "node": ">=8.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": ".czConfig.js"
-    }
   }
 }
