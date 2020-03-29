@@ -4,7 +4,7 @@
   "author": "Mark Poepping (https://www.mmpro.de)",
   "license": "MIT",
   "repository": "mmpro/ac-sanitizer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
     "ac-countrylist": "^1.0.1",

@@ -1,3 +1,12 @@
+<a name="2.0.1"></a>
+
+## [2.0.1](https://github.com/mmpro/ac-sanitizer/compare/v2.0.0..v2.0.1) (2020-03-29 14:22:47)
+
+
+### Bug Fix
+
+* **App:** Prepare repository for AC semantic release | MP | [f0d55476adf5be7732a8e02d14c955762807bd7b](https://github.com/mmpro/ac-sanitizer/commit/f0d55476adf5be7732a8e02d14c955762807bd7b)    
+Cleaned up repository and use ac-semantic-release
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/mmpro/ac-sanitizer/compare/v1.0.9...v2.0.0) (2020-02-28 12:56)
 
