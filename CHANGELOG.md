@@ -1,3 +1,22 @@
+<a name="2.1.0"></a>
+ 
+# [2.1.0](https://github.com/mmpro/ac-sanitizer/compare/v2.0.1..v2.1.0) (2020-04-22 12:17:29)
+
+
+### Feature
+
+* **App:** Added check for integer or string | MP | [c677bcc1a6569946de33dd03fb77f44f59485ced](https://github.com/mmpro/ac-sanitizer/commit/c677bcc1a6569946de33dd03fb77f44f59485ced)    
+Sometimes a value can have two valid types - in this case integer or string. Use the notation integer  string to test for it.
+### Tests
+
+* **App:** Fixed base64 test | MP | [d2ef4d869a48e40be8f5edcbd70027ab2db83dfa](https://github.com/mmpro/ac-sanitizer/commit/d2ef4d869a48e40be8f5edcbd70027ab2db83dfa)    
+Fixed base64 test
+### Chores
+
+* **App:** Updated packages | MP | [7ec62f36dc3f14823584befb05173b7d415cce21](https://github.com/mmpro/ac-sanitizer/commit/7ec62f36dc3f14823584befb05173b7d415cce21)    
+Updated packages
+* **App:** Updated packages | MP | [150e4d49212dda6df677b0f5a3d296e73cbee455](https://github.com/mmpro/ac-sanitizer/commit/150e4d49212dda6df677b0f5a3d296e73cbee455)    
+Updated packages
 <a name="2.0.1"></a>
 
 ## [2.0.1](https://github.com/mmpro/ac-sanitizer/compare/v2.0.0..v2.0.1) (2020-03-29 14:22:47)
