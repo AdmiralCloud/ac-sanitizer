@@ -7,7 +7,7 @@ module.exports = {
   test:  () => {
 
     const baseTests = [
-      { name: 'Valid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'this is a base64 string' },
+      { name: 'Valid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=' },
       { name: 'Invalid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbm', error: 'base64_notABase64String' },
     ]
 
