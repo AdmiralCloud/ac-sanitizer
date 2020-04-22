@@ -37,6 +37,23 @@ const sanitizer = function() {
       // mark deprecated fields
       if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
 
+      // special field - can be string or integer -> determine type and then use type settings
+      if (field.type === 'integer | string') {
+        // special field - can be string or number
+        if (!_.isString(value) && !_.isFinite(parseInt(value))) {
+          error = { message: fieldName + '_neitherStringNorInteger' }
+          return {
+            error
+          }
+        }
+        if (_.isString(value)) {
+            field.type = 'string'
+        }
+        else if (_.isFinite(parseInt(value))) {
+          field.type = 'integer'
+        }
+      }
+
       if (field.required && !_.has(paramsToCheck, fieldName)) error = { message: 'field_' + fieldName + '_required' }
       else if (_.isNil(_.get(paramsToCheck, fieldName))) {
         // do nothing -> the value is optional and not present

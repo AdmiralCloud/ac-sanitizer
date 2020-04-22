@@ -39,5 +39,10 @@ module.exports = {
       tests.base64.test()
     })
 
+    describe('STRING OR INTEGER', function() {
+      this.timeout(timeOut)
+      tests.stringOrInteger.test()
+    })
+    
   }
 }

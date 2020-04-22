@@ -43,7 +43,7 @@ number | | Should no be used - use integer, long, short, floag
 short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
-
+integer \| string |  | Value can be an integer OR a string
 
 
 ## Links

@@ -5,5 +5,6 @@ module.exports = {
   email: require('./email'),
   ip: require('./ip'),
   object: require('./object'),
-  number: require('./number')
+  number: require('./number'),
+  stringOrInteger: require('./stringOrInteger')
 }
