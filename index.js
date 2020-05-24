@@ -38,7 +38,7 @@ const sanitizer = function() {
       if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
 
       // special field - can be string or integer -> determine type and then use type settings
-      if (field.type === 'integer | string') {
+      if (field.type === 'integer | string' && value) {
         // special field - can be string or number
         if (!_.isString(value) && !_.isFinite(parseInt(value))) {
           error = { message: fieldName + '_neitherStringNorInteger' }
