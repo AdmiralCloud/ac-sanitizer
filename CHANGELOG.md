@@ -1,3 +1,16 @@
+<a name="2.1.1"></a>
+
+## [2.1.1](https://github.com/mmpro/ac-sanitizer/compare/v2.1.0..v2.1.1) (2020-05-24 09:21:15)
+
+
+### Bug Fix
+
+* **App:** Do not return error if value is optional for string or integer | MP | [0313458b84ded235a30713c6dae5c407e80a07a5](https://github.com/mmpro/ac-sanitizer/commit/0313458b84ded235a30713c6dae5c407e80a07a5)    
+If string or integer is optional, do not return an error if value is not set.
+### Chores
+
+* **App:** Updated packages | MP | [ab3d9937fe9340b6d764f88ff4940ff2fb3ce5e9](https://github.com/mmpro/ac-sanitizer/commit/ab3d9937fe9340b6d764f88ff4940ff2fb3ce5e9)    
+Updated packages
 <a name="2.1.0"></a>
  
 # [2.1.0](https://github.com/mmpro/ac-sanitizer/compare/v2.0.1..v2.1.0) (2020-04-22 12:17:29)
