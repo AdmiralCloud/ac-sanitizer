@@ -1,3 +1,16 @@
+<a name="2.1.3"></a>
+
+## [2.1.3](https://github.com/mmpro/ac-sanitizer/compare/v2.1.2..v2.1.3) (2020-07-19 10:18:48)
+
+
+### Bug Fix
+
+* **App:** Use enum instead of isMemberOf | MP | [a24b9e86787a2d2a31fdc3160c86eae488b9e349](https://github.com/mmpro/ac-sanitizer/commit/a24b9e86787a2d2a31fdc3160c86eae488b9e349)    
+Start using enum as array of allowed values instead of isMemberOf. The latter is still supported for legacy.
+### Chores
+
+* **App:** Updated packages | MP | [ccf0de44702a765cbf8cdbd72c63088c62837ffb](https://github.com/mmpro/ac-sanitizer/commit/ccf0de44702a765cbf8cdbd72c63088c62837ffb)    
+Updated packages
 <a name="2.1.2"></a>
 
 ## [2.1.2](https://github.com/mmpro/ac-sanitizer/compare/v2.1.1..v2.1.2) (2020-07-19 10:13:45)
