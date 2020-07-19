@@ -29,7 +29,7 @@ const sanitizer = function() {
       // FIELD definitions
       let fieldName = field.field
       let minLength = _.isNumber(field.minLength) ? field.minLength : 2
-      let allowedValues = _.get(field, 'isMemberOf.group')
+      let allowedValues = _.get(field, 'enum', _.get(field, 'isMemberOf.group'))
       let adminLevel = _.get(params, 'adminLevel')
 
       let value = _.get(paramsToCheck, fieldName)
