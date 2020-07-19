@@ -1,3 +1,12 @@
+<a name="2.1.2"></a>
+
+## [2.1.2](https://github.com/mmpro/ac-sanitizer/compare/v2.1.1..v2.1.2) (2020-07-19 10:13:45)
+
+
+### Bug Fix
+
+* **App:** Added modern approach for object validation | MP | [bf8bed8b354cc2390d998f9ef182394cebb46fd2](https://github.com/mmpro/ac-sanitizer/commit/bf8bed8b354cc2390d998f9ef182394cebb46fd2)    
+You can define a properties array of objects, similar to the main one to sanitize objects. This way no custom verify function is necessary (although it is still available for edge cases)
 <a name="2.1.1"></a>
 
 ## [2.1.1](https://github.com/mmpro/ac-sanitizer/compare/v2.1.0..v2.1.1) (2020-05-24 09:21:15)
