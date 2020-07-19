@@ -127,6 +127,18 @@ const sanitizer = function() {
         if (!error && _.isFunction(_.get(schema, 'verify'))) {
           error = schema.verify(value)
         }
+
+        // modern approach without verify function: 
+        // object can have properties with the same structure as the original field
+        if (!error && _.get(field, 'properties')) {
+          const fieldsToCheck = {
+            params: value,
+            fields: _.get(field, 'properties')
+          }
+          const check = checkAndSanitizeValues(fieldsToCheck)
+          if (_.get(check, 'error')) error = _.get(check, 'error')
+          else _.set(paramsToCheck, fieldName, _.get(check, 'params'))
+        }
       }
       else if (field.type === 'base64') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
