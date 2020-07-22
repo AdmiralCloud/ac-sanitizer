@@ -88,13 +88,13 @@ ac-countrylist@^1.0.1:
     lodash "^4.17.15"
 
 ac-semantic-release@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.2.1.tgz#79fd522d26caa0464d86da0daf1f8fc554645adf"
-  integrity sha512-Cu8NByeV+lNlCGok+J2w53zd/vW4fzRq26iBB8tbQuRHOoixMjbe7hY/Z4M5fdHKL54o9YGhxP1HiMtQcyhtvQ==
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.2.2.tgz#0205e9151add51c80456dde551ef61a3b6b00f89"
+  integrity sha512-cFv3GB6UFYa5jWu71wEnohGIXmUlNivsHNsBFIxaB5jXsz311ySk+Rql7ceVVbWpD3L9wAdhOxQcMKB2+gA6Bg==
   dependencies:
     async "^3.2.0"
-    inquirer "^7.1.0"
-    lodash "^4.17.15"
+    inquirer "^7.3.2"
+    lodash "^4.17.19"
 
 acorn-jsx@^5.2.0:
   version "5.2.0"
@@ -828,7 +828,7 @@ inherits@2:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-inquirer@^7.1.0:
+inquirer@^7.3.2:
   version "7.3.2"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.2.tgz#25245d2e32dc9f33dbe26eeaada231daa66e9c7c"
   integrity sha512-DF4osh1FM6l0RJc5YWYhSDB6TawiBRlbV9Cox8MWlidU218Tb7fm3lQTULyUJDfJ0tjbzl0W4q651mrCCEM55w==
