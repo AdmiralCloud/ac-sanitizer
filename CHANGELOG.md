@@ -1,3 +1,12 @@
+<a name="2.2.1"></a>
+
+## [2.2.1](https://github.com/mmpro/ac-sanitizer/compare/v2.2.0..v2.2.1) (2020-07-22 14:34:31)
+
+
+### Bug Fix
+
+* **App:** Add function to check for ISO-639-2 fallback to -1 | MP | [a12aec627fe01687147a5e72b5af5cd056423e47](https://github.com/mmpro/ac-sanitizer/commit/a12aec627fe01687147a5e72b5af5cd056423e47)    
+Use iso-639 type to check for ISO-639-2 or ISO-639-1
 <a name="2.2.0"></a>
  
 # [2.2.0](https://github.com/mmpro/ac-sanitizer/compare/v2.1.3..v2.2.0) (2020-07-22 13:30:55)
