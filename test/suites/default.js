@@ -23,7 +23,6 @@ module.exports = {
       tests.object.test()
     })
     
-
     describe('IP', function() {
       this.timeout(timeOut)
       tests.ip.test()
@@ -43,6 +42,16 @@ module.exports = {
       this.timeout(timeOut)
       tests.stringOrInteger.test()
     })
+
+    describe('COUNTY', function() {
+      this.timeout(timeOut)
+      tests.country.test()
+    })
     
+    describe('ISO 639', function() {
+      this.timeout(timeOut)
+      tests.iso639.test()
+    })
+
   }
 }

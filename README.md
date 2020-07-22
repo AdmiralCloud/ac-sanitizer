@@ -27,7 +27,7 @@ field | string | Name of the field
 type | string | Type of the field to sanitize, see below for available values
 required | [boolean] | Set to true if requried
 adminLevel | [integer] | Optional adminLevel required for this field
-convert | [boolean] | Some types can be automatically converted (e.g. base64 to string)
+convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
 
 ## Available types
 
@@ -44,6 +44,8 @@ short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 integer \| string |  | Value can be an integer OR a string
+iso-639-1 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
+iso-639-2 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
 
 
 ## Links

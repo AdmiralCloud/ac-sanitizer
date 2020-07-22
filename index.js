@@ -3,6 +3,7 @@ const validator = require('validator')
 const Hashids = require('hashids/cjs')
 
 const acCountryList = require('ac-countrylist')
+const iso639 = require('./lib/iso639')
 
 const sanitizer = function() {
   /**
@@ -150,6 +151,15 @@ const sanitizer = function() {
       else if (field.type === 'countryCode') {
         if (!acCountryList.query({ iso2: value })) {
           error = { message: fieldName + '_notAValidCountryCode' }
+        }
+      }
+      else if (_.startsWith(field.type, 'iso-639')) {
+        let query = {}
+        _.set(query, field.type, value)
+        let iso = _.find(iso639, query)
+        if (!iso) error = { message: fieldName + '_notAValid' + _.upperFirst(field.type) }
+        else if (field.convert) {
+          _.set(paramsToCheck, fieldName, _.get(iso, field.convert))
         }
       }
       else if (field.type === 'hashids') {
