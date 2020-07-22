@@ -1,3 +1,16 @@
+<a name="2.2.0"></a>
+ 
+# [2.2.0](https://github.com/mmpro/ac-sanitizer/compare/v2.1.3..v2.2.0) (2020-07-22 13:30:55)
+
+
+### Feature
+
+* **App:** Added sanitizing for ISO-639 values | MP | [cd5626a603b76fb606b29ceef7bf08b99f5dff38](https://github.com/mmpro/ac-sanitizer/commit/cd5626a603b76fb606b29ceef7bf08b99f5dff38)    
+You can now check ISO-639-1 and ISO-639-2 values
+### Chores
+
+* **App:** Updated packages | MP | [f217bdbc378b49db5d46ecfb06f79826b198d46a](https://github.com/mmpro/ac-sanitizer/commit/f217bdbc378b49db5d46ecfb06f79826b198d46a)    
+Updated packages
 <a name="2.1.3"></a>
 
 ## [2.1.3](https://github.com/mmpro/ac-sanitizer/compare/v2.1.2..v2.1.3) (2020-07-19 10:18:48)
