@@ -154,9 +154,16 @@ const sanitizer = function() {
         }
       }
       else if (_.startsWith(field.type, 'iso-639')) {
+        // use exact fields (iso-639-1,iso-639-2) or just iso-639 which tries to match iso-639-2 and falls back to iso-639-1
         let query = {}
-        _.set(query, field.type, value)
-        let iso = _.find(iso639, query)
+        let iso
+        if (field.type === 'iso-639') {
+          iso = _.find(iso639, { 'iso-639-2': value }) || _.find(iso639, { 'iso-639-1': value })
+        }
+        else {
+          _.set(query, field.type, value)
+          iso = _.find(iso639, query)  
+        }
         if (!iso) error = { message: fieldName + '_notAValid' + _.upperFirst(field.type) }
         else if (field.convert) {
           _.set(paramsToCheck, fieldName, _.get(iso, field.convert))

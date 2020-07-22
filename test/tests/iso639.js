@@ -10,6 +10,8 @@ module.exports = {
       { name: 'Valid ISO-639-1', type: 'iso-639-1', value: 'lo', expected: 'lo' },
       { name: 'Valid ISO-639-2', type: 'iso-639-2', value: 'lao', expected: 'lao' },
       { name: 'Valid ISO-639-2 with convert', type: 'iso-639-2', value: 'lao', convert: 'nativeName', expected: 'ພາສາລາວ' },
+      { name: 'Valid ISO-639-1 - check for both', type: 'iso-639', value: 'gn', convert: 'nativeName', expected: 'Avañeẽ' },
+      { name: 'Valid ISO-639-2 - check for both', type: 'iso-639', value: 'grn', convert: 'nativeName', expected: 'Avañeẽ' },
       { name: 'Invalid ISO-639-1', type: 'iso-639-1', value: 'xyz', error: 'language_notAValidIso-639-1' },
     ]
 
