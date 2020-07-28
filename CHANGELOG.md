@@ -1,3 +1,16 @@
+<a name="2.2.2"></a>
+
+## [2.2.2](https://github.com/mmpro/ac-sanitizer/compare/v2.2.1..v2.2.2) (2020-07-28 10:15:45)
+
+
+### Bug Fix
+
+* **App:** Add prefix for object sanitizing | MP | [b4285aba29c9ddc14144d355fde4c97acba6653c](https://github.com/mmpro/ac-sanitizer/commit/b4285aba29c9ddc14144d355fde4c97acba6653c)    
+Add prefix for object sanitizing
+### Chores
+
+* **App:** Updated packages | MP | [7c6a4045819eb3f04c3b7b46713d32067ec2c035](https://github.com/mmpro/ac-sanitizer/commit/7c6a4045819eb3f04c3b7b46713d32067ec2c035)    
+Updated packages
 <a name="2.2.1"></a>
 
 ## [2.2.1](https://github.com/mmpro/ac-sanitizer/compare/v2.2.0..v2.2.1) (2020-07-22 14:34:31)
