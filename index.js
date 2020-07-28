@@ -226,8 +226,35 @@ const sanitizer = function() {
     else params = _.get(check, 'params')
     */
 
+
+
+  /**
+   * Return a random value for a given type
+   */
+  const randomValue = (params) => {
+    const type = _.get(params, 'type')
+    const size = _.get(params, 'size', 1) // for arrays
+
+    switch (type) {
+      case 'boolean':
+        return true
+      case 'string':
+        return Math.random().toString(36)
+      case 'iso-639-1':
+        return _.get(_.sample(iso639), 'iso-639-1')
+      case 'array': {
+        let arr = []
+        for (let i=0; i<size; i+=1) {
+          arr.push(Math.random().toString(36))
+        }
+        return arr
+      }
+    } 
+  }
+
   return {
-    checkAndSanitizeValues
+    checkAndSanitizeValues,
+    randomValue
   }
 }
 
