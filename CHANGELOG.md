@@ -1,3 +1,12 @@
+<a name="2.3.0"></a>
+ 
+# [2.3.0](https://github.com/mmpro/ac-sanitizer/compare/v2.2.2..v2.3.0) (2020-07-28 11:03:03)
+
+
+### Feature
+
+* **App:** New function for random values | MP | [b3d592c1f5291ad5d471f4963725970852e333aa](https://github.com/mmpro/ac-sanitizer/commit/b3d592c1f5291ad5d471f4963725970852e333aa)    
+Added a new helper function that returns random values for a given type. This can be useful for automated testing in combination with the sanitizer.
 <a name="2.2.2"></a>
 
 ## [2.2.2](https://github.com/mmpro/ac-sanitizer/compare/v2.2.1..v2.2.2) (2020-07-28 10:15:45)
