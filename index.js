@@ -134,7 +134,8 @@ const sanitizer = function() {
         if (!error && _.get(field, 'properties')) {
           const fieldsToCheck = {
             params: value,
-            fields: _.get(field, 'properties')
+            fields: _.get(field, 'properties'),
+            prefix: fieldName
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
           if (_.get(check, 'error')) error = _.get(check, 'error')
