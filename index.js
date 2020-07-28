@@ -240,8 +240,18 @@ const sanitizer = function() {
         return true
       case 'string':
         return Math.random().toString(36)
+      case 'float':
+        return _.random(100, true)
+      case 'integer':
+        return _.random(100)
+      case 'short':
+        return _.random(Math.pow(2,10), Math.pow(2,15))
+      case 'long':
+        return _.random(Math.pow(2,16), Math.pow(2,63))
       case 'iso-639-1':
-        return _.get(_.sample(iso639), 'iso-639-1')
+        return _.get(_.sample(_.filter(iso639, 'iso-639-1')), 'iso-639-1')
+      case 'iso-639-2':
+        return _.get(_.sample(_.filter(iso639, 'iso-639-2')), 'iso-639-2')
       case 'array': {
         let arr = []
         for (let i=0; i<size; i+=1) {
@@ -249,6 +259,8 @@ const sanitizer = function() {
         }
         return arr
       }
+      case 'countryCode':
+        return _.get(acCountryList.random(), 'iso2')
     } 
   }
 
