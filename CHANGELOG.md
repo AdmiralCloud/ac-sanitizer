@@ -1,3 +1,16 @@
+<a name="2.3.1"></a>
+
+## [2.3.1](https://github.com/mmpro/ac-sanitizer/compare/v2.3.0..v2.3.1) (2020-07-28 11:40:27)
+
+
+### Bug Fix
+
+* **App:** Enhanced random function | MP | [02235e85ec09bce98659dc51fd3aceefd6e77992](https://github.com/mmpro/ac-sanitizer/commit/02235e85ec09bce98659dc51fd3aceefd6e77992)    
+Random function now supports more types
+### Chores
+
+* **App:** Updated packages | MP | [ba27444d8bc869ab277540706ae7d558dd79c384](https://github.com/mmpro/ac-sanitizer/commit/ba27444d8bc869ab277540706ae7d558dd79c384)    
+Updated packages
 <a name="2.3.0"></a>
  
 # [2.3.0](https://github.com/mmpro/ac-sanitizer/compare/v2.2.2..v2.3.0) (2020-07-28 11:03:03)
