@@ -1,3 +1,12 @@
+<a name="2.3.2"></a>
+
+## [2.3.2](https://github.com/mmpro/ac-sanitizer/compare/v2.3.1..v2.3.2) (2020-07-31 20:22:18)
+
+
+### Bug Fix
+
+* **App:** Allow range just with low value | MP | [68b111f0cda9843cf2badb936a634c2e93bae760](https://github.com/mmpro/ac-sanitizer/commit/68b111f0cda9843cf2badb936a634c2e93bae760)    
+Allow range just with low value
 <a name="2.3.1"></a>
 
 ## [2.3.1](https://github.com/mmpro/ac-sanitizer/compare/v2.3.0..v2.3.1) (2020-07-28 11:40:27)
