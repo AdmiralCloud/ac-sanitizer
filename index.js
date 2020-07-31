@@ -87,8 +87,8 @@ const sanitizer = function() {
         else value = parseInt(value)
 
         let lowest = _.first(range)
-        let highest = _.last(range)
-        if (value < lowest || value > highest) {
+        let highest = _.size(range) === 2 && _.last(range)
+        if (value < lowest || (highest && value > highest)) {
           error = { message: fieldName + '_outOfRange', additionalInfo: { range } }
         }
       }
