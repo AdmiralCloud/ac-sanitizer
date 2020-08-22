@@ -56,7 +56,7 @@ const sanitizer = function() {
       }
 
       if (field.required && !_.has(paramsToCheck, fieldName)) error = { message: 'field_' + fieldName + '_required' }
-      else if (_.isNil(_.get(paramsToCheck, fieldName))) {
+      else if (!_.get(field, 'required') && _.isNil(_.get(paramsToCheck, fieldName))) {
         // do nothing -> the value is optional and not present
       }
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {

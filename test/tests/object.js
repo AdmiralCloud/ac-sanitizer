@@ -34,6 +34,62 @@ module.exports = {
           enum: "blue",
         },
       },
+      {
+        name: "Object with nested properties - missing nested property",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'id', type: 'integer', required: true } 
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+          }
+        },
+        error: "object_nested_field_id_required",
+      },
+      {
+        name: "Object with nested properties - invalid nested property",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'id', type: 'integer', required: true } 
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            id: 'abc'
+          }
+        },
+        error: "object_nested_id_notaFiniteNumber",
+      },
+      {
+        name: "Object with nested properties - missing nested property",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'id', type: 'integer', required: true } 
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue"
+        },
+        expected: {
+          boo: true,
+          enum: "blue"
+        }
+      },
     ];
 
     _.forEach(baseTests, (test) => {
