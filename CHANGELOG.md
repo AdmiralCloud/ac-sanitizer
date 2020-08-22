@@ -1,3 +1,12 @@
+<a name="2.3.5"></a>
+
+## [2.3.5](https://github.com/mmpro/ac-sanitizer/compare/v2.3.4..v2.3.5) (2020-08-22 17:41:10)
+
+
+### Bug Fix
+
+* **App:** Fixed enum and a string issue | MP | [0156a1ca6b7d50b53c1eb82e9bb09cc804868577](https://github.com/mmpro/ac-sanitizer/commit/0156a1ca6b7d50b53c1eb82e9bb09cc804868577)    
+Enum checks must happen after type checks. String check should have an order: type, minLength, maxLength
 <a name="2.3.4"></a>
 
 ## [2.3.4](https://github.com/mmpro/ac-sanitizer/compare/v2.3.3..v2.3.4) (2020-08-22 14:45:52)
