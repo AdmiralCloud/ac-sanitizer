@@ -1,3 +1,12 @@
+<a name="2.3.3"></a>
+
+## [2.3.3](https://github.com/mmpro/ac-sanitizer/compare/v2.3.2..v2.3.3) (2020-08-22 13:45:43)
+
+
+### Bug Fix
+
+* **App:** Allow enum for arrays | MP | [fdc03c50d5dc1cb3f898fc2506fcd627e4bc9d2d](https://github.com/mmpro/ac-sanitizer/commit/fdc03c50d5dc1cb3f898fc2506fcd627e4bc9d2d)    
+Arrays can have enum as array. They are matched against the given array and ok if at least one item matches.
 <a name="2.3.2"></a>
 
 ## [2.3.2](https://github.com/mmpro/ac-sanitizer/compare/v2.3.1..v2.3.2) (2020-07-31 20:22:18)
