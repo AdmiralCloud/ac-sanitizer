@@ -1,3 +1,12 @@
+<a name="2.3.6"></a>
+
+## [2.3.6](https://github.com/mmpro/ac-sanitizer/compare/v2.3.5..v2.3.6) (2020-08-22 18:15:39)
+
+
+### Bug Fix
+
+* **App:** Force release after security update | MP | [e000cdb87d4eb3acbd37e34c7a2b769473c0cf29](https://github.com/mmpro/ac-sanitizer/commit/e000cdb87d4eb3acbd37e34c7a2b769473c0cf29)    
+Package update after security warning
 <a name="2.3.5"></a>
 
 ## [2.3.5](https://github.com/mmpro/ac-sanitizer/compare/v2.3.4..v2.3.5) (2020-08-22 17:41:10)
