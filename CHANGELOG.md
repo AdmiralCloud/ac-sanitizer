@@ -1,3 +1,12 @@
+<a name="2.3.4"></a>
+
+## [2.3.4](https://github.com/mmpro/ac-sanitizer/compare/v2.3.3..v2.3.4) (2020-08-22 14:45:52)
+
+
+### Bug Fix
+
+* **App:** Fixed handling of required fields | MP | [a44ac1e61bf8b9fd2042c8303505b891e021b52f](https://github.com/mmpro/ac-sanitizer/commit/a44ac1e61bf8b9fd2042c8303505b891e021b52f)    
+Fixed if a field has property null but is required
 <a name="2.3.3"></a>
 
 ## [2.3.3](https://github.com/mmpro/ac-sanitizer/compare/v2.3.2..v2.3.3) (2020-08-22 13:45:43)
