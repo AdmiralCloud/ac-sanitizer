@@ -10,15 +10,15 @@
     "ac-countrylist": "^1.0.1",
     "debug": "^4.1.1",
     "hashids": "^2.2.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "validator": "^13.1.1"
   },
   "devDependencies": {
     "ac-semantic-release": "^0.2.1",
-    "eslint": "^7.5.0",
-    "expect": "^26.1.0",
+    "eslint": "^7.7.0",
+    "expect": "^26.4.2",
     "husky": "^4.2.3",
-    "mocha": "^8.0.1"
+    "mocha": "^8.1.1"
   },
   "scripts": {
     "test": "mocha --reporter spec"
