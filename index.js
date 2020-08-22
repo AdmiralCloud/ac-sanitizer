@@ -62,16 +62,6 @@ const sanitizer = function() {
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
         // do nothing null is allowed and sent!
       }
-      else if (allowedValues) {
-        if (_.isArray(value)) {
-          if (!_.size(_.intersection(value, allowedValues))) {
-            error = { message: fieldName + '_notanAllowedValue' }
-          }
-        }
-        else if (_.indexOf(allowedValues, value) < 0) {
-          error = { message: fieldName + '_notanAllowedValue' }
-        }
-      } 
       else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
         error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
       }
@@ -101,11 +91,8 @@ const sanitizer = function() {
       }
       else if (field.type === 'string') {
         if (!_.isString(value)) error = { message: fieldName + '_notAString' }
-        if (value.length < minLength) error = { message: fieldName + '_stringTooShort_minLength' + minLength }
-        if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
-        if (_.get(field, 'isMemberOf.group') && _.indexOf(_.get(field, 'isMemberOf.group', []), value) < 0) {
-          error = { message: fieldName + '_notanAllowedValue' }
-        }
+        else if (value.length < minLength) error = { message: fieldName + '_stringTooShort_minLength' + minLength }
+        else if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
       }
       else if (field.type === 'boolean') {
         // GET params are strings -> try to make the boolean
@@ -204,6 +191,17 @@ const sanitizer = function() {
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)
         error = { message: fieldName + '_typeCheck_' + field.type + '_notDefined' }
       }
+
+      if (!error && allowedValues && value) {
+        if (_.isArray(value)) {
+          if (!_.size(_.intersection(value, allowedValues))) {
+            error = { message: fieldName + '_notanAllowedValue' }
+          }
+        }
+        else if (_.indexOf(allowedValues, value) < 0) {
+          error = { message: fieldName + '_notanAllowedValue' }
+        }
+      } 
 
       if (error && field.customErrorMessage) _.set(error, 'message', field.customErrorMessage)
       if (error && field.informSupport) _.set(error, 'additionalInfo.informSupport', true)
