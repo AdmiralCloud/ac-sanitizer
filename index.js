@@ -62,9 +62,16 @@ const sanitizer = function() {
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
         // do nothing null is allowed and sent!
       }
-      else if (allowedValues && _.indexOf(allowedValues, value) < 0) {
-        error = { message: fieldName + '_notanAllowedValue' }
-      }
+      else if (allowedValues) {
+        if (_.isArray(value)) {
+          if (!_.size(_.intersection(value, allowedValues))) {
+            error = { message: fieldName + '_notanAllowedValue' }
+          }
+        }
+        else if (_.indexOf(allowedValues, value) < 0) {
+          error = { message: fieldName + '_notanAllowedValue' }
+        }
+      } 
       else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
         error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
       }
