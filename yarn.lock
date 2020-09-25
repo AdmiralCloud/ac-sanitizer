@@ -108,10 +108,10 @@ ac-countrylist@^1.0.1:
   dependencies:
     lodash "^4.17.19"
 
-ac-semantic-release@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.2.4.tgz#a224cbb0acafaec6001d87e182df35c7a9b61549"
-  integrity sha512-r98hflf0Ff/HOpyZIbmBR1P2S6M/usRvZ3siEIqTA+NExHKSPuru0dVbCSeCWkLHqCpSs7mFtvhuK/oFu4avbw==
+ac-semantic-release@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.2.5.tgz#598c40a0d1fc68934894870eeee4b93fdb2cb50e"
+  integrity sha512-mhedFOvhxmGe0rti6OkGJqMhRndquMFTzY/xFrGbDrg2PLbr4S3viq+N+2i/VdVA+lrduaM6yKTrgHvF9O52dg==
   dependencies:
     async "^3.2.0"
     inquirer "^7.3.3"
