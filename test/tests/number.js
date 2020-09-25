@@ -8,7 +8,7 @@ module.exports = {
 
     const ranges = {
       integer: [0, Math.pow(2, 31)],
-      long: [0, Math.pow(2, 63)],
+      long: [-(Math.pow(2,53) - 1), Math.pow(2, 53)-1],
       short: [0, Math.pow(2, 15)],
       float: [0, Math.pow(2, 31)]
     }
@@ -22,6 +22,7 @@ module.exports = {
       { name: 'Min valid signed value (range) - usedValue - should fail', type: 'integer', subtype: 'signed', value: 'maxValueNeg-1', error: 'integer_outOfRange' },
       { name: 'Valid signed integer - usedValue - should work', type: 'integer', subtype: 'signed', value: 'randomNeg' },
       { name: 'Integer as string - A - should fail', type: 'integer', value: 'A', error: 'integer_notaFiniteNumber' },      
+
     ]
 
     const numberTests = []
@@ -52,7 +53,7 @@ module.exports = {
           test.value = maxValue + 10000
         }
         if (test.value === 'maxValueNeg-1') {
-          test.value = -maxValue -1
+          test.value = -(maxValue + 10)
         }
         test.name = key + ' - ' + test.name.replace('usedValue', test.value)
         test.type = key

@@ -72,11 +72,12 @@ const sanitizer = function() {
         if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
         if (field.type === 'number') field.type = 'integer'
 
+        const subtype = _.get(field, 'subtype')
         let ranges = {
-          integer: [0, Math.pow(2, 31)],
-          long: [0, Math.pow(2, 63)],
-          short: [0, Math.pow(2, 15)],
-          float: [0, Math.pow(2, 31)]
+          integer: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)], 
+          long: [(subtype === 'signed' ? -(Math.pow(2,53) - 1) : 0), Math.pow(2, 53)-1],
+          short: [(subtype === 'signed' ? -Math.pow(2, 15) : 0), Math.pow(2, 15)],
+          float: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)]
         }
         let range = _.get(field, 'range', _.get(ranges, field.type, ranges.integer))
 
