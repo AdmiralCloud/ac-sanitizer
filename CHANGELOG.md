@@ -1,3 +1,20 @@
+<a name="3.0.0"></a>
+ 
+# [3.0.0](https://github.com/mmpro/ac-sanitizer/compare/v2.3.6..v3.0.0) (2020-09-25 11:52:27)
+
+
+### Bug Fix
+
+* **App:** Long integer range is now determined by MAX_SAFE_INTEGER | MP | [07b539229727ff88a12aa0d958205ae3bbd9c87e](https://github.com/mmpro/ac-sanitizer/commit/07b539229727ff88a12aa0d958205ae3bbd9c87e)    
+Long integer no longer allows values up to pow(2,63) as the are not safe in Javascript. Instead we now use MAX_SAFE_INTEGER. So values must be between -(Math.pow(2,53) - 1) and  Math.pow(2, 53)-1. Additionally subtype signed is allowed.
+### Chores
+
+* **App:** Updated packages | MP | [bc31eb57e3852729751d91b6c1678e13062d7ed9](https://github.com/mmpro/ac-sanitizer/commit/bc31eb57e3852729751d91b6c1678e13062d7ed9)    
+Updated packages
+* **App:** Updated packages | MP | [dd01a1aaabb036b2a8e5f689ca5d5ff1e2e5189a](https://github.com/mmpro/ac-sanitizer/commit/dd01a1aaabb036b2a8e5f689ca5d5ff1e2e5189a)    
+Updated packages
+## BREAKING CHANGES
+* **App:** Long integer range has changed from POW 63 to POW 53 (MAX_SAFE_INTEGER)
 <a name="2.3.6"></a>
 
 ## [2.3.6](https://github.com/mmpro/ac-sanitizer/compare/v2.3.5..v2.3.6) (2020-08-22 18:15:39)
