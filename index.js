@@ -187,6 +187,21 @@ const sanitizer = function() {
         const uuidVersion = _.get(field, 'uuidVersion', 4)
         if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_notAValidUUID', additionalInfo: { uuidVersion } }
       }
+      else if (field.type === 'gps') {
+        // test value for a combination of LAT, LNG and optional third, comma-separated distance value (as number)
+        const parts = _.split(value, ',')
+        if (_.size(parts) < 2 || _.size(parts) > 3) error = { message: fieldName + '_notAValidGPS' }
+        else {
+          const lat = parseFloat(parts[0])
+          if (_.isNaN(lat)) error = { message: fieldName + '_latitudeMustBeANumber' }
+          if (lat > 90 || lat < -90) error = { message: fieldName + '_latitudeOutOfRange', additionalInfo: { range: [-90, 90] } }
+          const lon = parseFloat(parts[1])
+          if (_.isNaN(lon)) error = { message: fieldName + '_longitudeMustBeANumber' }
+          if (lon > 180 || lon < -180) error = { message: fieldName + '_longitudeOutOfRange', additionalInfo: { range: [-180, 180] } }
+          const distance = parseInt(parts[2])
+          if (distance && _.isNaN(distance)) error = { message: fieldName + '_distanceMustBeANumber' }  
+        }
+      }
       else if (field.type) {
         // type is set but not defined here
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)

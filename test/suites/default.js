@@ -7,6 +7,10 @@ const timeOut = 60000
 module.exports = {
   testsuite: function() {
 
+    describe('GPS', function() {
+      this.timeout(timeOut)
+      tests.gps.test()
+    })
 
     describe('NUMBER', function() {
       this.timeout(timeOut)

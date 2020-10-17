@@ -33,19 +33,20 @@ convert | [boolean|string] | Some types can be automatically converted (e.g. bas
 
 Type | Options | Remarks
 --- | --- | --- |
-float | | 0 - 2^31
-integer | | 0 - 2^31
-ip | version | version can be "4" or "6", defaults to "4"
+base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 email | | a@b.c
+float | | 0 - 2^31
+gps | | Can be a string of "LAT,LNG" or one including a distance as 3rd parameter like "LAT,LNG,DISTANCE".
 hashids | | HashIds - https://hashids.org
+integer | | 0 - 2^31
+integer \| string |  | Value can be an integer OR a string
+iso-639-1 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
+iso-639-2 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
+ip | version | version can be "4" or "6", defaults to "4"
 long | | 0 - 2^63
 number | | Should no be used - use integer, long, short, floag
 short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
-base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
-integer \| string |  | Value can be an integer OR a string
-iso-639-1 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
-iso-639-2 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
 
 
 ## Links
