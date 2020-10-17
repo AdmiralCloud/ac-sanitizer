@@ -14,6 +14,9 @@ module.exports = {
       { name: 'Valid DateTime YYYY-MM-DD HH:mm:ss', type: 'date', value: '2020-10-10 16:20:55', expected: '2020-10-10 16:20:55' },
       { name: 'Invalid date with .', type: 'date', value: '32.01.2020', error: 'date_notaDate' },
       { name: 'Invalid date', type: 'date', value: '2020-13-30', error: 'date_notaDate' },
+      { name: 'Valid DateTime ISO8601', type: 'date', value: '2020-10-17T16:34:50+02:00', expected: '2020-10-17T16:34:50+02:00' },
+  
+      
     ]
     _.forEach(baseTests, (test) => {
       it(test.name, (done) => {
