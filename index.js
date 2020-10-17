@@ -218,6 +218,10 @@ const sanitizer = function() {
       else if (field.type === 'hexColor') {
         if (!validator.isHexColor(value)) error = { message: fieldName + '_notAValidHexColor' }
       }
+      else if (field.type === 'date') {
+        // Checks if the given value is a valid date or datetime
+        if (!_.isFinite(Date.parse(value))) error = { message: fieldName + '_notaDate' }
+      }
       else if (field.type) {
         // type is set but not defined here
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)

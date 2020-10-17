@@ -2,6 +2,7 @@ module.exports = {
   array: require('./array'),
   base64: require('./base64'),
   country: require('./country'),
+  date: require('./date'),
   email: require('./email'),
   gps: require('./gps'),
   ip: require('./ip'),

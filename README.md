@@ -34,6 +34,7 @@ convert | [boolean|string] | Some types can be automatically converted (e.g. bas
 Type | Options | Remarks
 --- | --- | --- |
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
+date | | Date or date time, support various date formats (e.g. DD.MM.YYYY, DD/MM/YYYY, YYYY-MM-DD, etc)
 email | | a@b.c
 float | | 0 - 2^31
 gps | | Can be a string of "LAT,LNG" or one including a distance as 3rd parameter like "LAT,LNG,DISTANCE".

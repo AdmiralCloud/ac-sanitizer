@@ -72,5 +72,10 @@ module.exports = {
       tests.hexColor.test()
     })
 
+    describe('DATE', function() {
+      this.timeout(timeOut)
+      tests.date.test()
+    })
+
   }
 }
