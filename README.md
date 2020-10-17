@@ -38,6 +38,7 @@ email | | a@b.c
 float | | 0 - 2^31
 gps | | Can be a string of "LAT,LNG" or one including a distance as 3rd parameter like "LAT,LNG,DISTANCE".
 hashids | | HashIds - https://hashids.org
+hexColor | | Check valid hexadecimal color like #ff99cc
 integer | | 0 - 2^31
 integer \| string |  | Value can be an integer OR a string
 iso-639-1 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
@@ -45,6 +46,8 @@ iso-639-2 | convert | With convert = nativeName you can retrieve the native name
 ip | version | version can be "4" or "6", defaults to "4"
 long | | 0 - 2^63
 number | | Should no be used - use integer, long, short, floag
+ratio | | x:y
+rgb | | Check for valid RGB value (r,g,b) or (r%,g%, b%)
 short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
 

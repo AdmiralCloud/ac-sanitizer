@@ -202,6 +202,22 @@ const sanitizer = function() {
           if (distance && _.isNaN(distance)) error = { message: fieldName + '_distanceMustBeANumber' }  
         }
       }
+      else if (field.type === 'ratio') {
+        // ratio looks like this NUMBER:NUMBER
+        let parts = _.split(value, ':')
+        if (_.size(parts) !== 2) error = { message: fieldName + '_notAValidRatio' }
+        let ratio = _.map(parts, parseFloat)
+        if (!_.isNumber(_.first(ratio)) || _.isNaN(_.first(ratio))) error = { message:  fieldName + '_firstValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
+        else if (!_.isNumber(_.last(ratio)) || _.isNaN(_.last(ratio))) error = { message: fieldName + '_lastValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
+        else _.set(paramsToCheck, fieldName, ratio)
+      }
+      else if (field.type === 'rgb') {
+        const includePercentValues = _.get(field, 'includePercentValues', true)
+        if (!validator.isRgbColor(value, includePercentValues)) error = { message: fieldName + '_notAValidRGB', additionalInfo: { includePercentValues } }
+      }
+      else if (field.type === 'hexColor') {
+        if (!validator.isHexColor(value)) error = { message: fieldName + '_notAValidHexColor' }
+      }
       else if (field.type) {
         // type is set but not defined here
         console.error('SANITIZER - type not defined for type %s, field %s, value %s', field.type, fieldName, value)

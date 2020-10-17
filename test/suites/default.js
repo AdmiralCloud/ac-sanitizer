@@ -7,11 +7,6 @@ const timeOut = 60000
 module.exports = {
   testsuite: function() {
 
-    describe('GPS', function() {
-      this.timeout(timeOut)
-      tests.gps.test()
-    })
-
     describe('NUMBER', function() {
       this.timeout(timeOut)
       tests.number.test()
@@ -55,6 +50,26 @@ module.exports = {
     describe('ISO 639', function() {
       this.timeout(timeOut)
       tests.iso639.test()
+    })
+
+    describe('GPS', function() {
+      this.timeout(timeOut)
+      tests.gps.test()
+    })
+
+    describe('RATIO', function() {
+      this.timeout(timeOut)
+      tests.ratio.test()
+    })
+
+    describe('RGB', function() {
+      this.timeout(timeOut)
+      tests.rgb.test()
+    })
+
+    describe('HEXCOLOR', function() {
+      this.timeout(timeOut)
+      tests.hexColor.test()
     })
 
   }
