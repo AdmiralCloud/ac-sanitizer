@@ -1,3 +1,18 @@
+<a name="3.1.0"></a>
+ 
+# [3.1.0](https://github.com/mmpro/ac-sanitizer/compare/v3.0.0..v3.1.0) (2020-10-17 13:23:03)
+
+
+### Feature
+
+* **App:** Add option to test for GPS coordinates | MP | [58a956307a15af39c11b9afaaf0b3449cb1b18ac](https://github.com/mmpro/ac-sanitizer/commit/58a956307a15af39c11b9afaaf0b3449cb1b18ac)    
+Add option to test for GPS coordinates including distance
+### Chores
+
+* **App:** Updated packages | MP | [3f947d4574749348ff7d4955143fdab379a44156](https://github.com/mmpro/ac-sanitizer/commit/3f947d4574749348ff7d4955143fdab379a44156)    
+Updated packages
+* **App:** Updated packages | MP | [64cc82385fb1e5089e889fedbc05ccfd9c52211e](https://github.com/mmpro/ac-sanitizer/commit/64cc82385fb1e5089e889fedbc05ccfd9c52211e)    
+Updated packages
 <a name="3.0.0"></a>
  
 # [3.0.0](https://github.com/mmpro/ac-sanitizer/compare/v2.3.6..v3.0.0) (2020-09-25 11:52:27)
