@@ -1,3 +1,12 @@
+<a name="3.2.0"></a>
+ 
+# [3.2.0](https://github.com/mmpro/ac-sanitizer/compare/v3.1.0..v3.2.0) (2020-10-17 14:12:45)
+
+
+### Feature
+
+* **App:** Add RGB, hexColor and ratio | MP | [a88d1cef0d887d2e2f5a8323de2ffcba55bf85ef](https://github.com/mmpro/ac-sanitizer/commit/a88d1cef0d887d2e2f5a8323de2ffcba55bf85ef)    
+Add RGB, hexColor and ratio
 <a name="3.1.0"></a>
  
 # [3.1.0](https://github.com/mmpro/ac-sanitizer/compare/v3.0.0..v3.1.0) (2020-10-17 13:23:03)
