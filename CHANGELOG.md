@@ -1,3 +1,16 @@
+<a name="3.3.1"></a>
+
+## [3.3.1](https://github.com/mmpro/ac-sanitizer/compare/v3.3.0..v3.3.1) (2020-11-09 15:44:07)
+
+
+### Bug Fix
+
+* **App:** String now allows parameter convert for maxSize | MP | [c65395e62b18fc37bb8662a6a4d4d590c3833f0c](https://github.com/mmpro/ac-sanitizer/commit/c65395e62b18fc37bb8662a6a4d4d590c3833f0c)    
+Use convert in combination with maxSize for strings to truncate those strings to the max size instead of throwing an error
+### Tests
+
+* **App:** Added ISO8601 test | MP | [3d666b21598ac3cea31887073acf8f97a78c9c1a](https://github.com/mmpro/ac-sanitizer/commit/3d666b21598ac3cea31887073acf8f97a78c9c1a)    
+Added ISO8601 test
 <a name="3.3.0"></a>
  
 # [3.3.0](https://github.com/mmpro/ac-sanitizer/compare/v3.2.0..v3.3.0) (2020-10-17 15:10:43)
