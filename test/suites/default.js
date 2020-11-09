@@ -57,6 +57,11 @@ module.exports = {
       tests.iso639.test()
     })
 
+    describe('FILE EXTENSION', function() {
+      this.timeout(timeOut)
+      tests.fileExtension.test()
+    })
+
     describe('GPS', function() {
       this.timeout(timeOut)
       tests.gps.test()

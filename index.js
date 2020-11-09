@@ -4,6 +4,7 @@ const Hashids = require('hashids/cjs')
 
 const acCountryList = require('ac-countrylist')
 const iso639 = require('./lib/iso639')
+const fileExtensions = require('ac-file-extensions')
 
 const sanitizer = function() {
   /**
@@ -152,6 +153,11 @@ const sanitizer = function() {
       else if (field.type === 'countryCode') {
         if (!acCountryList.query({ iso2: value })) {
           error = { message: fieldName + '_notAValidCountryCode' }
+        }
+      }
+      else if (field.type === 'fileExtension') {
+        if (!_.find(fileExtensions, { ext: value })) {
+          error = { message: fieldName + '_notAValidFileExtension' }
         }
       }
       else if (_.startsWith(field.type, 'iso-639')) {

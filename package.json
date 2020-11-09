@@ -8,6 +8,7 @@
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
     "ac-countrylist": "^1.0.1",
+    "ac-file-extensions": "^1.2.0",
     "debug": "^4.2.0",
     "hashids": "^2.2.1",
     "lodash": "^4.17.20",
