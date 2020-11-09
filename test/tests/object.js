@@ -69,7 +69,7 @@ module.exports = {
             id: 'abc'
           }
         },
-        error: "object_nested_id_notaFiniteNumber",
+        error: "object_nested_id_notAFiniteNumber",
       },
       {
         name: "Object with nested properties - missing nested property",

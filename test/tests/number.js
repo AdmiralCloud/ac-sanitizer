@@ -21,7 +21,7 @@ module.exports = {
       { name: 'Min valid signed value (range) - usedValue - should work', type: 'integer', subtype: 'signed', value: 'maxValueNeg' },
       { name: 'Min valid signed value (range) - usedValue - should fail', type: 'integer', subtype: 'signed', value: 'maxValueNeg-1', error: 'integer_outOfRange' },
       { name: 'Valid signed integer - usedValue - should work', type: 'integer', subtype: 'signed', value: 'randomNeg' },
-      { name: 'Integer as string - A - should fail', type: 'integer', value: 'A', error: 'integer_notaFiniteNumber' },      
+      { name: 'Integer as string - A - should fail', type: 'integer', value: 'A', error: 'integer_notAFiniteNumber' },      
 
     ]
 

@@ -7,6 +7,37 @@ const iso639 = require('./lib/iso639')
 const fileExtensions = require('ac-file-extensions')
 
 const sanitizer = function() {
+
+  const typeMapping = [
+    { type: 'integer', errorMessage: 'notAFiniteNumber' },
+    { type: 'string', errorMessage: 'notAString' },
+    { type: 'boolean', errorMessage: 'notBoolean' },
+    { type: 'array', errorMessage: 'notAnArray' },
+    { type: 'object', errorMessage: 'notAPlainObject' },
+    { type: 'base64', errorMessage: 'notABase64String' },
+    { type: 'countryCode', errorMessage: 'notAValidCountryCode' },
+    { type: 'fileExtension', errorMessage: 'notAValidFileExtension' },
+    { type: 'iso-639', errorMessage: 'notAValidIso-639' },
+    { type: 'iso-639-2', errorMessage: 'notAValidIso-639-2' },
+    { type: 'iso-639-1', errorMessage: 'notAValidIso-639-1' },
+    { type: 'hashids', errorMessage: 'mustBeString' },
+    { type: 'ip', errorMessage: 'notAnIP' },
+    { type: 'email', errorMessage: 'notAValidEmailAddress' },
+    { type: 'uuid', errorMessage: 'notAValidUUID' },
+    { type: 'gps', errorMessage: 'notAValidGPS' },
+    { type: 'ratio', errorMessage: 'notAValidRatio' },
+    { type: 'rgb', errorMessage: 'notAValidRGB' },
+    { type: 'hexColor', errorMessage: 'notAValidHexColor' },
+    { type: 'date', errorMessage: 'notaDate' },
+  ]
+
+  const getTypeMapping = (type, property) => {
+    let query = {}
+    if (type) query.type = type
+    const result = _.find(typeMapping, query)
+    return (property ? _.get(result, property) : result)
+  }
+
   /**
    * Checks and sanitizes inputs
    * Function returns an error message or the sanitized parameters
@@ -67,7 +98,7 @@ const sanitizer = function() {
         error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
-        if (!_.isFinite(parseInt(value))) error = { message: fieldName + '_notaFiniteNumber' }
+        if (!_.isFinite(parseInt(value))) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
 
         //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
         if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
@@ -92,7 +123,7 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'string') {
-        if (!_.isString(value)) error = { message: fieldName + '_notAString' }
+        if (!_.isString(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         else if (value.length < minLength) error = { message: fieldName + '_stringTooShort_minLength' + minLength }
         else if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) {
           if (_.get(field, 'convert')) {
@@ -110,11 +141,11 @@ const sanitizer = function() {
           _.set(paramsToCheck, fieldName, value)
         }
         if (!_.isBoolean(value)) {
-          error = { message: fieldName + '_notBoolean' }
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
       }
       else if (field.type === 'array') {
-        if (!_.isArray(value)) error = { message: fieldName + '_notAnArray' }
+        if (!_.isArray(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
 
         const schema = field.schema
@@ -123,7 +154,7 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'object') {
-        if (!_.isPlainObject(value)) error = { message: fieldName + '_notAPlainObject' }
+        if (!_.isPlainObject(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
 
         const schema = field.schema
         if (!error && _.isFunction(_.get(schema, 'verify'))) {
@@ -152,12 +183,12 @@ const sanitizer = function() {
       }
       else if (field.type === 'countryCode') {
         if (!acCountryList.query({ iso2: value })) {
-          error = { message: fieldName + '_notAValidCountryCode' }
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
       }
       else if (field.type === 'fileExtension') {
         if (!_.find(fileExtensions, { ext: value })) {
-          error = { message: fieldName + '_notAValidFileExtension' }
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
       }
       else if (_.startsWith(field.type, 'iso-639')) {
@@ -171,7 +202,7 @@ const sanitizer = function() {
           _.set(query, field.type, value)
           iso = _.find(iso639, query)  
         }
-        if (!iso) error = { message: fieldName + '_notAValid' + _.upperFirst(field.type) }
+        if (!iso) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         else if (field.convert) {
           _.set(paramsToCheck, fieldName, _.get(iso, field.convert))
         }
@@ -189,19 +220,19 @@ const sanitizer = function() {
       }
       else if (field.type === 'ip') {
         const version = _.get(field, 'version', '4')
-        if (!validator.isIP(value, version)) error = { message: fieldName + '_notAnIP', additionalInfo: { version } }
+        if (!validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
       }
       else if (field.type === 'email') {
-        if (!validator.isEmail(value)) error = { message: fieldName + '_notAValidEmailAddress' }
+        if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'uuid') {
         const uuidVersion = _.get(field, 'uuidVersion', 4)
-        if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_notAValidUUID', additionalInfo: { uuidVersion } }
+        if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { uuidVersion } }
       }
       else if (field.type === 'gps') {
         // test value for a combination of LAT, LNG and optional third, comma-separated distance value (as number)
         const parts = _.split(value, ',')
-        if (_.size(parts) < 2 || _.size(parts) > 3) error = { message: fieldName + '_notAValidGPS' }
+        if (_.size(parts) < 2 || _.size(parts) > 3) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         else {
           const lat = parseFloat(parts[0])
           if (_.isNaN(lat)) error = { message: fieldName + '_latitudeMustBeANumber' }
@@ -216,7 +247,7 @@ const sanitizer = function() {
       else if (field.type === 'ratio') {
         // ratio looks like this NUMBER:NUMBER
         let parts = _.split(value, ':')
-        if (_.size(parts) !== 2) error = { message: fieldName + '_notAValidRatio' }
+        if (_.size(parts) !== 2) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         let ratio = _.map(parts, parseFloat)
         if (!_.isNumber(_.first(ratio)) || _.isNaN(_.first(ratio))) error = { message:  fieldName + '_firstValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
         else if (!_.isNumber(_.last(ratio)) || _.isNaN(_.last(ratio))) error = { message: fieldName + '_lastValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
@@ -227,11 +258,11 @@ const sanitizer = function() {
         if (!validator.isRgbColor(value, includePercentValues)) error = { message: fieldName + '_notAValidRGB', additionalInfo: { includePercentValues } }
       }
       else if (field.type === 'hexColor') {
-        if (!validator.isHexColor(value)) error = { message: fieldName + '_notAValidHexColor' }
+        if (!validator.isHexColor(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'date') {
         // Checks if the given value is a valid date or datetime
-        if (!_.isFinite(Date.parse(value))) error = { message: fieldName + '_notaDate' }
+        if (!_.isFinite(Date.parse(value))) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type) {
         // type is set but not defined here
@@ -318,7 +349,8 @@ const sanitizer = function() {
 
   return {
     checkAndSanitizeValues,
-    randomValue
+    randomValue,
+    getTypeMapping
   }
 }
 
