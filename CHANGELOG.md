@@ -1,3 +1,16 @@
+<a name="3.4.0"></a>
+ 
+# [3.4.0](https://github.com/mmpro/ac-sanitizer/compare/v3.3.1..v3.4.0) (2020-11-09 20:56:47)
+
+
+### Feature
+
+* **App:** Add check for file extensions | MP | [78b38071877072dec23dbd53922920cd2b40555d](https://github.com/mmpro/ac-sanitizer/commit/78b38071877072dec23dbd53922920cd2b40555d)    
+Add check for file extensions from ac-file-extensions
+### Bug Fix
+
+* **App:** Error message are now available using getTypeMapping function | MP | [1c8f8ab6127a1e67d13e35ee50e1926b3a88f4e9](https://github.com/mmpro/ac-sanitizer/commit/1c8f8ab6127a1e67d13e35ee50e1926b3a88f4e9)    
+Error message are now available using getTypeMapping function - this way they can be determined during external testing.
 <a name="3.3.1"></a>
 
 ## [3.3.1](https://github.com/mmpro/ac-sanitizer/compare/v3.3.0..v3.3.1) (2020-11-09 15:44:07)
