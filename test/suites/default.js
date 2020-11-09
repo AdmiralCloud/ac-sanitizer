@@ -7,6 +7,11 @@ const timeOut = 60000
 module.exports = {
   testsuite: function() {
 
+    describe('STRING', function() {
+      this.timeout(timeOut)
+      tests.string.test()
+    })
+
     describe('NUMBER', function() {
       this.timeout(timeOut)
       tests.number.test()

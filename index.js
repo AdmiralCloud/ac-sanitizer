@@ -93,7 +93,12 @@ const sanitizer = function() {
       else if (field.type === 'string') {
         if (!_.isString(value)) error = { message: fieldName + '_notAString' }
         else if (value.length < minLength) error = { message: fieldName + '_stringTooShort_minLength' + minLength }
-        else if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
+        else if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) {
+          if (_.get(field, 'convert')) {
+            _.set(paramsToCheck, fieldName, value.substring(0, _.get(field, 'maxLength')))
+          }
+          else error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
+        }
       }
       else if (field.type === 'boolean') {
         // GET params are strings -> try to make the boolean

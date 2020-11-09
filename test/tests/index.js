@@ -12,5 +12,6 @@ module.exports = {
   number: require('./number'),
   ratio: require('./ratio'),
   rgb: require('./rgb'),
+  string: require('./string'),
   stringOrInteger: require('./stringOrInteger')
 }
