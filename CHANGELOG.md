@@ -1,3 +1,12 @@
+<a name="3.4.2"></a>
+
+## [3.4.2](https://github.com/mmpro/ac-sanitizer/compare/v3.4.1..v3.4.2) (2020-11-15 12:59:32)
+
+
+### Bug Fix
+
+* **App:** Check for type of values in an array | MP | [14e1c6dc4c688ee838eb21f35bd1d523a1266de4](https://github.com/mmpro/ac-sanitizer/commit/14e1c6dc4c688ee838eb21f35bd1d523a1266de4)    
+You can now define which type you expect as array values.
 <a name="3.4.1"></a>
 
 ## [3.4.1](https://github.com/mmpro/ac-sanitizer/compare/v3.4.0..v3.4.1) (2020-11-15 12:37:23)
