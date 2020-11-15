@@ -1,3 +1,12 @@
+<a name="3.4.1"></a>
+
+## [3.4.1](https://github.com/mmpro/ac-sanitizer/compare/v3.4.0..v3.4.1) (2020-11-15 12:37:23)
+
+
+### Bug Fix
+
+* **App:** Allow placeholder enum | MP | [5d77bcb39387dee913552b3a9387c07e0db2df0c](https://github.com/mmpro/ac-sanitizer/commit/5d77bcb39387dee913552b3a9387c07e0db2df0c)    
+You can now use placeholders for enum (e.g. countrylist). See README for details.
 <a name="3.4.0"></a>
  
 # [3.4.0](https://github.com/mmpro/ac-sanitizer/compare/v3.3.1..v3.4.0) (2020-11-09 20:56:47)
