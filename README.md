@@ -29,6 +29,7 @@ required | [boolean] | Set to true if required
 enum | [array|string] | Optional list of allowed values. You can a string placeholder for certain standard lists (see below)
 adminLevel | [integer] | Optional adminLevel required for this field
 convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
+valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
 
 ### ENUM lists
 The following enum lists are available using a string placeholder

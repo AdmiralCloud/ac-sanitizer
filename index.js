@@ -164,6 +164,23 @@ const sanitizer = function() {
       else if (field.type === 'array') {
         if (!_.isArray(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
+        if (field.valueType) {
+          // very value of the array must be of this type
+          _.every(value, v => {
+            const fieldsToCheck = {
+              params: {
+                valToCheck: v
+              },
+              fields: [{ field: 'valToCheck', type: _.get(field, 'valueType') }]
+            }
+            const check = checkAndSanitizeValues(fieldsToCheck)
+            if (_.get(check, 'error')) {
+              error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { value: v } }
+              return false
+            }
+            return true
+          })
+        }
 
         const schema = field.schema
         if (!error && _.isFunction(_.get(schema, 'verify'))) {

@@ -17,6 +17,8 @@ module.exports = {
       { name: 'Array with enum with placeholder iso-639-2', type: 'array', value: ['deu'], enum: 'iso-639-2', expected: ['deu'] },
       { name: 'Array with enum with placeholder iso-639-2 - fail', type: 'array', value: ['de'], enum: 'iso-639-2', error: 'array_notanAllowedValue' },
       { name: 'Array with enum with non existing placeholder - fail', type: 'array', value: ['de'], enum: 'notExisting', error: 'enum_notDefined' },
+      { name: 'Array with valueType - fail', type: 'array', value: ['de', 1, 'en'], valueType: 'string', error: 'array_atLeastOneValueFailed' },
+      { name: 'Array with valueType', type: 'array', value: ['de', 'en'], valueType: 'string', expected: ['de', 'en'] },
     ]
 
 
@@ -27,7 +29,7 @@ module.exports = {
             array: _.get(test, 'value')
           },
           fields: [
-            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required') }
+            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType') }
           ]
         }
         if (test.enum) {
