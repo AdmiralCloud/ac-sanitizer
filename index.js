@@ -63,6 +63,23 @@ const sanitizer = function() {
       let fieldName = field.field
       let minLength = _.isNumber(field.minLength) ? field.minLength : 2
       let allowedValues = _.get(field, 'enum', _.get(field, 'isMemberOf.group'))
+      if (_.isString(allowedValues)) {
+        // placeholder for enum:
+        switch(allowedValues) {
+          case 'iso-639-1':
+            allowedValues = _.map(iso639, 'iso-639-1')
+            break
+          case 'iso-639-2':
+            allowedValues = _.map(iso639, 'iso-639-2')
+            break
+          case 'countrylist':
+            allowedValues = _.map(acCountryList.shortList(), 'name')
+            break
+          default:
+            error = { message: 'enum_notDefined' }
+            break
+        }
+      }
       let adminLevel = _.get(params, 'adminLevel')
 
       let value = _.get(paramsToCheck, fieldName)

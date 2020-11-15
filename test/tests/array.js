@@ -12,6 +12,11 @@ module.exports = {
       { name: 'Invalid array', type: 'array', value: 'a', error: 'array_notAnArray' },
       { name: 'Array with enum match', type: 'array', value: ['video'], enum: ['audio', 'video'], expected: ['video'] },
       { name: 'Array without enum match', type: 'array', value: ['cookie'], enum: ['audio', 'video'], error: 'array_notanAllowedValue' },
+      { name: 'Array with enum with placeholder countrylist', type: 'array', value: ['Laos'], enum: 'countrylist', expected: ['Laos'] },
+      { name: 'Array with enum with placeholder countrylist - fail', type: 'array', value: ['Paris'], enum: 'countrylist', error: 'array_notanAllowedValue' },
+      { name: 'Array with enum with placeholder iso-639-2', type: 'array', value: ['deu'], enum: 'iso-639-2', expected: ['deu'] },
+      { name: 'Array with enum with placeholder iso-639-2 - fail', type: 'array', value: ['de'], enum: 'iso-639-2', error: 'array_notanAllowedValue' },
+      { name: 'Array with enum with non existing placeholder - fail', type: 'array', value: ['de'], enum: 'notExisting', error: 'enum_notDefined' },
     ]
 
 

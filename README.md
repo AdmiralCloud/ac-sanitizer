@@ -25,9 +25,20 @@ Parameter | Type | Remarks
 --- | --- | --- |
 field | string | Name of the field
 type | string | Type of the field to sanitize, see below for available values
-required | [boolean] | Set to true if requried
+required | [boolean] | Set to true if required
+enum | [array|string] | Optional list of allowed values. You can a string placeholder for certain standard lists (see below)
 adminLevel | [integer] | Optional adminLevel required for this field
 convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
+
+### ENUM lists
+The following enum lists are available using a string placeholder
+
+Placeholder | Items | Remarks
+--- | --- | --- |
+iso-639-1 | ISO 639-1 entries | e.g. de, en, fr, es...
+iso-639-2 | ISO 639-2 entries | e.g. deu, eng, fra ...
+countrylist | list of country names | e.g. Laos, Brazil, Norway...
+
 
 ## Available types
 
