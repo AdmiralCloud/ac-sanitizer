@@ -221,9 +221,11 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'fileExtension') {
+        value = _.toLower(value)
         if (!_.find(fileExtensions, { ext: value })) {
           error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
+        _.set(paramsToCheck, fieldName, value)
       }
       else if (_.startsWith(field.type, 'iso-639')) {
         // use exact fields (iso-639-1,iso-639-2) or just iso-639 which tries to match iso-639-2 and falls back to iso-639-1
