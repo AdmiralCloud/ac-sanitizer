@@ -1,3 +1,16 @@
+<a name="3.4.3"></a>
+
+## [3.4.3](https://github.com/mmpro/ac-sanitizer/compare/v3.4.2..v3.4.3) (2020-11-17 12:38:26)
+
+
+### Bug Fix
+
+* **App:** FileExtension are now case-insensitive | MP | [544bd1309349dfeafd7644de7108a2d4f1a32aa7](https://github.com/mmpro/ac-sanitizer/commit/544bd1309349dfeafd7644de7108a2d4f1a32aa7)    
+You can use uppercase or lowercase file extensions. They will pass (if valid) and returned as lowercase.
+### Chores
+
+* **App:** Updated packages | MP | [68c13646e4277006dcbafaf53baeb2d3f7da49e3](https://github.com/mmpro/ac-sanitizer/commit/68c13646e4277006dcbafaf53baeb2d3f7da49e3)    
+Updated packages
 <a name="3.4.2"></a>
 
 ## [3.4.2](https://github.com/mmpro/ac-sanitizer/compare/v3.4.1..v3.4.2) (2020-11-15 12:59:32)
