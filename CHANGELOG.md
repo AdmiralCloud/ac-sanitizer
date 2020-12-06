@@ -1,3 +1,12 @@
+<a name="3.5.0"></a>
+ 
+# [3.5.0](https://github.com/mmpro/ac-sanitizer/compare/v3.4.3..v3.5.0) (2020-12-06 11:07:24)
+
+
+### Feature
+
+* **App:** Sanitizer can now check for FQDN | MP | [3be9aff02c0defd7a599c3cd092cb0575a2ca19f](https://github.com/mmpro/ac-sanitizer/commit/3be9aff02c0defd7a599c3cd092cb0575a2ca19f)    
+You can now now check fully qualified domain names
 <a name="3.4.3"></a>
 
 ## [3.4.3](https://github.com/mmpro/ac-sanitizer/compare/v3.4.2..v3.4.3) (2020-11-17 12:38:26)
