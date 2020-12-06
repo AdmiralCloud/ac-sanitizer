@@ -23,6 +23,7 @@ const sanitizer = function() {
     { type: 'hashids', errorMessage: 'mustBeString' },
     { type: 'ip', errorMessage: 'notAnIP' },
     { type: 'email', errorMessage: 'notAValidEmailAddress' },
+    { type: 'fqdn', errorMessage: 'notAValidFQDN' },
     { type: 'uuid', errorMessage: 'notAValidUUID' },
     { type: 'gps', errorMessage: 'notAValidGPS' },
     { type: 'ratio', errorMessage: 'notAValidRatio' },
@@ -260,6 +261,9 @@ const sanitizer = function() {
       }
       else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+      }
+      else if (field.type === 'fqdn') {
+        if (!validator.isFQDN(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'uuid') {
         const uuidVersion = _.get(field, 'uuidVersion', 4)

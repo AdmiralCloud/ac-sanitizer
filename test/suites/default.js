@@ -32,6 +32,12 @@ module.exports = {
       tests.ip.test()
     })
 
+    describe('FQDN', function() {
+      this.timeout(timeOut)
+      tests.fqdn.test()
+    })
+
+
     describe('EMAIL', function() {
       this.timeout(timeOut)
       tests.email.test()

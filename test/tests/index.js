@@ -5,6 +5,7 @@ module.exports = {
   date: require('./date'),
   email: require('./email'),
   fileExtension: require('./fileExtension'),
+  fqdn: require('./fqdn'),
   gps: require('./gps'),
   ip: require('./ip'),
   iso639: require('./iso639'),
