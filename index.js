@@ -256,8 +256,9 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'ip') {
-        const version = _.get(field, 'version', '4')
-        if (!validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
+        const version = _.get(field, 'version')
+        if (version && !validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
+        if (!validator.isIP(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
