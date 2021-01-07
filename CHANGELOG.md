@@ -1,3 +1,16 @@
+<a name="3.5.1"></a>
+
+## [3.5.1](https://github.com/mmpro/ac-sanitizer/compare/v3.5.0..v3.5.1) (2021-01-07 11:55:04)
+
+
+### Bug Fix
+
+* **App:** IP version should be optional | MP | [d3d23537bde9ebb025893b88c8bca2b0baf4b25c](https://github.com/mmpro/ac-sanitizer/commit/d3d23537bde9ebb025893b88c8bca2b0baf4b25c)    
+IP now detects IPv4 and IPv6 if you do not set version.
+### Chores
+
+* **App:** Updated packages | MP | [24543d24673364bd8c85fe542fd67cc11e98ae54](https://github.com/mmpro/ac-sanitizer/commit/24543d24673364bd8c85fe542fd67cc11e98ae54)    
+Updated packages
 <a name="3.5.0"></a>
  
 # [3.5.0](https://github.com/mmpro/ac-sanitizer/compare/v3.4.3..v3.5.0) (2020-12-06 11:07:24)
