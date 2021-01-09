@@ -18,10 +18,12 @@
     "eslint": "^7.17.0",
     "expect": "^26.6.2",
     "husky": "^4.3.7",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "coverage": "nyc yarn run test"
   },
   "husky": {
     "hooks": {
