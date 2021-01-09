@@ -212,7 +212,7 @@ const sanitizer = function() {
       else if (field.type === 'base64') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
         else if (!validator.isBase64(value)) error = { message: fieldName + '_notABase64String' }
-        else if (field.convert) {
+        if (field.convert) {
           _.set(paramsToCheck, fieldName, Buffer.from(value, 'base64').toString())
         }
       }
