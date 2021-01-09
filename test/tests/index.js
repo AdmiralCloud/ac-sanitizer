@@ -1,6 +1,7 @@
 module.exports = {
   array: require('./array'),
   base64: require('./base64'),
+  bool: require('./bool'),
   country: require('./country'),
   date: require('./date'),
   email: require('./email'),
@@ -9,11 +10,13 @@ module.exports = {
   gps: require('./gps'),
   ip: require('./ip'),
   iso639: require('./iso639'),
+  hashIds: require('./hashIds'),
   hexColor: require('./hexColor'),
   object: require('./object'),
   number: require('./number'),
   ratio: require('./ratio'),
   rgb: require('./rgb'),
   string: require('./string'),
-  stringOrInteger: require('./stringOrInteger')
+  stringOrInteger: require('./stringOrInteger'),
+  uuid: require('./uuid')
 }

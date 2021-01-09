@@ -26,6 +26,11 @@ module.exports = {
       this.timeout(timeOut)
       tests.object.test()
     })
+
+    describe('BOOL', function() {
+      this.timeout(timeOut)
+      tests.bool.test()
+    })
     
     describe('IP', function() {
       this.timeout(timeOut)
@@ -91,6 +96,16 @@ module.exports = {
     describe('DATE', function() {
       this.timeout(timeOut)
       tests.date.test()
+    })
+
+    describe('UUID', function() {
+      this.timeout(timeOut)
+      tests.uuid.test()
+    })
+
+    describe('HASH IDS', function() {
+      this.timeout(timeOut)
+      tests.hashIds.test()
     })
 
   }

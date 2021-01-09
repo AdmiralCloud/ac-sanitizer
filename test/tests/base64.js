@@ -8,6 +8,7 @@ module.exports = {
 
     const baseTests = [
       { name: 'Valid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=' },
+      { name: 'Valid base64 with convert', type: 'base64', convert: true, value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'this is a base64 string' },
       { name: 'Invalid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbm', error: 'base64_notABase64String' },
     ]
 
@@ -19,11 +20,12 @@ module.exports = {
             base64: _.get(test, 'value')
           },
           fields: [
-            { field: 'base64', type: _.get(test, 'type'), required: _.get(test, 'required') }
+            { field: 'base64', type: _.get(test, 'type'), convert: _.get(test, 'convert') }
           ]
         }
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+        console.log(28, r)
         if (_.get(test, 'error')) {
           expect(_.get(r, 'error.message')).toEqual(test.error)
         }
