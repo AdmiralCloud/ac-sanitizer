@@ -1,3 +1,20 @@
+<a name="3.5.2"></a>
+
+## [3.5.2](https://github.com/mmpro/ac-sanitizer/compare/v3.5.1..v3.5.2) (2021-01-09 20:45:22)
+
+
+### Bug Fix
+
+* **App:** Minor fix for base64 decoding | MP | [e09a7cd4103918e510e1657602697e98e4da5b97](https://github.com/mmpro/ac-sanitizer/commit/e09a7cd4103918e510e1657602697e98e4da5b97)    
+Minor fix for base64 decoding
+### Tests
+
+* **App:** Added test  | MP | [5a1edcca9bc2ee9843a8753c10d1384f0b046092](https://github.com/mmpro/ac-sanitizer/commit/5a1edcca9bc2ee9843a8753c10d1384f0b046092)    
+Added tests to improve code coverage
+### Chores
+
+* **App:** Updated packages | MP | [59eddd54de70a58d8e3eb4d67ba49a8f125b87b0](https://github.com/mmpro/ac-sanitizer/commit/59eddd54de70a58d8e3eb4d67ba49a8f125b87b0)    
+Updated packages
 <a name="3.5.1"></a>
 
 ## [3.5.1](https://github.com/mmpro/ac-sanitizer/compare/v3.5.0..v3.5.1) (2021-01-07 11:55:04)
