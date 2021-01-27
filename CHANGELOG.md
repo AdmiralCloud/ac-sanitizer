@@ -1,3 +1,12 @@
+<a name="3.6.0"></a>
+ 
+# [3.6.0](https://github.com/mmpro/ac-sanitizer/compare/v3.5.2..v3.6.0) (2021-01-27 09:18:40)
+
+
+### Feature
+
+* **App:** Added check for integer or boolean | MP | [e986e4c667260138c353a5bbb9ae189a53f95dc4](https://github.com/mmpro/ac-sanitizer/commit/e986e4c667260138c353a5bbb9ae189a53f95dc4)    
+Special check for fields that can be integer or boolean
 <a name="3.5.2"></a>
 
 ## [3.5.2](https://github.com/mmpro/ac-sanitizer/compare/v3.5.1..v3.5.2) (2021-01-09 20:45:22)
