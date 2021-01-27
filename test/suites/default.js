@@ -58,6 +58,11 @@ module.exports = {
       tests.stringOrInteger.test()
     })
 
+    describe('BOOLEAN OR INTEGER', function() {
+      this.timeout(timeOut)
+      tests.boolOrInteger.test()
+    })
+
     describe('COUNTY', function() {
       this.timeout(timeOut)
       tests.country.test()

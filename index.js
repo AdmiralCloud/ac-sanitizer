@@ -88,9 +88,9 @@ const sanitizer = function() {
       // mark deprecated fields
       if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
 
+      /// SPECIAL FIELDS
       // special field - can be string or integer -> determine type and then use type settings
       if (field.type === 'integer | string' && value) {
-        // special field - can be string or number
         if (!_.isString(value) && !_.isFinite(parseInt(value))) {
           error = { message: fieldName + '_neitherStringNorInteger' }
           return {
@@ -104,6 +104,22 @@ const sanitizer = function() {
           field.type = 'integer'
         }
       }
+      // special field - can be boolean or integer -> determine type and then use type settings
+      if (field.type === 'integer | boolean' && value) {
+        if (!_.isBoolean(value) && !_.isFinite(parseInt(value))) {
+          error = { message: fieldName + '_neitherBooleanNorInteger' }
+          return {
+            error
+          }
+        }
+        if (_.isBoolean(value)) {
+            field.type = 'boolean'
+        }
+        else if (_.isFinite(parseInt(value))) {
+          field.type = 'integer'
+        }
+      }
+      ///// END SPECIAL FIELDS
 
       if (field.required && !_.has(paramsToCheck, fieldName)) error = { message: 'field_' + fieldName + '_required' }
       else if (!_.get(field, 'required') && _.isNil(_.get(paramsToCheck, fieldName))) {

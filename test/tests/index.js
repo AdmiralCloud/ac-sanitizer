@@ -2,6 +2,7 @@ module.exports = {
   array: require('./array'),
   base64: require('./base64'),
   bool: require('./bool'),
+  boolOrInteger: require('./boolOrInteger'),
   country: require('./country'),
   date: require('./date'),
   email: require('./email'),
