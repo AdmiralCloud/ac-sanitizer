@@ -1,3 +1,16 @@
+<a name="3.7.0"></a>
+ 
+# [3.7.0](https://github.com/mmpro/ac-sanitizer/compare/v3.6.0..v3.7.0) (2021-02-06 05:59:05)
+
+
+### Feature
+
+* **App:** Added check for url | MP | [db9a868f897da9200ea48604a2445d8c11ac3be2](https://github.com/mmpro/ac-sanitizer/commit/db9a868f897da9200ea48604a2445d8c11ac3be2)    
+You can now check for URLs, e.g. https://www.admiralcloud.com.
+### Chores
+
+* **App:** Updated packages | MP | [cfe69743c15fc38c6177eea618ff496fde399f6e](https://github.com/mmpro/ac-sanitizer/commit/cfe69743c15fc38c6177eea618ff496fde399f6e)    
+Updated packages
 <a name="3.6.0"></a>
  
 # [3.6.0](https://github.com/mmpro/ac-sanitizer/compare/v3.5.2..v3.6.0) (2021-01-27 09:18:40)
