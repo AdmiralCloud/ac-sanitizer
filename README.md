@@ -66,6 +66,7 @@ ratio | | x:y
 rgb | | Check for valid RGB value (r,g,b) or (r%,g%, b%)
 short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
+url| protocols, require_tld, require_protocol | Default values: protocols ['http', 'https'], required_tld true, require_protocol true
 
 
 ## Links

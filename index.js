@@ -30,6 +30,7 @@ const sanitizer = function() {
     { type: 'rgb', errorMessage: 'notAValidRGB' },
     { type: 'hexColor', errorMessage: 'notAValidHexColor' },
     { type: 'date', errorMessage: 'notaDate' },
+    { type: 'url', errorMessage: 'notAValidURL' }
   ]
 
   const getTypeMapping = (type, property) => {
@@ -278,6 +279,12 @@ const sanitizer = function() {
       }
       else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+      }
+      else if (field.type === 'url') {
+        const protocols = _.get(field, 'protocols', ['http', 'https'])
+        const require_tld = _.get(field, 'require_tld', true)
+        const require_protocol = _.get(field, 'require_protocol', true)
+        if (!validator.isURL(value, { protocols, require_tld, require_protocol })) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'fqdn') {
         if (!validator.isFQDN(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }

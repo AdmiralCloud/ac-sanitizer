@@ -19,5 +19,6 @@ module.exports = {
   rgb: require('./rgb'),
   string: require('./string'),
   stringOrInteger: require('./stringOrInteger'),
+  url: require('./url'),
   uuid: require('./uuid')
 }

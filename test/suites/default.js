@@ -48,6 +48,11 @@ module.exports = {
       tests.email.test()
     })
 
+    describe('URL', function() {
+      this.timeout(timeOut)
+      tests.url.test()
+    })
+
     describe('BASE64', function() {
       this.timeout(timeOut)
       tests.base64.test()
