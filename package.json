@@ -15,9 +15,9 @@
   },
   "devDependencies": {
     "ac-semantic-release": "^0.2.5",
-    "eslint": "^7.17.0",
+    "eslint": "^7.19.0",
     "expect": "^26.6.2",
-    "husky": "^4.3.7",
+    "husky": "^4.3.8",
     "mocha": "^8.2.1",
     "nyc": "^15.1.0"
   },
