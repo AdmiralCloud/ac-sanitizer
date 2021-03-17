@@ -10,25 +10,19 @@
     "ac-countrylist": "^1.0.5",
     "ac-file-extensions": "^1.2.0",
     "hashids": "^2.2.8",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "validator": "^13.5.2"
   },
   "devDependencies": {
     "ac-semantic-release": "^0.2.5",
-    "eslint": "^7.19.0",
+    "eslint": "^7.22.0",
     "expect": "^26.6.2",
-    "husky": "^4.3.8",
-    "mocha": "^8.2.1",
+    "mocha": "^8.3.2",
     "nyc": "^15.1.0"
   },
   "scripts": {
     "test": "mocha --reporter spec",
     "coverage": "nyc yarn run test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "make lint-check"
-    }
   },
   "engines": {
     "node": ">=8.0.0"
