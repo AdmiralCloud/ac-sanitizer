@@ -48,7 +48,7 @@ Type | Options | Remarks
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 boolean | | 
 integer \| boolean |  | Value can be an integer OR a boolean
-date | | Date or date time, support various date formats (e.g. DD.MM.YYYY, DD/MM/YYYY, YYYY-MM-DD, etc)
+date | dateFormat | Date or date time, support various date formats (e.g. DD.MM.YYYY, DD/MM/YYYY, YYYY-MM-DD, etc) as well as a custom format defined in dateFormat.
 email | | a@b.c
 float | | 0 - 2^31
 fileExtension | |

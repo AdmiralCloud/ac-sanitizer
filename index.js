@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const validator = require('validator')
 const Hashids = require('hashids/cjs')
+const date = require('date-and-time');
 
 const acCountryList = require('ac-countrylist')
 const iso639 = require('./lib/iso639')
@@ -319,6 +320,8 @@ const sanitizer = function() {
       }
       else if (field.type === 'rgb') {
         const includePercentValues = _.get(field, 'includePercentValues', true)
+        // rgb can be a string like 10,100,255 or like rgb(10,100,255)
+        if (!_.startsWith(value, 'rgb')) value = `rgb(${value})`
         if (!validator.isRgbColor(value, includePercentValues)) error = { message: fieldName + '_notAValidRGB', additionalInfo: { includePercentValues } }
       }
       else if (field.type === 'hexColor') {
@@ -326,7 +329,31 @@ const sanitizer = function() {
       }
       else if (field.type === 'date') {
         // Checks if the given value is a valid date or datetime
-        if (!_.isFinite(Date.parse(value))) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (field.dateFormat) {
+          if (!date.isValid(value, field.dateFormat)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        }
+        else {
+          // test multiple formats
+          const allowedDateFormats = [
+            'YYYY-MM-DD',
+            'DD.MM.YYYY',
+            'DD/MM/YYYY',
+            'MM/DD/YYYY',
+            'YYYY-MM-DD',
+            "YYYY-MM-DD HH:mm:ss",
+            "YYYY-MM-DDTHH:mm:ss.SSSZ"
+          ]
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+          _.some(allowedDateFormats, format => {
+            if (date.isValid(value, format)) {
+              error = null
+              return true
+            }
+          })
+          if (error && _.isFinite(Date.parse(value))) {
+            error = null
+          }
+        }
       }
       else if (field.type) {
         // type is set but not defined here
