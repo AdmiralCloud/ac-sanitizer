@@ -37,7 +37,7 @@ module.exports = {
         }
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(test, 'error')) {
+        if (_.get(r, 'error')) {
           expect(_.get(r, 'error.message')).toEqual(test.error)
         }
         else {
