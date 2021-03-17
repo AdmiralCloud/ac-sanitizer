@@ -1,3 +1,22 @@
+<a name="3.7.1"></a>
+
+## [3.7.1](https://github.com/mmpro/ac-sanitizer/compare/v3.7.0..v3.7.1) (2021-03-17 13:13:27)
+
+
+### Bug Fix
+
+* **App:** Fixed RGB and date handling | MP | [964b646e044ee04d4375e2c10c51b1106c24908c](https://github.com/mmpro/ac-sanitizer/commit/964b646e044ee04d4375e2c10c51b1106c24908c)    
+RGB can be a string like 100,150,255 or like rgb(100,150,255). Date is now checked using format strings
+### Tests
+
+* **App:** Fixed error recognition in test | MP | [12af2ebbde40902e03a043c04564107472041767](https://github.com/mmpro/ac-sanitizer/commit/12af2ebbde40902e03a043c04564107472041767)    
+Errors were not properly detected in test mode.
+### Chores
+
+* **App:** Updated packages | MP | [04b492e0d3ee0e23a55711b853c323622bbad563](https://github.com/mmpro/ac-sanitizer/commit/04b492e0d3ee0e23a55711b853c323622bbad563)    
+Updated packages
+* **App:** Updated packages | MP | [482c310c547fe23dbc75b891ff0886214dbbcb6a](https://github.com/mmpro/ac-sanitizer/commit/482c310c547fe23dbc75b891ff0886214dbbcb6a)    
+Updated packages
 <a name="3.7.0"></a>
  
 # [3.7.0](https://github.com/mmpro/ac-sanitizer/compare/v3.6.0..v3.7.0) (2021-02-06 05:59:05)
