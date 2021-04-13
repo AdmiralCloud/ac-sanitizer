@@ -1,3 +1,12 @@
+<a name="3.7.2"></a>
+
+## [3.7.2](https://github.com/mmpro/ac-sanitizer/compare/v3.7.1..v3.7.2) (2021-04-13 15:41:00)
+
+
+### Bug Fix
+
+* **App:** Allow empty arrays | MP | [92c3a811062908011a5061d3e1651d7afaba617a](https://github.com/mmpro/ac-sanitizer/commit/92c3a811062908011a5061d3e1651d7afaba617a)    
+Allow empty arrays
 <a name="3.7.1"></a>
 
 ## [3.7.1](https://github.com/mmpro/ac-sanitizer/compare/v3.7.0..v3.7.1) (2021-03-17 13:13:27)
