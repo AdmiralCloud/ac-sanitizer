@@ -9,14 +9,14 @@
   "dependencies": {
     "ac-countrylist": "^1.0.5",
     "ac-file-extensions": "^1.2.0",
-    "date-and-time": "^0.14.2",
+    "date-and-time": "^1.0.0",
     "hashids": "^2.2.8",
     "lodash": "^4.17.21",
-    "validator": "^13.5.2"
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "ac-semantic-release": "^0.2.5",
-    "eslint": "^7.22.0",
+    "eslint": "^7.25.0",
     "expect": "^26.6.2",
     "mocha": "^8.3.2",
     "nyc": "^15.1.0"
