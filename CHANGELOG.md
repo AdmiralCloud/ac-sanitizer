@@ -1,3 +1,12 @@
+<a name="3.7.4"></a>
+
+## [3.7.4](https://github.com/mmpro/ac-sanitizer/compare/v3.7.3..v3.7.4) (2021-05-02 10:54:53)
+
+
+### Bug Fix
+
+* **App:** Improved error message if range error | MP | [29beb7d2c46291ac4574ac9cc8389e11666809af](https://github.com/mmpro/ac-sanitizer/commit/29beb7d2c46291ac4574ac9cc8389e11666809af)    
+Add value that fails to additionalInfo if number/range fails
 <a name="3.7.3"></a>
 
 ## [3.7.3](https://github.com/mmpro/ac-sanitizer/compare/v3.7.2..v3.7.3) (2021-05-02 08:55:00)
