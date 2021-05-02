@@ -364,11 +364,11 @@ const sanitizer = function() {
       if (!error && allowedValues && value) {
         if (_.isArray(value)) {
           if (_.size(value) && !_.size(_.intersection(value, allowedValues))) {
-            error = { message: fieldName + '_notanAllowedValue' }
+            error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
           }
         }
         else if (_.indexOf(allowedValues, value) < 0) {
-          error = { message: fieldName + '_notanAllowedValue' }
+          error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
         }
       } 
 

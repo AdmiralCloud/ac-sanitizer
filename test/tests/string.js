@@ -13,6 +13,8 @@ module.exports = {
       { name: 'Valid - maxLength - convert', type: 'string', value: 'abcdefghijklmn', maxLength: 5, expected: 'abcde', convert: true },
       { name: 'Invalid - minLength', type: 'string', value: 'ab', minLength: 3, error: 'string_stringTooShort_minLength3' },
       { name: 'Valid - minLength', type: 'string', value: 'abc', minLength: 3, expected: 'abc' },
+      { name: 'Valid from enum', type: 'string', value: 'play', enum: ['play', 'pause'], expected: 'play' },
+      { name: 'Invalid from enum', type: 'string', value: 'stop', enum: ['play', 'pause'], error: 'string_notAnAllowedValue', additionalInfo: { value: 'stop' } }
     ]
 
 
@@ -23,13 +25,16 @@ module.exports = {
             string: _.get(test, 'value')
           },
           fields: [
-            { field: 'string', type: _.get(test, 'type'), required: _.get(test, 'required'), minLength: _.get(test, 'minLength'), maxLength: _.get(test, 'maxLength'), convert: _.get(test, 'convert') }
+            { field: 'string', type: _.get(test, 'type'), required: _.get(test, 'required'), enum: _.get(test, 'enum'), minLength: _.get(test, 'minLength'), maxLength: _.get(test, 'maxLength'), convert: _.get(test, 'convert') }
           ]
         }
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
         if (_.get(r, 'error')) {
           expect(_.get(r, 'error.message')).toEqual(test.error)
+          if (_.get(test, 'additionalInfo')) {
+            expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))
+          }
         }
         else {
           expect(_.get(r, 'params.string')).toEqual(_.get(test, 'expected'))
