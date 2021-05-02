@@ -1,3 +1,16 @@
+<a name="3.7.3"></a>
+
+## [3.7.3](https://github.com/mmpro/ac-sanitizer/compare/v3.7.2..v3.7.3) (2021-05-02 08:55:00)
+
+
+### Bug Fix
+
+* **App:** Use proper camel-cased version of notAnAllowedValue | MP | [bb6cfb556e1404459917d0aa2705ccc10bf55174](https://github.com/mmpro/ac-sanitizer/commit/bb6cfb556e1404459917d0aa2705ccc10bf55174)    
+Use proper camel-cased version of notAnAllowedValue and return wrong value in additionalInfo
+### Chores
+
+* **App:** Updated packages | MP | [364af2e338eaa8f9cf877f263832f525d148d9f7](https://github.com/mmpro/ac-sanitizer/commit/364af2e338eaa8f9cf877f263832f525d148d9f7)    
+Updated packages
 <a name="3.7.2"></a>
 
 ## [3.7.2](https://github.com/mmpro/ac-sanitizer/compare/v3.7.1..v3.7.2) (2021-04-13 15:41:00)
