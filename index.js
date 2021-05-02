@@ -155,7 +155,7 @@ const sanitizer = function() {
         let lowest = _.first(range)
         let highest = _.size(range) === 2 && _.last(range)
         if (value < lowest || (highest && value > highest)) {
-          error = { message: fieldName + '_outOfRange', additionalInfo: { range } }
+          error = { message: fieldName + '_outOfRange', additionalInfo: { range, value } }
         }
       }
       else if (field.type === 'string') {
