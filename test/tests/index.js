@@ -3,6 +3,7 @@ module.exports = {
   base64: require('./base64'),
   bool: require('./bool'),
   boolOrInteger: require('./boolOrInteger'),
+  cidr: require('./cidr'),
   country: require('./country'),
   date: require('./date'),
   email: require('./email'),

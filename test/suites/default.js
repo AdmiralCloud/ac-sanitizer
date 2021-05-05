@@ -118,5 +118,10 @@ module.exports = {
       tests.hashIds.test()
     })
 
+    describe('CIDR', function() {
+      this.timeout(timeOut)
+      tests.cidr.test()
+    })
+
   }
 }

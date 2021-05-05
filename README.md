@@ -69,6 +69,7 @@ Type | Options | Remarks
 --- | --- | --- |
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 boolean | | 
+cidr | | Check CIDR, see example
 integer \| boolean |  | Value can be an integer OR a boolean
 date | dateFormat | Date or date time, support various date formats (e.g. DD.MM.YYYY, DD/MM/YYYY, YYYY-MM-DD, etc) as well as a custom format defined in dateFormat.
 email | | a@b.c
@@ -91,6 +92,39 @@ short | | 0 - 2^15
 string | minLength (int), maxLength (int)| 
 url| protocols, require_tld, require_protocol | Default values: protocols ['http', 'https'], required_tld true, require_protocol true
 
+# Examples
+## CIDR
+```
+// CIDR Example
+
+const sanitizer = require('ac-sanitizer')
+
+let fieldsToCheck = {
+  params: {
+    cidr: [{ cidr: '8.8.8.8/32' }]
+  },
+  fields: [
+    { field: 'cidr', type: 'cidr' }
+  ]
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+
+
+// multiple mixed CIDR
+let fieldsToCheck = {
+  params: {
+    cidr: [
+      { cidr: '8.8.8.8/32' },
+      { cidr: '::ffff:127.0.0.1', type: 'ipv6' }
+    ]
+  },
+  fields: [
+    { field: 'cidr', type: 'cidr' }
+  ]
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+
+```
 
 ## Links
 - [Website](https://www.admiralcloud.com/)

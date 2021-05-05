@@ -6,6 +6,7 @@ const date = require('date-and-time');
 const acCountryList = require('ac-countrylist')
 const iso639 = require('./lib/iso639')
 const fileExtensions = require('ac-file-extensions')
+const acip = require('ac-ip')
 
 const sanitizer = function() {
 
@@ -25,6 +26,7 @@ const sanitizer = function() {
     { type: 'ip', errorMessage: 'notAnIP' },
     { type: 'email', errorMessage: 'notAValidEmailAddress' },
     { type: 'fqdn', errorMessage: 'notAValidFQDN' },
+    { type: 'cidr', errorMessage: 'notAValidCIDR' },
     { type: 'uuid', errorMessage: 'notAValidUUID' },
     { type: 'gps', errorMessage: 'notAValidGPS' },
     { type: 'ratio', errorMessage: 'notAValidRatio' },
@@ -315,6 +317,17 @@ const sanitizer = function() {
         const version = _.get(field, 'version')
         if (version && !validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
         if (!validator.isIP(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+      }
+      else if (field.type === 'cidr') {
+        // cidr can be a plain value of an array of objects with properties cidr and optional type
+        let checkItem = value
+        if (!_.isArray(value)) {
+          checkItem =  [{ cidr: value }]
+        }
+        let check = acip.checkCIDR({ cidr: checkItem })
+        if (check) {
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: _.get(check, 'additionalInfo') }
+        }
       }
       else if (field.type === 'email') {
         if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
