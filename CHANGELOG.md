@@ -1,3 +1,16 @@
+<a name="3.9.0"></a>
+ 
+# [3.9.0](https://github.com/mmpro/ac-sanitizer/compare/v3.8.1..v3.9.0) (2021-05-05 14:28:16)
+
+
+### Feature
+
+* **App:** Add CIDR check | MP | [a2cadd76fe04a90bb9f208413f65ee6ae4ecfea1](https://github.com/mmpro/ac-sanitizer/commit/a2cadd76fe04a90bb9f208413f65ee6ae4ecfea1)    
+Add CIDR check
+### Bug Fix
+
+* **App:** Allow wildcards for fqdn | MP | [eff6555d7446200629dd5d576d91b01963c0188b](https://github.com/mmpro/ac-sanitizer/commit/eff6555d7446200629dd5d576d91b01963c0188b)    
+Allow wildcards for fqdn
 <a name="3.8.1"></a>
 
 ## [3.8.1](https://github.com/mmpro/ac-sanitizer/compare/v3.8.0..v3.8.1) (2021-05-05 09:50:07)
