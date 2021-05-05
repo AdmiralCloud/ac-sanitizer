@@ -9,9 +9,11 @@ module.exports = {
     const baseTests = [
       { name: 'Valid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=' },
       { name: 'Valid base64 with convert', type: 'base64', convert: true, value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'this is a base64 string' },
-      { name: 'Invalid base64', type: 'base64', value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbm', error: 'base64_notABase64String' },
+      { name: 'Invalid base64', type: 'base64', value: 'abc1245', error: 'base64_notABase64String' },
+      { name: 'Valid base64', type: 'base64', value: 'PDw/Pz8+Pg==', convert: true, expected: '<<???>>' },
+      { name: 'Base64 app.admiralcloud.com - requires padding', type: 'base64', value: 'aHR0cHM6Ly9hcHAuYWRtaXJhbGNsb3VkLmNvbQ', convert: true, expected: 'https://app.admiralcloud.com' },
+      { name: 'Base64 app.admiralcloud.com - with padding', type: 'base64', value: 'aHR0cHM6Ly9hcHAuYWRtaXJhbGNsb3VkLmNvbQ==', convert: true, expected: 'https://app.admiralcloud.com' },
     ]
-
 
     _.forEach(baseTests, (test) => {
       it(test.name, (done) => {

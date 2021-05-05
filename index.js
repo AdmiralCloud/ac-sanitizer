@@ -260,7 +260,12 @@ const sanitizer = function() {
       }
       else if (field.type === 'base64') {
         if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
-        else if (!validator.isBase64(value)) error = { message: fieldName + '_notABase64String' }
+
+        // value must have a length that can be divided by 4, otherwise it needs padding with =
+        // https://en.wikipedia.org/wiki/Base64#Padding
+        let l = value.length
+        let pad = l % 4
+        if (!validator.isBase64(_.padEnd(value, (l+pad), '='))) error = { message: fieldName + '_notABase64String' }
         if (field.convert) {
           _.set(paramsToCheck, fieldName, Buffer.from(value, 'base64').toString())
         }
