@@ -1,3 +1,12 @@
+<a name="3.8.1"></a>
+
+## [3.8.1](https://github.com/mmpro/ac-sanitizer/compare/v3.8.0..v3.8.1) (2021-05-05 09:50:07)
+
+
+### Bug Fix
+
+* **App:** Minor fix regarding required fields | MP | [44b00053392768cef1525c8f77cf0cff3454c716](https://github.com/mmpro/ac-sanitizer/commit/44b00053392768cef1525c8f77cf0cff3454c716)    
+Minor fix regarding required fields
 <a name="3.8.0"></a>
  
 # [3.8.0](https://github.com/mmpro/ac-sanitizer/compare/v3.7.4..v3.8.0) (2021-05-05 08:54:21)
