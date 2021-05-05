@@ -19,15 +19,37 @@ let fieldsToCheck = {
 let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
 ```
 
+```
+// COMPLEX EXAMPLE WITH NESTED PROPERTIES AND CONDITIONAL REQUIREMENTS
+
+const sanitizer = require('ac-sanitizer')
+
+let fieldsToCheck = {
+  params: {
+    obj: {
+      f1: true
+  },
+  fields: [
+    { field: 'obj', type: 'object, properties: [
+      { field: 'f1', type: 'boolean' },
+      { field: 'f2', type: 'boolean', required: 'f1' } // if f1 is true, then f2 is required
+    ]}
+  ]
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+
+```
+
 ## Field definition
 
 Parameter | Type | Remarks
 --- | --- | --- |
 field | string | Name of the field
 type | string | Type of the field to sanitize, see below for available values
-required | [boolean] | Set to true if required
+required | [boolean|string] | Set to true if required or set a path to a param (if that param is set, this value is required)
 enum | [array|string] | Optional list of allowed values. You can a string placeholder for certain standard lists (see below)
 adminLevel | [integer] | Optional adminLevel required for this field
+omitFields | [boolean] | If adminLevel is set and you do not have the proper adminLevel the sanitizer will just omit the field (and not return an error) if omitFields is true
 convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
 
@@ -61,6 +83,7 @@ iso-639-1 | convert | With convert = nativeName you can retrieve the native name
 iso-639-2 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
 ip | version | version can be "4" or "6", defaults to "4"
 long | | 0 - 2^63
+object | properties | Use properties to define object structure, properties is equal to fields array
 number | | Should no be used - use integer, long, short, floag
 ratio | | x:y
 rgb | | Check for valid RGB value (r,g,b) or (r%,g%, b%)

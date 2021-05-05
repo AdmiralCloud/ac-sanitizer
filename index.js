@@ -56,8 +56,11 @@ const sanitizer = function() {
   const checkAndSanitizeValues = (params) => {
     const paramsToCheck = params.params
     if (!_.isObject(paramsToCheck)) return { error: { message: 'params_required' } }
-    const fields = params.fields
+    let fields = params.fields
     if (!_.isArray(fields) || !_.size(fields)) return { error: { message: 'fields_required' } }
+
+    const adminLevel = _.get(params, 'adminLevel')
+    const omitFields = _.get(params, 'omitFields')
 
     let error
     let deprecated = []
@@ -83,7 +86,6 @@ const sanitizer = function() {
             break
         }
       }
-      let adminLevel = _.get(params, 'adminLevel')
 
       let value = _.get(paramsToCheck, fieldName)
 
@@ -123,15 +125,42 @@ const sanitizer = function() {
       }
       ///// END SPECIAL FIELDS
 
-      if (field.required && !_.has(paramsToCheck, fieldName)) error = { message: 'field_' + fieldName + '_required' }
-      else if (!_.get(field, 'required') && _.isNil(_.get(paramsToCheck, fieldName))) {
+      // REQUIREMENTS
+      let fieldIsRequired = false
+      if (_.has(field, 'required')) {
+        if (!_.isBoolean(field.required)) {
+          // conditional field
+          if (_.get(paramsToCheck, field.required)) fieldIsRequired = true
+          if (_.get(paramsToCheck, field.required) && !_.has(paramsToCheck, fieldName)) {
+            error = { message: 'field_' + fieldName + '_required', additionalInfo: { condition: _.get(field, 'required') } }        
+          }
+        }
+        else {
+          fieldIsRequired = true
+          if (!_.has(paramsToCheck, fieldName)) {
+            error = { message: 'field_' + fieldName + '_required' }
+          }
+        }
+      }
+
+      if (error) {
+        // do not process other conditions
+      }
+      else if (!fieldIsRequired && _.isNil(_.get(paramsToCheck, fieldName))) {
         // do nothing -> the value is optional and not present
       }
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
         // do nothing null is allowed and sent!
       }
       else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
-        error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
+        if (omitFields) {
+          fields = _.filter(fields, item => {
+            if (item.field !== fieldName) return item
+          })
+        }
+        else {
+          error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
+        }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
         if (!_.isFinite(parseInt(value))) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
@@ -220,7 +249,9 @@ const sanitizer = function() {
           const fieldsToCheck = {
             params: value,
             fields: _.get(field, 'properties'),
-            prefix: fieldName
+            prefix: fieldName,
+            adminLevel,
+            omitFields
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
           if (_.get(check, 'error')) error = _.get(check, 'error')

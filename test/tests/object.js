@@ -90,6 +90,79 @@ module.exports = {
           enum: "blue"
         }
       },
+      {
+        name: "Object with nested properties - and conditional requirements",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'setId', type: 'boolean', required: true },
+            { field: 'id', type: 'integer', required: 'setId' }
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: true,
+            id: 123
+          }
+        },
+        expected: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: true,
+            id: 123
+          }
+        }
+      },
+      {
+        name: "Object with nested properties - and conditional requirements",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'setId', type: 'boolean', required: true },
+            { field: 'id', type: 'integer', required: 'setId' }
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: true
+          }
+        },
+        error: "object_nested_field_id_required",
+      },
+      {
+        name: "Object with nested properties - and conditional requirements",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "enum", type: "string", enum: ["blue", "green"] },
+          { field: "nested", type: "object", properties: [
+            { field: 'setId', type: 'boolean', required: false }
+          ]}
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: false
+          }
+        },
+        expected: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: false
+          }
+        },
+      },
     ];
 
     _.forEach(baseTests, (test) => {
