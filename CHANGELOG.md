@@ -1,3 +1,12 @@
+<a name="3.9.1"></a>
+
+## [3.9.1](https://github.com/mmpro/ac-sanitizer/compare/v3.9.0..v3.9.1) (2021-05-05 15:15:50)
+
+
+### Bug Fix
+
+* **App:** Add minSize for array | MP | [8bb78f16d9032571ba40b5cef878b9638403e73a](https://github.com/mmpro/ac-sanitizer/commit/8bb78f16d9032571ba40b5cef878b9638403e73a)    
+Add minSize for array
 <a name="3.9.0"></a>
  
 # [3.9.0](https://github.com/mmpro/ac-sanitizer/compare/v3.8.1..v3.9.0) (2021-05-05 14:28:16)
