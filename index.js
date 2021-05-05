@@ -221,11 +221,11 @@ const sanitizer = function() {
               params: {
                 valToCheck: v
               },
-              fields: [{ field: 'valToCheck', type: _.get(field, 'valueType') }]
+              fields: [{ field: 'valToCheck', type: _.get(field, 'valueType'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
             }
             const check = checkAndSanitizeValues(fieldsToCheck)
             if (_.get(check, 'error')) {
-              error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { value: v } }
+              error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { value: v, type: _.get(field, 'valueType') } }
               return false
             }
             return true
@@ -326,7 +326,12 @@ const sanitizer = function() {
         if (!validator.isURL(value, { protocols, require_tld, require_protocol })) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
       }
       else if (field.type === 'fqdn') {
-        if (!validator.isFQDN(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (_.get(field, 'wildcardAllowed')) {
+          if (!validator.isFQDN(value.replace('*.', ''))) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        }
+        else {
+          if (!validator.isFQDN(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        }
       }
       else if (field.type === 'uuid') {
         const uuidVersion = _.get(field, 'uuidVersion', 4)

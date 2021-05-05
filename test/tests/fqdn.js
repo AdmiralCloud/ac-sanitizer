@@ -9,6 +9,7 @@ module.exports = {
     const baseTests = [
       { name: 'Valid FQDN', type: 'fqdn', value: 'admiralcloud.com', expected: 'admiralcloud.com' },
       { name: 'Invalid FQDN - should fail', type: 'fqdn', value: 'https://admiralcloud.com', error: 'fqdn_notAValidFQDN' },      
+      { name: 'Valid FQDN with wildcard', type: 'fqdn', value: '*.admiralcloud.com', wildcardAllowed: true, expected: '*.admiralcloud.com' },
     ]
 
     _.forEach(baseTests, (test) => {
@@ -18,7 +19,7 @@ module.exports = {
             fqdn: _.get(test, 'value')
           },
           fields: [
-            { field: 'fqdn', type: _.get(test, 'type')}
+            { field: 'fqdn', type: _.get(test, 'type'), wildcardAllowed: _.get(test, 'wildcardAllowed') }
           ]
         }
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)

@@ -19,6 +19,7 @@ module.exports = {
       { name: 'Array with enum with non existing placeholder - fail', type: 'array', value: ['de'], enum: 'notExisting', error: 'enum_notDefined' },
       { name: 'Array with valueType - fail', type: 'array', value: ['de', 1, 'en'], valueType: 'string', error: 'array_atLeastOneValueFailed' },
       { name: 'Array with valueType', type: 'array', value: ['de', 'en'], valueType: 'string', expected: ['de', 'en'] },
+      { name: 'Array with valueType fdqn and wildcard', type: 'array', value: ['*.admiralcloud.com'], valueType: 'fqdn', expected: ['*.admiralcloud.com'], wildcardAllowed: true },
     ]
 
 
@@ -34,6 +35,9 @@ module.exports = {
         }
         if (test.enum) {
           _.set(fieldsToCheck, 'fields[0].enum', test.enum)
+        }
+        if (test.wildcardAllowed) {
+          _.set(fieldsToCheck, 'fields[0].wildcardAllowed', test.wildcardAllowed)
         }
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
