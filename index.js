@@ -216,6 +216,7 @@ const sanitizer = function() {
       else if (field.type === 'array') {
         if (!_.isArray(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
+        if (field.minSize && _.size(value) < field.minSize) error = { message: fieldName + '_minSizeBoundary', additionalInfo: { minSize: field.minSize } }
         if (field.valueType) {
           // very value of the array must be of this type
           _.every(value, v => {

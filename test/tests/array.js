@@ -20,6 +20,12 @@ module.exports = {
       { name: 'Array with valueType - fail', type: 'array', value: ['de', 1, 'en'], valueType: 'string', error: 'array_atLeastOneValueFailed' },
       { name: 'Array with valueType', type: 'array', value: ['de', 'en'], valueType: 'string', expected: ['de', 'en'] },
       { name: 'Array with valueType fdqn and wildcard', type: 'array', value: ['*.admiralcloud.com'], valueType: 'fqdn', expected: ['*.admiralcloud.com'], wildcardAllowed: true },
+      { name: 'Array with minSize - fail', type: 'array', value: ['a'], minSize: 2, error: 'array_minSizeBoundary' },
+      { name: 'Array with minSize - work', type: 'array', value: ['a', 'b'], minSize: 1, expected: ['a', 'b'] },
+      { name: 'Array with maxSize - work', type: 'array', value: ['a'], maxSize: 1, expected: ['a'] },
+      { name: 'Array with maxSize - fail', type: 'array', value: ['a', 'b'], maxSize: 1, error: 'array_maxSizeBoundary' },
+      { name: 'Array of fileExtensions', type: 'array', valueType: 'fileExtension', value: ['jpg'], expected: ['jpg'] },
+      { name: 'Array of fileExtensions - contains invalid', type: 'array', valueType: 'fileExtension', value: ['jpg', 'textimage'], error: 'array_atLeastOneValueFailed' },
     ]
 
 
@@ -30,7 +36,7 @@ module.exports = {
             array: _.get(test, 'value')
           },
           fields: [
-            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType') }
+            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize') }
           ]
         }
         if (test.enum) {
