@@ -1,3 +1,16 @@
+<a name="3.8.0"></a>
+ 
+# [3.8.0](https://github.com/mmpro/ac-sanitizer/compare/v3.7.4..v3.8.0) (2021-05-05 08:54:21)
+
+
+### Feature
+
+* **App:** Requirements can now depend on other field | MP | [2047fefcf22f88233f4b15dd0b472182a433deb9](https://github.com/mmpro/ac-sanitizer/commit/2047fefcf22f88233f4b15dd0b472182a433deb9)    
+If field is required can now also be set by a path (instead of simple bool value).
+### Bug Fix
+
+* **App:** Base64: now automatic padding if base64 string is not dividable by 4 | MP | [cf8adbaa4fff131c93b1bd02a6ad25a383784cb2](https://github.com/mmpro/ac-sanitizer/commit/cf8adbaa4fff131c93b1bd02a6ad25a383784cb2)    
+base64 string must have a length that can be divided by 4. If not, add = as padding to end.
 <a name="3.7.4"></a>
 
 ## [3.7.4](https://github.com/mmpro/ac-sanitizer/compare/v3.7.3..v3.7.4) (2021-05-02 10:54:53)
