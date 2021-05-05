@@ -136,9 +136,11 @@ const sanitizer = function() {
           }
         }
         else {
-          fieldIsRequired = true
-          if (!_.has(paramsToCheck, fieldName)) {
-            error = { message: 'field_' + fieldName + '_required' }
+          if (_.get(field, 'required')) {
+            fieldIsRequired = true
+            if (!_.has(paramsToCheck, fieldName)) {
+              error = { message: 'field_' + fieldName + '_required' }
+            }
           }
         }
       }
