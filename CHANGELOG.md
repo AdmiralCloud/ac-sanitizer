@@ -1,3 +1,12 @@
+<a name="3.9.2"></a>
+
+## [3.9.2](https://github.com/mmpro/ac-sanitizer/compare/v3.9.1..v3.9.2) (2021-05-11 04:25:41)
+
+
+### Bug Fix
+
+* **App:** Fixed array check | MP | [ae3bdc50a3458d580ca16e7e0f7c8711096db74b](https://github.com/mmpro/ac-sanitizer/commit/ae3bdc50a3458d580ca16e7e0f7c8711096db74b)    
+If not array, stop checking further options for arrays like minSize
 <a name="3.9.1"></a>
 
 ## [3.9.1](https://github.com/mmpro/ac-sanitizer/compare/v3.9.0..v3.9.1) (2021-05-05 15:15:50)
