@@ -1,3 +1,12 @@
+<a name="3.9.3"></a>
+
+## [3.9.3](https://github.com/mmpro/ac-sanitizer/compare/v3.9.2..v3.9.3) (2021-05-11 07:16:13)
+
+
+### Bug Fix
+
+* **App:** Fixed handling of valueTypes in arrays | MP | [64281d78da1e51b4f3d93221d4848251ae96e7de](https://github.com/mmpro/ac-sanitizer/commit/64281d78da1e51b4f3d93221d4848251ae96e7de)    
+Fixed handling of valueTypes in arrays
 <a name="3.9.2"></a>
 
 ## [3.9.2](https://github.com/mmpro/ac-sanitizer/compare/v3.9.1..v3.9.2) (2021-05-11 04:25:41)
