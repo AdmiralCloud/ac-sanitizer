@@ -217,18 +217,17 @@ const sanitizer = function() {
         if (!_.isArray(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         else if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
         else if (field.minSize && _.size(value) < field.minSize) error = { message: fieldName + '_minSizeBoundary', additionalInfo: { minSize: field.minSize } }
-        if (field.valueType) {
+        else if (field.valueType) {
           // very value of the array must be of this type
           _.every(value, v => {
             const fieldsToCheck = {
-              params: {
-                valToCheck: v
-              },
-              fields: [{ field: 'valToCheck', type: _.get(field, 'valueType'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
+              params: {},
+              fields: [{ field: fieldName, type: _.get(field, 'valueType'), properties: _.get(field, 'properties'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
             }
+            _.set(fieldsToCheck, `params.${fieldName}`, v)
             const check = checkAndSanitizeValues(fieldsToCheck)
             if (_.get(check, 'error')) {
-              error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { value: v, type: _.get(field, 'valueType') } }
+              error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { error: _.get(check, 'error'), value: v, type: _.get(field, 'valueType') } }
               return false
             }
             return true
