@@ -1,3 +1,16 @@
+<a name="3.9.5"></a>
+
+## [3.9.5](https://github.com/mmpro/ac-sanitizer/compare/v3.9.4..v3.9.5) (2021-06-18 10:52:58)
+
+
+### Bug Fix
+
+* **App:** Check for type and isNaN to detect numbers | MP | [6f7b0acb982edfdaf67907f09c06f85dea948854](https://github.com/mmpro/ac-sanitizer/commit/6f7b0acb982edfdaf67907f09c06f85dea948854)    
+isNaN of an array with one integer is detected as number, therefore not sufficient to check for number. Now we use type check and isNaN
+### Tests
+
+* **App:** Check against errors defined in test not in sanitizer response | MP | [a3b1213a53355deeed74fc488367af05703fa742](https://github.com/mmpro/ac-sanitizer/commit/a3b1213a53355deeed74fc488367af05703fa742)    
+Otherwise we might not detect errors
 <a name="3.9.4"></a>
 
 ## [3.9.4](https://github.com/mmpro/ac-sanitizer/compare/v3.9.3..v3.9.4) (2021-06-18 07:22:21)
