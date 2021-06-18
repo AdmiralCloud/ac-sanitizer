@@ -1,3 +1,16 @@
+<a name="3.9.4"></a>
+
+## [3.9.4](https://github.com/mmpro/ac-sanitizer/compare/v3.9.3..v3.9.4) (2021-06-18 07:22:21)
+
+
+### Bug Fix
+
+* **App:** Fixed test for number | MP | [3f9a19b9b2478318d9980624d39dffcbfba2d3bc](https://github.com/mmpro/ac-sanitizer/commit/3f9a19b9b2478318d9980624d39dffcbfba2d3bc)    
+Make sure array of numbers are not detected as valid number
+### Chores
+
+* **App:** Updated packages | MP | [811715e5c935d5cba16cfa37ceac4cda0528266a](https://github.com/mmpro/ac-sanitizer/commit/811715e5c935d5cba16cfa37ceac4cda0528266a)    
+Updated packages
 <a name="3.9.3"></a>
 
 ## [3.9.3](https://github.com/mmpro/ac-sanitizer/compare/v3.9.2..v3.9.3) (2021-05-11 07:16:13)
