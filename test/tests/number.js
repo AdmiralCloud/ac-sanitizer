@@ -97,6 +97,7 @@ module.exports = {
     const manualTests = () => {
       const tests = [
         { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0,2147483648], value: -1 } },
+        { name: 'Array of numbers', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
       ]
       
       _.forEach(tests, (test) => {

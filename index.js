@@ -167,7 +167,7 @@ const sanitizer = function() {
         }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
-        if (!_.isFinite(parseInt(value))) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
+        if (isNaN(value)) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
 
         //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
         if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
