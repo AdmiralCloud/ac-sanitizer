@@ -78,7 +78,7 @@ module.exports = {
               }
 
               let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-              if (_.get(r, 'error')) {
+              if (_.get(test, 'error')) {
                 expect(_.get(r, 'error.message')).toEqual(test.error)
                 if (_.get(test, 'additionalInfo')) {
                   expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))
@@ -97,7 +97,8 @@ module.exports = {
     const manualTests = () => {
       const tests = [
         { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0,2147483648], value: -1 } },
-        { name: 'Array of numbers', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
+        { name: 'Array of numbers with one entry', type: 'integer', value: [123], error: 'number_notAFiniteNumber' },
+        { name: 'Array of numbers with multiple entries', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
       ]
       
       _.forEach(tests, (test) => {
@@ -112,14 +113,14 @@ module.exports = {
           }
   
           let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-          if (_.get(r, 'error')) {
+          if (_.get(test, 'error')) {
             expect(_.get(r, 'error.message')).toEqual(test.error)
             if (_.get(test, 'additionalInfo')) {
               expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))
             }
           }
           else {
-            expect(_.get(r, 'params.string')).toEqual(_.get(test, 'expected'))
+            expect(_.get(r, 'params.number')).toEqual(_.get(test, 'expected'))
           }
           return done()
         })
