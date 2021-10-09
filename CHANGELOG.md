@@ -1,3 +1,12 @@
+<a name="3.9.7"></a>
+
+## [3.9.7](https://github.com/mmpro/ac-sanitizer/compare/v3.9.6..v3.9.7) (2021-10-09 17:33:05)
+
+
+### Bug Fix
+
+* **App:** Fix for base64 | MP | [3e83ac766bf2157bdbc5fe8e05da839f85f49c07](https://github.com/mmpro/ac-sanitizer/commit/3e83ac766bf2157bdbc5fe8e05da839f85f49c07)    
+Make sure base64 value is a string
 <a name="3.9.6"></a>
 
 ## [3.9.6](https://github.com/mmpro/ac-sanitizer/compare/v3.9.5..v3.9.6) (2021-10-09 10:15:18)
