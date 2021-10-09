@@ -11,6 +11,7 @@ module.exports = {
       { name: 'Valid base64 with convert', type: 'base64', convert: true, value: 'dGhpcyBpcyBhIGJhc2U2NCBzdHJpbmc=', expected: 'this is a base64 string' },
       { name: 'Invalid base64', type: 'base64', value: 'abc1245', error: 'base64_notABase64String' },
       { name: 'Valid base64', type: 'base64', value: 'PDw/Pz8+Pg==', convert: true, expected: '<<???>>' },
+      { name: 'Invalid base64 with convert', type: 'base64', convert: true, value: 123, error: 'base64_mustBeString' },
       { name: 'Base64 app.admiralcloud.com - requires padding', type: 'base64', value: 'aHR0cHM6Ly9hcHAuYWRtaXJhbGNsb3VkLmNvbQ', convert: true, expected: 'https://app.admiralcloud.com' },
       { name: 'Base64 app.admiralcloud.com - with padding', type: 'base64', value: 'aHR0cHM6Ly9hcHAuYWRtaXJhbGNsb3VkLmNvbQ==', convert: true, expected: 'https://app.admiralcloud.com' },
     ]
