@@ -7,19 +7,19 @@
   "version": "3.9.7",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
-    "ac-countrylist": "^1.0.5",
-    "ac-file-extensions": "^1.2.1",
+    "ac-countrylist": "^1.0.6",
+    "ac-file-extensions": "^2.0.0",
     "ac-ip": "^1.3.6",
     "date-and-time": "^2.0.1",
-    "hashids": "^2.2.8",
+    "hashids": "^2.2.10",
     "lodash": "^4.17.21",
-    "validator": "^13.6.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
-    "ac-semantic-release": "^0.2.6",
-    "eslint": "^7.32.0",
-    "expect": "^27.2.5",
-    "mocha": "^9.1.2",
+    "ac-semantic-release": "^0.2.7",
+    "eslint": "^8.3.0",
+    "expect": "^27.3.1",
+    "mocha": "^9.1.3",
     "nyc": "^15.1.0"
   },
   "scripts": {

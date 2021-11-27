@@ -282,7 +282,7 @@ const sanitizer = function() {
       }
       else if (field.type === 'fileExtension') {
         value = _.toLower(value)
-        if (!_.find(fileExtensions, { ext: value })) {
+        if (!fileExtensions.query({ ext: value })) {
           error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
         _.set(paramsToCheck, fieldName, value)
