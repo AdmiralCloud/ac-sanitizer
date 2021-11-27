@@ -46,12 +46,14 @@ Parameter | Type | Remarks
 --- | --- | --- |
 field | string | Name of the field
 type | string | Type of the field to sanitize, see below for available values
-required | [boolean|string] | Set to true if required or set a path to a param (if that param is set, this value is required)
+required | [boolean OR string] | Set to true if required or set a path[^1] to a param (if that param is set, this value is required)
 enum | [array|string] | Optional list of allowed values. You can a string placeholder for certain standard lists (see below)
 adminLevel | [integer] | Optional adminLevel required for this field
 omitFields | [boolean] | If adminLevel is set and you do not have the proper adminLevel the sanitizer will just omit the field (and not return an error) if omitFields is true
 convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
+
+[^1]: The path must be set with the parent propery as root, e.g. the actual field is settings.video.width, in property video the condition is then just "width" not the full path.
 
 ### ENUM lists
 The following enum lists are available using a string placeholder
@@ -72,6 +74,7 @@ boolean | |
 cidr | | Check CIDR, see example
 integer \| boolean |  | Value can be an integer OR a boolean
 date | dateFormat | Date or date time, support various date formats (e.g. DD.MM.YYYY, DD/MM/YYYY, YYYY-MM-DD, etc) as well as a custom format defined in dateFormat.
+fqdn | wildcardAllowed (bool) | Fully qualified domain names, optional with wildcard subdomain (e.g. *.admiralcloud.com)
 email | | a@b.c
 float | | 0 - 2^31
 fileExtension | |
