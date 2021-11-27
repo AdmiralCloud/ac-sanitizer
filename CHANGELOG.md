@@ -1,3 +1,16 @@
+<a name="3.9.8"></a>
+
+## [3.9.8](https://github.com/mmpro/ac-sanitizer/compare/v3.9.7..v3.9.8) (2021-11-27 13:26:51)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [fa9229b239f26f4e95097b0924c2811f64473639](https://github.com/mmpro/ac-sanitizer/commit/fa9229b239f26f4e95097b0924c2811f64473639)    
+Package updates, incl ac-fileExetnsion 2 (minor code change)
+### Documentation
+
+* **App:** Minor documentation updates | MP | [d3c407c5502b5b8f7bc6479c65afa87567c26ddf](https://github.com/mmpro/ac-sanitizer/commit/d3c407c5502b5b8f7bc6479c65afa87567c26ddf)    
+Minor documentation updates for requirements with conditions. Added FQDN to README
 <a name="3.9.7"></a>
 
 ## [3.9.7](https://github.com/mmpro/ac-sanitizer/compare/v3.9.6..v3.9.7) (2021-10-09 17:33:05)
