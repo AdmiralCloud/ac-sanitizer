@@ -1,3 +1,12 @@
+<a name="3.9.10"></a>
+
+## [3.9.10](https://github.com/mmpro/ac-sanitizer/compare/v3.9.9..v3.9.10) (2022-01-20 15:26:47)
+
+
+### Bug Fix
+
+* **App:** Update ac-file-extensions package (avif file extension) | VD | [0d50926001ebc741d0e6bf65f4c2863fad684d93](https://github.com/mmpro/ac-sanitizer/commit/0d50926001ebc741d0e6bf65f4c2863fad684d93)    
+Update ac-file-extensions package (avif file extension)
 <a name="3.9.9"></a>
 
 ## [3.9.9](https://github.com/mmpro/ac-sanitizer/compare/v3.9.8..v3.9.9) (2022-01-20 14:57:41)
