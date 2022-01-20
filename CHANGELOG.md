@@ -1,3 +1,12 @@
+<a name="3.9.9"></a>
+
+## [3.9.9](https://github.com/mmpro/ac-sanitizer/compare/v3.9.8..v3.9.9) (2022-01-20 14:57:41)
+
+
+### Bug Fix
+
+* **App:** Update ac-file-extensions package | VD | [13eeb3dccd0154943a08913f719db9df9739582b](https://github.com/mmpro/ac-sanitizer/commit/13eeb3dccd0154943a08913f719db9df9739582b)    
+Update ac-file-extensions package
 <a name="3.9.8"></a>
 
 ## [3.9.8](https://github.com/mmpro/ac-sanitizer/compare/v3.9.7..v3.9.8) (2021-11-27 13:26:51)
