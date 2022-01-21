@@ -1,3 +1,12 @@
+<a name="3.9.11"></a>
+
+## [3.9.11](https://github.com/mmpro/ac-sanitizer/compare/v3.9.10..v3.9.11) (2022-01-21 13:16:53)
+
+
+### Bug Fix
+
+* **App:** Update package with correct AVIF mimetype | VD | [19dc7d302f090f9723a9495859644f72a8cee7c1](https://github.com/mmpro/ac-sanitizer/commit/19dc7d302f090f9723a9495859644f72a8cee7c1)    
+Update package with correct AVIF mimetype
 <a name="3.9.10"></a>
 
 ## [3.9.10](https://github.com/mmpro/ac-sanitizer/compare/v3.9.9..v3.9.10) (2022-01-20 15:26:47)
