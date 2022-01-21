@@ -310,10 +310,10 @@ ac-countrylist@^1.0.6:
   dependencies:
     lodash "^4.17.21"
 
-ac-file-extensions@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/ac-file-extensions/-/ac-file-extensions-2.0.2.tgz#a5734502c662a364f66465c207902249cd543a51"
-  integrity sha512-iW6WpdRn32hEh/L5r01PDlY+l8fy9Km0RcEo0MyhinomB813y5KTstMFJRpgasf5IR3g7+ZvmJkUJvoRlC14IQ==
+ac-file-extensions@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/ac-file-extensions/-/ac-file-extensions-2.0.3.tgz#b876c47400fcf306d587c141c4990cd17025ee27"
+  integrity sha512-mIdkclCyky+YFw9KDz3JvONpYQI0abctDoyfJ7OIdCeg+dk6qq/O91vSks4kQWir3OQ9mcn95woSORV4sZUtQg==
   dependencies:
     ac-semantic-release "^0.2.7"
     lodash "^4.17.21"
