@@ -311,12 +311,12 @@ ac-countrylist@^1.0.6:
   dependencies:
     lodash "^4.17.21"
 
-ac-file-extensions@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/ac-file-extensions/-/ac-file-extensions-2.0.3.tgz#b876c47400fcf306d587c141c4990cd17025ee27"
-  integrity sha512-mIdkclCyky+YFw9KDz3JvONpYQI0abctDoyfJ7OIdCeg+dk6qq/O91vSks4kQWir3OQ9mcn95woSORV4sZUtQg==
+ac-file-extensions@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ac-file-extensions/-/ac-file-extensions-2.0.5.tgz#5b3e88d9371d6c56ff2ee11d06c187c99d2c8897"
+  integrity sha512-YEhPgGd5/qkroQ0Wx1vFlHApDYG3lqw3nJ9jhP597VogH/V8sO+Wd1a4iMM7vHhKQsXz73YoXJ+g312Bj4rgXA==
   dependencies:
-    ac-semantic-release "^0.2.7"
+    ac-semantic-release "^0.3.0"
     lodash "^4.17.21"
 
 ac-ip@^1.3.7:
@@ -326,15 +326,6 @@ ac-ip@^1.3.7:
   dependencies:
     ip "^1.1.5"
     lodash "4.x"
-
-ac-semantic-release@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.2.7.tgz#a4032387bc2accd5ae8d06389abb1dba9803b1d9"
-  integrity sha512-rkIuSyAjTWq5rtm0/+1Eb9oiHB2HtLbq11tK7T+4P+he6xL6W6QDyM8uGq2x7MZHm11o8LKnnutDwC3x0RLf3g==
-  dependencies:
-    async "^3.2.1"
-    inquirer "^8.2.0"
-    lodash "^4.17.21"
 
 ac-semantic-release@^0.3.0:
   version "0.3.0"
@@ -441,7 +432,7 @@ argparse@^2.0.1:
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-2.0.1.tgz#246f50f3ca78a3240f6c997e8a9bd1eac49e4b38"
   integrity sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==
 
-async@^3.2.1, async@^3.2.3:
+async@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/async/-/async-3.2.3.tgz#ac53dafd3f4720ee9e8a160628f18ea91df196c9"
   integrity sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==
@@ -1145,7 +1136,7 @@ inherits@2, inherits@^2.0.3, inherits@^2.0.4:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-inquirer@^8.2.0, inquirer@^8.2.2:
+inquirer@^8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.2.tgz#1310517a87a0814d25336c78a20b44c3d9b7629d"
   integrity sha512-pG7I/si6K/0X7p1qU+rfWnpTE1UIkTONN1wxtzh0d+dHXtT/JG6qBgLxoyHVsQa8cFABxAPh0pD6uUUHiAoaow==
