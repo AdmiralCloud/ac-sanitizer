@@ -1,3 +1,17 @@
+<a name="3.9.12"></a>
+
+## [3.9.12](https://github.com/mmpro/ac-sanitizer/compare/v3.9.11..v3.9.12) (2022-04-20 11:32:20)
+
+
+### Bug Fix
+
+* **App:** Minor fix to create random arrays with integers | MP | [f0858a9ec21104c4c7c7480b37ccb4bd62d3552a](https://github.com/mmpro/ac-sanitizer/commit/f0858a9ec21104c4c7c7480b37ccb4bd62d3552a)    
+Allow creation of random array with integers
+### Chores
+
+* **App:** Updated packages | MP | [9b1132064b0a6082348f276edfe3e397c0f5203f](https://github.com/mmpro/ac-sanitizer/commit/9b1132064b0a6082348f276edfe3e397c0f5203f)    
+Updated packages  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.9.8"></a>
 
 ## [3.9.8](https://github.com/mmpro/ac-sanitizer/compare/v3.9.7..v3.9.8) (2021-11-27 13:26:51)
