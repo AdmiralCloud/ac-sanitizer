@@ -1,3 +1,24 @@
+<a name="3.9.13"></a>
+
+## [3.9.13](https://github.com/mmpro/ac-sanitizer/compare/v3.9.12..v3.9.13) (2022-04-20 11:35:54)
+
+
+### Bug Fix
+
+* **App:** Update package with correct AVIF mimetype | VD | [19dc7d302f090f9723a9495859644f72a8cee7c1](https://github.com/mmpro/ac-sanitizer/commit/19dc7d302f090f9723a9495859644f72a8cee7c1)    
+Update package with correct AVIF mimetype
+* **App:** Update ac-file-extensions package (avif file extension) | VD | [0d50926001ebc741d0e6bf65f4c2863fad684d93](https://github.com/mmpro/ac-sanitizer/commit/0d50926001ebc741d0e6bf65f4c2863fad684d93)    
+Update ac-file-extensions package (avif file extension)
+* **App:** Update ac-file-extensions package | VD | [13eeb3dccd0154943a08913f719db9df9739582b](https://github.com/mmpro/ac-sanitizer/commit/13eeb3dccd0154943a08913f719db9df9739582b)    
+Update ac-file-extensions package
+### Chores
+
+* **release:** v3.9.11 [ci skip] | [b2148644e40e42cd3bc19cda40cf549113c1f9df](https://github.com/mmpro/ac-sanitizer/commit/b2148644e40e42cd3bc19cda40cf549113c1f9df)    
+
+* **release:** v3.9.10 [ci skip] | [266be8280314c2f37e15b3f362b7c590f691f525](https://github.com/mmpro/ac-sanitizer/commit/266be8280314c2f37e15b3f362b7c590f691f525)    
+
+* **release:** v3.9.9 [ci skip] | [2fc8fbea1e4fcd1b981120cfde032ae6e3a6ad24](https://github.com/mmpro/ac-sanitizer/commit/2fc8fbea1e4fcd1b981120cfde032ae6e3a6ad24)    
+
 <a name="3.9.12"></a>
 
 ## [3.9.12](https://github.com/mmpro/ac-sanitizer/compare/v3.9.11..v3.9.12) (2022-04-20 11:32:20)
