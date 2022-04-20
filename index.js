@@ -464,6 +464,7 @@ const sanitizer = function() {
    */
   const randomValue = (params) => {
     const type = _.get(params, 'type')
+    const valueType = _.get(params, 'valueType') // arrays only
     const size = _.get(params, 'size', 1) // for arrays
 
     switch (type) {
@@ -486,7 +487,12 @@ const sanitizer = function() {
       case 'array': {
         let arr = []
         for (let i=0; i<size; i+=1) {
-          arr.push(Math.random().toString(36))
+          if (valueType === 'integer') {
+            arr.push(_.random(100))
+          }
+          else {
+            arr.push(Math.random().toString(36))
+          }
         }
         return arr
       }
