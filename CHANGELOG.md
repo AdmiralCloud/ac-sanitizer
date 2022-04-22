@@ -1,3 +1,13 @@
+<a name="3.9.15"></a>
+
+## [3.9.15](https://github.com/mmpro/ac-sanitizer/compare/v3.9.14..v3.9.15) (2022-04-22 16:53:45)
+
+
+### Bug Fix
+
+* **App:** Remove entries from array which are not in enum | MP | [20fb76be489ff990e6777d0884ca32beea59b18e](https://github.com/mmpro/ac-sanitizer/commit/20fb76be489ff990e6777d0884ca32beea59b18e)    
+Remove entries from array which are not in enum  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.9.14"></a>
 
 ## [3.9.14](https://github.com/mmpro/ac-sanitizer/compare/v3.9.13..v3.9.14) (2022-04-20 11:41:13)
