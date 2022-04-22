@@ -423,6 +423,9 @@ const sanitizer = function() {
           if (_.size(value) && !_.size(_.intersection(value, allowedValues))) {
             error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
           }
+          // remove non-matching entries, but do not fail/return error
+          value = _.intersection(value, allowedValues)
+          _.set(paramsToCheck, fieldName, value)
         }
         else if (_.indexOf(allowedValues, value) < 0) {
           error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
