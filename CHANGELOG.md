@@ -1,3 +1,13 @@
+<a name="3.9.18"></a>
+
+## [3.9.18](https://github.com/mmpro/ac-sanitizer/compare/v3.9.17..v3.9.18) (2022-04-24 18:09:53)
+
+
+### Bug Fix
+
+* **App:** Minor fix for special fields | MP | [dc5a393127a74ebe948c8c5c953969688463422b](https://github.com/mmpro/ac-sanitizer/commit/dc5a393127a74ebe948c8c5c953969688463422b)    
+Only check if they are in payload.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.9.17"></a>
 
 ## [3.9.17](https://github.com/mmpro/ac-sanitizer/compare/v3.9.16..v3.9.17) (2022-04-24 14:58:01)
