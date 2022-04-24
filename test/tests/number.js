@@ -101,6 +101,7 @@ module.exports = {
         { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0,2147483648], value: -1 } },
         { name: 'Array of numbers with one entry', type: 'integer', value: [123], error: 'number_notAFiniteNumber' },
         { name: 'Array of numbers with multiple entries', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
+        { name: 'Check float', type: 'float', range: [-90, 90], value: 53.15, expected: 53.15 }
       ]
       
       _.forEach(tests, (test) => {
@@ -115,7 +116,7 @@ module.exports = {
           }
   
           let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-          if (_.get(test, 'error')) {
+          if (_.get(r, 'error')) {
             expect(_.get(r, 'error.message')).toEqual(test.error)
             if (_.get(test, 'additionalInfo')) {
               expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))

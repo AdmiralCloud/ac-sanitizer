@@ -200,7 +200,7 @@ const sanitizer = function() {
           if (field.type === 'float' && value !== parseFloat(value)) {
             error = { message: fieldName + '_not_' + field.type, additionalInfo: { value } }
           }
-          else if (value !== parseInt(value)) {
+          else if (field.type !== 'float' && value !== parseInt(value)) {
             error = { message: fieldName + '_typeIncorrect', additionalInfo: { value, int: parseInt(value) } }
           }
           else {
