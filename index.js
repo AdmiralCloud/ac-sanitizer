@@ -94,39 +94,6 @@ const sanitizer = function() {
       // mark deprecated fields
       if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
 
-      /// SPECIAL FIELDS
-      // special field - can be string or integer -> determine type and then use type settings
-      if (field.type === 'integer | string') {
-        if (!_.isString(value) && !_.isFinite(parseInt(value))) {
-          error = { message: fieldName + '_neitherStringNorInteger' }
-          return {
-            error
-          }
-        }
-        if (_.isString(value)) {
-          field.type = 'string'
-        }
-        else if (_.isFinite(parseInt(value))) {
-          field.type = 'integer'
-        }
-      }
-      // special field - can be boolean or integer -> determine type and then use type settings
-      if (field.type === 'integer | boolean' && value) {
-        if (!_.isBoolean(value) && !_.isFinite(parseInt(value))) {
-          error = { message: fieldName + '_neitherBooleanNorInteger' }
-          return {
-            error
-          }
-        }
-        if (_.isBoolean(value)) {
-            field.type = 'boolean'
-        }
-        else if (_.isFinite(parseInt(value))) {
-          field.type = 'integer'
-        }
-      }
-      ///// END SPECIAL FIELDS
-
       // REQUIREMENTS
       let fieldIsRequired = false
       if (_.has(field, 'required')) {
@@ -145,6 +112,41 @@ const sanitizer = function() {
             }
           }
         }
+      }
+
+      if (!error) {
+        /// SPECIAL FIELDS
+        // special field - can be string or integer -> determine type and then use type settings
+        if (field.type === 'integer | string') {
+          if (!_.isString(value) && !_.isFinite(parseInt(value))) {
+            error = { message: fieldName + '_neitherStringNorInteger' }
+            return {
+              error
+            }
+          }
+          if (_.isString(value)) {
+            field.type = 'string'
+          }
+          else if (_.isFinite(parseInt(value))) {
+            field.type = 'integer'
+          }
+        }
+        // special field - can be boolean or integer -> determine type and then use type settings
+        if (field.type === 'integer | boolean' && value) {
+          if (!_.isBoolean(value) && !_.isFinite(parseInt(value))) {
+            error = { message: fieldName + '_neitherBooleanNorInteger' }
+            return {
+              error
+            }
+          }
+          if (_.isBoolean(value)) {
+              field.type = 'boolean'
+          }
+          else if (_.isFinite(parseInt(value))) {
+            field.type = 'integer'
+          }
+        }
+        ///// END SPECIAL FIELDS
       }
 
       if (error) {
