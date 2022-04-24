@@ -17,16 +17,17 @@ module.exports = {
       it(test.name, (done) => {
         let fieldsToCheck = {
           adminLevel: 4,
+          omitFields: _.get(test, 'omitFields'),
           params: {
             errorField: _.get(test, 'value'),
           },
           fields: [
-            { field: 'errorField', type: _.get(test, 'type'), required: _.get(test, 'required'), adminLevel: _.get(test, 'adminLevel'), omitFields: _.get(test, 'omitFields') }
+            { field: 'errorField', type: _.get(test, 'type'), required: _.get(test, 'required'), adminLevel: _.get(test, 'adminLevel') }
           ]
         }
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(test, 'error')) {
+        if (_.get(r, 'error')) {
           expect(_.get(r, 'error.message')).toEqual(test.error)
           if (_.get(test, 'additionalInfo')) {
             expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))

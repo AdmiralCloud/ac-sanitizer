@@ -20,13 +20,13 @@ module.exports = {
         let fieldsToCheck = {
           params: {},
           fields: [
-            { field: 'stringOrInteger', type: _.get(test, 'type'), required: _.get(test, 'required') }
+            { field: 'stringOrInteger', type: _.get(test, 'type'), required: _.get(test, 'required'), minLength: _.get(test, 'minLength') }
           ]
         }
         if (_.has(test, 'value')) fieldsToCheck.params.stringOrInteger = test.value
 
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(test, 'error')) {
+        if (_.get(r, 'error')) {
           expect(_.get(r, 'error.message')).toEqual(test.error)
           if (_.get(test, 'additionalInfo')) {
             expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))
