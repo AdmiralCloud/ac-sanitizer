@@ -114,7 +114,7 @@ const sanitizer = function() {
         }
       }
 
-      if (!error) {
+      if (!error && _.has(paramsToCheck, fieldName)) {
         /// SPECIAL FIELDS
         // special field - can be string or integer -> determine type and then use type settings
         if (field.type === 'integer | string') {
