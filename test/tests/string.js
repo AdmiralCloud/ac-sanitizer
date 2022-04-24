@@ -5,6 +5,7 @@ const sanitizer = require('../../index')
 module.exports = {
 
   test:  () => {
+    const randomValue = sanitizer.randomValue({ type: 'string' })
 
     const baseTests = [
       { name: 'Valid string', type: 'string', value: 'abc-123', expected: 'abc-123' },
@@ -14,7 +15,8 @@ module.exports = {
       { name: 'Invalid - minLength', type: 'string', value: 'ab', minLength: 3, error: 'string_stringTooShort_minLength3' },
       { name: 'Valid - minLength', type: 'string', value: 'abc', minLength: 3, expected: 'abc' },
       { name: 'Valid from enum', type: 'string', value: 'play', enum: ['play', 'pause'], expected: 'play' },
-      { name: 'Invalid from enum', type: 'string', value: 'stop', enum: ['play', 'pause'], error: 'string_notAnAllowedValue', additionalInfo: { value: 'stop' } }
+      { name: 'Invalid from enum', type: 'string', value: 'stop', enum: ['play', 'pause'], error: 'string_notAnAllowedValue', additionalInfo: { value: 'stop' } },
+      { name: 'Valid string from randomValue function', type: 'string', value: randomValue, expected: randomValue },
     ]
 
 

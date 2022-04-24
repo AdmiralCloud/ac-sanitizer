@@ -15,6 +15,7 @@ module.exports = {
       { name: 'Invalid date with .', type: 'date', value: '32.01.2020', error: 'date_notaDate' },
       { name: 'Invalid date', type: 'date', value: '2020-13-30', error: 'date_notaDate' },
       { name: 'Valid DateTime ISO8601', type: 'date', value: '2020-10-17T16:34:50+02:00', expected: '2020-10-17T16:34:50+02:00' },
+      { name: 'Invalid date with custom date format', type: 'date', dateFormat: 'mmm-xyt', value: '2020-13-30', error: 'date_notaDate' },
   
       
     ]
@@ -25,7 +26,7 @@ module.exports = {
             date: _.get(test, 'value')
           },
           fields: [
-            { field: 'date', type: _.get(test, 'type'), required: _.get(test, 'required') }
+            { field: 'date', type: _.get(test, 'type'), required: _.get(test, 'required'), dateFormat: _.get(test, 'dateFormat') }
           ]
         }
 

@@ -5,22 +5,23 @@ const sanitizer = require('../../index')
 module.exports = {
 
   test:  () => {
-    const randomValue = sanitizer.randomValue({ type: 'countryCode' })
 
     const baseTests = [
-      { name: 'Valid countryCode', type: 'countryCode', value: randomValue, expected: randomValue },
-      { name: 'Invalid countryCode', type: 'countryCode', value: 'germany', error: 'countryCode_notAValidCountryCode' },
+      { name: 'Non-existing type', type: 'xyt', value: 'abc', error: 'errorField_typeCheck_xyt_notDefined' },
+      { name: 'AdminLevel not sufficient', type: 'string', value: 'abc', adminLevel: 10, error: 'fieldName_adminLevelNotSufficient' },
+      { name: 'AdminLevel not sufficient, omit fields', omitFields: true, type: 'string', value: 'abc', adminLevel: 10, expected: undefined }
     ]
 
 
     _.forEach(baseTests, (test) => {
       it(test.name, (done) => {
         let fieldsToCheck = {
+          adminLevel: 4,
           params: {
-            countryCode: _.get(test, 'value')
+            errorField: _.get(test, 'value'),
           },
           fields: [
-            { field: 'countryCode', type: _.get(test, 'type'), required: _.get(test, 'required') }
+            { field: 'errorField', type: _.get(test, 'type'), required: _.get(test, 'required'), adminLevel: _.get(test, 'adminLevel'), omitFields: _.get(test, 'omitFields') }
           ]
         }
 
@@ -32,7 +33,7 @@ module.exports = {
           }
         }
         else {
-          expect(_.get(r, 'params.countryCode')).toEqual(_.get(test, 'expected'))
+          expect(_.get(r, 'params.email')).toEqual(_.get(test, 'expected'))
         }
         return done()
       })

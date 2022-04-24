@@ -26,6 +26,8 @@ module.exports = {
 
       const numberTests = []
       _.forEach(ranges, (range, key) => {  
+        const randomValue = sanitizer.randomValue({ type: key })
+
         let minValue = _.first(range)
         let maxValue = _.last(range)
         let tests = []
@@ -41,7 +43,7 @@ module.exports = {
             test.expected = test.value
           }
           if (test.value === 'random') {
-            test.value = parseInt(Math.random()*10000)
+            test.value = randomValue
             test.expected = test.value
           }
           if (test.value === 'randomNeg') {

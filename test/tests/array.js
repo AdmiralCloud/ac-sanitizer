@@ -5,10 +5,12 @@ const sanitizer = require('../../index')
 module.exports = {
 
   test:  () => {
+    const randomValueInt = sanitizer.randomValue({ type: 'array', valueType: 'integer' })
+    const randomValueString = sanitizer.randomValue({ type: 'array' })
 
     const baseTests = [
-      { name: 'Valid array of numbers', type: 'array', value: [1,2,3], expected: [1,2,3] },
-      { name: 'Valid array of strings', type: 'array', value: ['a', 'b', 'c'], expected:  ['a', 'b', 'c'] },
+      { name: 'Valid array of numbers', type: 'array', value: randomValueInt, expected: randomValueInt},
+      { name: 'Valid array of strings', type: 'array', value: randomValueString, expected: randomValueString },
       { name: 'Invalid array', type: 'array', value: 'a', error: 'array_notAnArray' },
       { name: 'Array with enum match', type: 'array', value: ['video'], enum: ['audio', 'video'], expected: ['video'] },
       { name: 'Array without enum match', type: 'array', value: ['cookie'], enum: ['audio', 'video'], error: 'array_notAnAllowedValue' },
