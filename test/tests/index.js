@@ -1,4 +1,5 @@
 module.exports = {
+  any: require('./any'),
   array: require('./array'),
   base64: require('./base64'),
   bool: require('./bool'),

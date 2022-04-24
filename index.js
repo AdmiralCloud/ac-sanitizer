@@ -116,6 +116,28 @@ const sanitizer = function() {
 
       if (!error && _.has(paramsToCheck, fieldName)) {
         /// SPECIAL FIELDS
+        // field type any, can be any field
+        if (field.type === 'any') {
+          if (_.isString(value)) {
+            field.type = 'string'
+          }
+          else if (_.isPlainObject(value)) {
+            field.type = 'object'
+          }
+          else if (_.isArray(value)) {
+            field.type = 'array'
+          }
+          else if (_.isBoolean(value)) {
+            field.type = 'boolean'
+          }
+          else if (_.isFinite(parseInt(value))) {
+            field.type = 'integer'
+          }
+          else {
+            error = { message: fieldName + '_any_couldNotResolveType' }
+          }
+        }
+
         // special field - can be string or integer -> determine type and then use type settings
         if (field.type === 'integer | string') {
           if (!_.isString(value) && !_.isFinite(parseInt(value))) {
@@ -170,27 +192,36 @@ const sanitizer = function() {
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
         if (typeof value != 'number' || isNaN(value)) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
+        else {
+          //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
+          if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
+          if (field.type === 'number') field.type = 'integer'
 
-        //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
-        if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
-        if (field.type === 'number') field.type = 'integer'
+          if (field.type === 'float' && value !== parseFloat(value)) {
+            error = { message: fieldName + '_not_' + field.type, additionalInfo: { value } }
+          }
+          else if (value !== parseInt(value)) {
+            error = { message: fieldName + '_typeIncorrect', additionalInfo: { value, int: parseInt(value) } }
+          }
+          else {
+            const subtype = _.get(field, 'subtype')
+            let ranges = {
+              integer: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)], 
+              long: [(subtype === 'signed' ? -(Math.pow(2,53) - 1) : 0), Math.pow(2, 53)-1],
+              short: [(subtype === 'signed' ? -Math.pow(2, 15) : 0), Math.pow(2, 15)],
+              float: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)]
+            }
+            let range = _.get(field, 'range', _.get(ranges, field.type, ranges.integer))
 
-        const subtype = _.get(field, 'subtype')
-        let ranges = {
-          integer: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)], 
-          long: [(subtype === 'signed' ? -(Math.pow(2,53) - 1) : 0), Math.pow(2, 53)-1],
-          short: [(subtype === 'signed' ? -Math.pow(2, 15) : 0), Math.pow(2, 15)],
-          float: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)]
-        }
-        let range = _.get(field, 'range', _.get(ranges, field.type, ranges.integer))
+            if (field.type === 'float') value = parseFloat(value)
+            else value = parseInt(value)
 
-        if (field.type === 'float') value = parseFloat(value)
-        else value = parseInt(value)
-
-        let lowest = _.first(range)
-        let highest = _.size(range) === 2 && _.last(range)
-        if (value < lowest || (highest && value > highest)) {
-          error = { message: fieldName + '_outOfRange', additionalInfo: { range, value } }
+            let lowest = _.first(range)
+            let highest = _.size(range) === 2 && _.last(range)
+            if (value < lowest || (highest && value > highest)) {
+              error = { message: fieldName + '_outOfRange', additionalInfo: { range, value } }
+            }
+          }
         }
       }
       else if (field.type === 'string') {

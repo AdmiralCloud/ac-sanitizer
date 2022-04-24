@@ -12,6 +12,11 @@ module.exports = {
       tests.error.test()
     })
 
+    describe('ANY', function() {
+      this.timeout(timeOut)
+      tests.any.test()
+    })
+    
     describe('STRING', function() {
       this.timeout(timeOut)
       tests.string.test()

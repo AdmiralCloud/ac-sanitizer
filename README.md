@@ -69,6 +69,7 @@ countrylist | list of country names | e.g. Laos, Brazil, Norway...
 
 Type | Options | Remarks
 --- | --- | --- |
+any | | Any can be string, integer, boolean, object or array - it will be automatically detected.
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 boolean | | 
 cidr | | Check CIDR, see example
