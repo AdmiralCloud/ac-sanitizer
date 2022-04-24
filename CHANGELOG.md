@@ -1,3 +1,18 @@
+<a name="3.10.1"></a>
+
+## [3.10.1](https://github.com/mmpro/ac-sanitizer/compare/v3.10.0..v3.10.1) (2022-04-24 19:38:16)
+
+
+### Bug Fix
+
+* **App:** Fix for checking float | MP | [bd68b7c8bd76d15d22d9d2dea8ce78e07be7d3c9](https://github.com/mmpro/ac-sanitizer/commit/bd68b7c8bd76d15d22d9d2dea8ce78e07be7d3c9)    
+Check if type float is really a float  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Tests
+
+* **App:** Fixed tests | MP | [96e8d6067c219a241840e253ac9e11c36b258df0](https://github.com/mmpro/ac-sanitizer/commit/96e8d6067c219a241840e253ac9e11c36b258df0)    
+Make sure to check for errors from function  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.10.0"></a>
  
 # [3.10.0](https://github.com/mmpro/ac-sanitizer/compare/v3.9.18..v3.10.0) (2022-04-24 18:45:04)
