@@ -1,3 +1,13 @@
+<a name="3.10.0"></a>
+ 
+# [3.10.0](https://github.com/mmpro/ac-sanitizer/compare/v3.9.18..v3.10.0) (2022-04-24 18:45:04)
+
+
+### Feature
+
+* **App:** Add type any | MP | [ff0858e978b7f7195f68ad5c9c346723107075fb](https://github.com/mmpro/ac-sanitizer/commit/ff0858e978b7f7195f68ad5c9c346723107075fb)    
+Type any will try to determine the actual type but gives you flexibility while sanitizing.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.9.18"></a>
 
 ## [3.9.18](https://github.com/mmpro/ac-sanitizer/compare/v3.9.17..v3.9.18) (2022-04-24 18:09:53)

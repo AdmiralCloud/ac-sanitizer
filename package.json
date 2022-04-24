@@ -4,7 +4,7 @@
   "author": "Mark Poepping (https://www.admiralcloud.com)",
   "license": "MIT",
   "repository": "admiralcloud/ac-sanitizer",
-  "version": "3.9.18",
+  "version": "3.10.0",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
     "ac-countrylist": "^1.0.6",
