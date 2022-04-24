@@ -96,7 +96,7 @@ const sanitizer = function() {
 
       /// SPECIAL FIELDS
       // special field - can be string or integer -> determine type and then use type settings
-      if (field.type === 'integer | string' && value) {
+      if (field.type === 'integer | string') {
         if (!_.isString(value) && !_.isFinite(parseInt(value))) {
           error = { message: fieldName + '_neitherStringNorInteger' }
           return {
@@ -104,7 +104,7 @@ const sanitizer = function() {
           }
         }
         if (_.isString(value)) {
-            field.type = 'string'
+          field.type = 'string'
         }
         else if (_.isFinite(parseInt(value))) {
           field.type = 'integer'
