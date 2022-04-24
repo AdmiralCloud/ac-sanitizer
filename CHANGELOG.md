@@ -1,3 +1,18 @@
+<a name="3.9.17"></a>
+
+## [3.9.17](https://github.com/mmpro/ac-sanitizer/compare/v3.9.16..v3.9.17) (2022-04-24 14:58:01)
+
+
+### Bug Fix
+
+* **App:** Check required fields first | MP | [9dacfd1f2849f6c4b96a211b37f40ec0064ed456](https://github.com/mmpro/ac-sanitizer/commit/9dacfd1f2849f6c4b96a211b37f40ec0064ed456)    
+Check requirements before any other checks are made.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Tests
+
+* **App:** Increased test coverage | MP | [3598e6a6b278ce560125ec92d8157f014db6466c](https://github.com/mmpro/ac-sanitizer/commit/3598e6a6b278ce560125ec92d8157f014db6466c)    
+Coverage now > 98%.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.9.16"></a>
 
 ## [3.9.16](https://github.com/mmpro/ac-sanitizer/compare/v3.9.15..v3.9.16) (2022-04-24 14:23:01)
