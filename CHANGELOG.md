@@ -1,3 +1,19 @@
+<a name="3.9.16"></a>
+
+## [3.9.16](https://github.com/mmpro/ac-sanitizer/compare/v3.9.15..v3.9.16) (2022-04-24 14:23:01)
+
+
+### Bug Fix
+
+* **App:** Allow empty string for type integer | string | MP | [c06c64611a83f324d7736314e299d5fb768ab3a7](https://github.com/mmpro/ac-sanitizer/commit/c06c64611a83f324d7736314e299d5fb768ab3a7)    
+Allow empty string for type integer  
+string  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Chores
+
+* **App:** Updated packages | MP | [f5cf0cabe083f991f455c47df596cbe27ba12054](https://github.com/mmpro/ac-sanitizer/commit/f5cf0cabe083f991f455c47df596cbe27ba12054)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.9.15"></a>
 
 ## [3.9.15](https://github.com/mmpro/ac-sanitizer/compare/v3.9.14..v3.9.15) (2022-04-22 16:53:45)
