@@ -130,11 +130,14 @@ const sanitizer = function() {
           else if (_.isBoolean(value)) {
             field.type = 'boolean'
           }
-          else if (_.isFinite(parseInt(value))) {
+          else if (_.isInteger(value)) {
             field.type = 'integer'
           }
+          else if (_.isFinite(value)) {
+            field.type = 'float'
+          }
           else {
-            error = { message: fieldName + '_any_couldNotResolveType' }
+            error = { message: fieldName + '_couldNotResolveType' }
           }
         }
 

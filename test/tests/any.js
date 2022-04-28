@@ -14,7 +14,8 @@ module.exports = {
       { name: 'Any - with object', type: 'any', value: { a: 123 }, expected: { a: 123 } },
       { name: 'Any - with array', type: 'any', value: [1,2,3], expected: [1,2,3] },
       { name: 'Any - with array of objects', type: 'any', value: [{ a: 123 }], expected: [{ a: 123 }] },
-      { name: 'Any - with float - cannot auto-detect', type: 'any', value: 123.235, error: 'any_typeIncorrect', additionalInfo: { value: 123.235, int: 123 } },
+      { name: 'Any - with float', type: 'any', value: 123.235, expected: 123.235 },
+      { name: 'Any - with Infinity - should fail', type: 'any', value: Infinity, error: 'any_couldNotResolveType' },
     ]
 
     _.forEach(baseTests, (test) => {
