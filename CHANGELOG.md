@@ -1,3 +1,13 @@
+<a name="3.10.2"></a>
+
+## [3.10.2](https://github.com/mmpro/ac-sanitizer/compare/v3.10.1..v3.10.2) (2022-04-28 11:21:08)
+
+
+### Bug Fix
+
+* **App:** Detect int and float | MP | [1320003ec27cb1b85824aa0ad719b2d23b4ef5e5](https://github.com/mmpro/ac-sanitizer/commit/1320003ec27cb1b85824aa0ad719b2d23b4ef5e5)    
+Detect int and float  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.10.1"></a>
 
 ## [3.10.1](https://github.com/mmpro/ac-sanitizer/compare/v3.10.0..v3.10.1) (2022-04-24 19:38:16)
