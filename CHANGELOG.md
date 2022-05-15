@@ -1,3 +1,18 @@
+<a name="3.10.3"></a>
+
+## [3.10.3](https://github.com/mmpro/ac-sanitizer/compare/v3.10.2..v3.10.3) (2022-05-15 15:04:15)
+
+
+### Bug Fix
+
+* **App:** Allow array of objects for enum/allowed values | MP | [b8ed58e8ece9e6b11efa25b3f65ebaa77d690dc2](https://github.com/mmpro/ac-sanitizer/commit/b8ed58e8ece9e6b11efa25b3f65ebaa77d690dc2)    
+Allow array of objects for enum/allowed values  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Chores
+
+* **App:** Updated packages | MP | [1912835f9d881df59806c19275621d83feeb55ac](https://github.com/mmpro/ac-sanitizer/commit/1912835f9d881df59806c19275621d83feeb55ac)    
+Updated packages  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.10.2"></a>
 
 ## [3.10.2](https://github.com/mmpro/ac-sanitizer/compare/v3.10.1..v3.10.2) (2022-04-28 11:21:08)
