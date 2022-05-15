@@ -456,11 +456,11 @@ const sanitizer = function() {
 
       if (!error && allowedValues && value) {
         if (_.isArray(value)) {
-          if (_.size(value) && !_.size(_.intersection(value, allowedValues))) {
+          if (_.size(value) && !_.size(_.intersectionWith(value, allowedValues, _.isEqual))) {
             error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
           }
           // remove non-matching entries, but do not fail/return error
-          value = _.intersection(value, allowedValues)
+          value = _.intersectionWith(value, allowedValues, _.isEqual)
           _.set(paramsToCheck, fieldName, value)
         }
         else if (_.indexOf(allowedValues, value) < 0) {

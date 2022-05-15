@@ -29,6 +29,8 @@ module.exports = {
       { name: 'Array with maxSize - fail', type: 'array', value: ['a', 'b'], maxSize: 1, error: 'array_maxSizeBoundary' },
       { name: 'Array of fileExtensions', type: 'array', valueType: 'fileExtension', value: ['jpg'], expected: ['jpg'] },
       { name: 'Array of fileExtensions - contains invalid', type: 'array', valueType: 'fileExtension', value: ['jpg', 'textimage'], error: 'array_atLeastOneValueFailed' },
+      { name: 'Array of objects - valid', type: 'array', value: [{ 'createdAt': 'asc' }], enum: [{ 'createdAt': 'asc' }], expected: [{ 'createdAt': 'asc' }] },
+      { name: 'Array of objects - invalid', type: 'array', value: [{ 'createdAt': 'desc' }], enum: [{ 'createdAt': 'asc' }], error: 'array_notAnAllowedValue' },
     ]
 
 
