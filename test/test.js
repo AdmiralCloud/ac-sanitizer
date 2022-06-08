@@ -1,5 +1,8 @@
 const _ = require('lodash')
 
+const { expect } = require('chai')
+global.expect = expect
+
 const testMode = _.get(process, 'env.TESTMODE', false)
 
 const suite = {

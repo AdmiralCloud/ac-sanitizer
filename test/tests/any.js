@@ -1,5 +1,4 @@
 const _ = require('lodash')
-const expect = require('expect')
 const sanitizer = require('../../index')
 
 module.exports = {
@@ -30,13 +29,13 @@ module.exports = {
         }
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
         if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).toEqual(test.error)
+          expect(_.get(r, 'error.message')).to.equal(test.error)
           if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).toEqual(_.get(test, 'additionalInfo'))
+            expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
           }
         }
         else {
-          expect(_.get(r, 'params.any')).toEqual(_.get(test, 'expected'))
+          expect(_.get(r, 'params.any')).to.eql(_.get(test, 'expected'))
         }
         return done()
       })
