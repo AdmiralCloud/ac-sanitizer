@@ -7,7 +7,7 @@
   "version": "3.10.3",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
-    "ac-countrylist": "^1.0.6",
+    "ac-countrylist": "^1.0.7",
     "ac-file-extensions": "^2.0.5",
     "ac-ip": "^1.3.7",
     "date-and-time": "^2.3.1",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "ac-semantic-release": "^0.3.0",
-    "eslint": "^8.15.0",
+    "eslint": "^8.17.0",
     "expect": "^27.5.1",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0"
