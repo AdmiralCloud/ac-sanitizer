@@ -13,6 +13,8 @@ npm-debug.log
 *~
 *#
 **/.DS_STORE/**
+**/.vscode/**
+**/.scannerwork/**
 **/tmp/**
 
 ########################
