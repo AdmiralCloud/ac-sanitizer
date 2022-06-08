@@ -1,3 +1,26 @@
+<a name="3.10.4"></a>
+
+## [3.10.4](https://github.com/mmpro/ac-sanitizer/compare/v3.10.3..v3.10.4) (2022-06-08 18:30:35)
+
+
+### Bug Fix
+
+* **App:** Move from jest to chai/expect | MP | [14369812c3e5a43f32f5490b9d9503bca5e9d4c9](https://github.com/mmpro/ac-sanitizer/commit/14369812c3e5a43f32f5490b9d9503bca5e9d4c9)    
+Move from jest to chai/expect  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+* **App:** Package updates | MP | [57337f5328b0ae478e477fc72bc26b89ddc28662](https://github.com/mmpro/ac-sanitizer/commit/57337f5328b0ae478e477fc72bc26b89ddc28662)    
+Package updates  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [4cf217a833b79b87bb0b3380a49e48de11309192](https://github.com/mmpro/ac-sanitizer/commit/4cf217a833b79b87bb0b3380a49e48de11309192)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated gitignore | MP | [a760b76abe278962e29d982a3515bccd23d88310](https://github.com/mmpro/ac-sanitizer/commit/a760b76abe278962e29d982a3515bccd23d88310)    
+Updated gitignore  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.10.3"></a>
 
 ## [3.10.3](https://github.com/mmpro/ac-sanitizer/compare/v3.10.2..v3.10.3) (2022-05-15 15:04:15)
