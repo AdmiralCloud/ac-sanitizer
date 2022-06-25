@@ -1,3 +1,18 @@
+<a name="3.10.5"></a>
+
+## [3.10.5](https://github.com/mmpro/ac-sanitizer/compare/v3.10.4..v3.10.5) (2022-06-25 09:02:28)
+
+
+### Bug Fix
+
+* **App:** Add strict mode to objects | MP | [e9cbaff3f1c8214e20a38472da0a02494d81a2d5](https://github.com/mmpro/ac-sanitizer/commit/e9cbaff3f1c8214e20a38472da0a02494d81a2d5)    
+In strict mode payload with non-defined properties will cause an error.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Chores
+
+* **App:** Updated packages | MP | [e727e41a06453120d675d10959ae5792262278ae](https://github.com/mmpro/ac-sanitizer/commit/e727e41a06453120d675d10959ae5792262278ae)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.10.4"></a>
 
 ## [3.10.4](https://github.com/mmpro/ac-sanitizer/compare/v3.10.3..v3.10.4) (2022-06-08 18:30:35)
