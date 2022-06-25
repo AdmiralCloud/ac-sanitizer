@@ -52,6 +52,7 @@ adminLevel | [integer] | Optional adminLevel required for this field
 omitFields | [boolean] | If adminLevel is set and you do not have the proper adminLevel the sanitizer will just omit the field (and not return an error) if omitFields is true
 convert | [boolean|string] | Some types can be automatically converted (e.g. base64 to string)
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
+strict | [boolean] | For objects only - if true and payload contains a property not defined, an error will be returned.
 
 [^1]: The path must be set with the parent propery as root, e.g. the actual field is settings.video.width, in property video the condition is then just "width" not the full path.
 
@@ -130,10 +131,32 @@ let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
 
 ```
 
+## Objects
+By default properties which are not defined will be ignored and removed from payload.
+
+### Objects with strict mode activate
+In strict mode, only defined properties are allowed.
+```
+let fieldsToCheck = {
+  params: {
+    settings: {
+      allowed: true,
+      notAllowed: true
+    }
+  },
+  fields: [
+    { field: 'settings', type: 'object', strict: true, properties: [
+      { field: 'allowed', type: 'boolean' }
+    ] }
+  ]
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+// error: object_settings_containsInvalidProperties
+
+```
+
 ## Links
 - [Website](https://www.admiralcloud.com/)
-- [Twitter (@admiralcloud)](https://twitter.com/admiralcloud)
-- [Facebook](https://www.facebook.com/MediaAssetManagement/)
 
 ## License
-[MIT License](https://opensource.org/licenses/MIT) Copyright © 2009-present, AdmiralCloud, Mark Poepping
+[MIT License](https://opensource.org/licenses/MIT) Copyright © 2009-present, AdmiralCloud AG, Mark Poepping

@@ -283,6 +283,16 @@ const sanitizer = function() {
           error = schema.verify(value)
         }
 
+        // strict mode -> if true, then check payload against definition and return error if a non-defined property is in payload
+        if (_.get(field, 'strict')) {
+          let propsInPayload = _.keys(value)
+          let definedProps = _.map(_.get(field, 'properties'), 'field')
+          let diff = _.difference(propsInPayload, definedProps)
+          if (_.size(diff)) {
+            error = { message: fieldName + '_containsInvalidProperties', additionalInfo: { properties: diff } }
+          }
+        }
+
         // modern approach without verify function: 
         // object can have properties with the same structure as the original field
         if (!error && _.get(field, 'properties')) {
