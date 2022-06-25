@@ -11,14 +11,14 @@
     "ac-file-extensions": "^2.0.5",
     "ac-ip": "^2.0.0",
     "chai": "^4.3.6",
-    "date-and-time": "^2.3.1",
+    "date-and-time": "^2.4.0",
     "hashids": "^2.2.10",
     "lodash": "^4.17.21",
     "validator": "^13.7.0"
   },
   "devDependencies": {
     "ac-semantic-release": "^0.3.0",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0"
   },
