@@ -200,6 +200,13 @@ const sanitizer = function() {
           if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
           if (field.type === 'number') field.type = 'integer'
 
+
+          if (field.type !== 'float' && _.get(field, 'convert')) {
+            // make sure the value is integer
+            value = parseInt(value)
+            _.set(paramsToCheck, fieldName, value)
+          }
+
           if (field.type === 'float' && value !== parseFloat(value)) {
             error = { message: fieldName + '_not_' + field.type, additionalInfo: { value } }
           }

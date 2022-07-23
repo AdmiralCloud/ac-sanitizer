@@ -74,7 +74,7 @@ module.exports = {
                   integer: _.get(test, 'value')
                 },
                 fields: [
-                  { field: 'integer', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), range: _.get(test, 'range') }
+                  { field: 'integer', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), convert: _.get(test, 'convert'), range: _.get(test, 'range') }
                 ]
               }
 
@@ -100,7 +100,9 @@ module.exports = {
         { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0,2147483648], value: -1 } },
         { name: 'Array of numbers with one entry', type: 'integer', value: [123], error: 'number_notAFiniteNumber' },
         { name: 'Array of numbers with multiple entries', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
-        { name: 'Check float', type: 'float', range: [-90, 90], value: 53.15, expected: 53.15 }
+        { name: 'Check float', type: 'float', range: [-90, 90], value: 53.15, expected: 53.15 },
+        { name: 'Integer as float - 60.1 - should fail', type: 'integer', value: 60.1, error: 'number_typeIncorrect' },      
+        { name: 'Integer as float with convert - 60.1 - should work', type: 'integer', convert: true, value: 60.1, expected: 60 },      
       ]
       
       _.forEach(tests, (test) => {
@@ -110,7 +112,7 @@ module.exports = {
               number: _.get(test, 'value')
             },
             fields: [
-              { field: 'number', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), range: _.get(test, 'range') }
+              { field: 'number', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), convert: _.get(test, 'convert'), range: _.get(test, 'range') }
             ]
           }
   
