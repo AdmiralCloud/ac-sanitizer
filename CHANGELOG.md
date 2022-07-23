@@ -1,3 +1,13 @@
+<a name="3.10.6"></a>
+
+## [3.10.6](https://github.com/mmpro/ac-sanitizer/compare/v3.10.5..v3.10.6) (2022-07-23 06:54:26)
+
+
+### Bug Fix
+
+* **App:** Allow convert with number | MP | [3e3d951a275b4c3e90654071cc2dcafb303742f2](https://github.com/mmpro/ac-sanitizer/commit/3e3d951a275b4c3e90654071cc2dcafb303742f2)    
+In order to be more lenient you can add property convert to numbers (e.g. integer). This way incoming float value will be converted to integer instead of returning an error.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="3.10.5"></a>
 
 ## [3.10.5](https://github.com/mmpro/ac-sanitizer/compare/v3.10.4..v3.10.5) (2022-06-25 09:02:28)
