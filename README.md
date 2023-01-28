@@ -53,6 +53,7 @@ omitFields | [boolean] | If adminLevel is set and you do not have the proper adm
 convert | [boolean OR string] | Some types can be automatically converted (e.g. base64 to string)
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
 strict | [boolean] | For objects only - if true and payload contains a property not defined, an error will be returned.
+nullAllowed | [boolean] | If true, sending NULL is allowed.
 
 [^1]: The path must be set with the parent propery as root, e.g. the actual field is settings.video.width, in property video the condition is then just "width" not the full path.
 
