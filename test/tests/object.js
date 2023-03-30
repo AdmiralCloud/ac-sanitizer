@@ -34,6 +34,23 @@ module.exports = {
         },
       },
       {
+        name: "Object with non-allowed properties - do not ignore in strict mode",
+        type: "object",
+        properties: [
+          { field: "settings", type: "object", strict: true, properties:[
+            { field: 'allowed', type: 'boolean' }
+          ] },
+        ],
+        value: {
+          settings: {
+            allowed: true,
+            notAllowed: true
+          }
+        },
+        error: "object_settings_containsInvalidProperties",
+        additionalInfo: { properties: ['notAllowed'] }
+      },
+      {
         name: "Object with nested properties - missing nested property",
         type: "object",
         properties: [
@@ -183,7 +200,7 @@ module.exports = {
         if (_.get(r, 'error')) {
           expect(_.get(r, 'error.message')).to.equal(test.error)
           if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.equal(_.get(test, 'additionalInfo'))
+            expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
           }
         }
         else {

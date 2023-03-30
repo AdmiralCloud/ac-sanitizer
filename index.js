@@ -118,7 +118,10 @@ const sanitizer = function() {
         /// SPECIAL FIELDS
         // field type any, can be any field
         if (field.type === 'any') {
-          if (_.isString(value)) {
+          if (_.isNull(value)) {
+            // any can also be NULL, do not try to identify type
+          }
+          else if (_.isString(value)) {
             field.type = 'string'
           }
           else if (_.isPlainObject(value)) {
@@ -199,6 +202,13 @@ const sanitizer = function() {
           //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
           if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
           if (field.type === 'number') field.type = 'integer'
+
+
+          if (field.type !== 'float' && _.get(field, 'convert')) {
+            // make sure the value is integer
+            value = parseInt(value)
+            _.set(paramsToCheck, fieldName, value)
+          }
 
           if (field.type === 'float' && value !== parseFloat(value)) {
             error = { message: fieldName + '_not_' + field.type, additionalInfo: { value } }
@@ -281,6 +291,16 @@ const sanitizer = function() {
         const schema = field.schema
         if (!error && _.isFunction(_.get(schema, 'verify'))) {
           error = schema.verify(value)
+        }
+
+        // strict mode -> if true, then check payload against definition and return error if a non-defined property is in payload
+        if (_.get(field, 'strict')) {
+          let propsInPayload = _.keys(value)
+          let definedProps = _.map(_.get(field, 'properties'), 'field')
+          let diff = _.difference(propsInPayload, definedProps)
+          if (_.size(diff)) {
+            error = { message: fieldName + '_containsInvalidProperties', additionalInfo: { properties: diff } }
+          }
         }
 
         // modern approach without verify function: 

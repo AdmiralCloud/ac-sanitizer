@@ -1,3 +1,43 @@
+<a name="3.10.7"></a>
+
+## [3.10.7](https://github.com/mmpro/ac-sanitizer/compare/v3.10.6..v3.10.7) (2023-01-28 19:37:40)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [ea995e12e8fb33f161346643e842415265d8701c](https://github.com/mmpro/ac-sanitizer/commit/ea995e12e8fb33f161346643e842415265d8701c)    
+Package updates  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Documentation
+
+* **App:** Updated README | MP | [38ed9526f3c60b79802e573ff6ac3c7dec41c95f](https://github.com/mmpro/ac-sanitizer/commit/38ed9526f3c60b79802e573ff6ac3c7dec41c95f)    
+Minor update  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+<a name="3.10.6"></a>
+
+## [3.10.6](https://github.com/mmpro/ac-sanitizer/compare/v3.10.5..v3.10.6) (2022-07-23 06:54:26)
+
+
+### Bug Fix
+
+* **App:** Allow convert with number | MP | [3e3d951a275b4c3e90654071cc2dcafb303742f2](https://github.com/mmpro/ac-sanitizer/commit/3e3d951a275b4c3e90654071cc2dcafb303742f2)    
+In order to be more lenient you can add property convert to numbers (e.g. integer). This way incoming float value will be converted to integer instead of returning an error.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+<a name="3.10.5"></a>
+
+## [3.10.5](https://github.com/mmpro/ac-sanitizer/compare/v3.10.4..v3.10.5) (2022-06-25 09:02:28)
+
+
+### Bug Fix
+
+* **App:** Add strict mode to objects | MP | [e9cbaff3f1c8214e20a38472da0a02494d81a2d5](https://github.com/mmpro/ac-sanitizer/commit/e9cbaff3f1c8214e20a38472da0a02494d81a2d5)    
+In strict mode payload with non-defined properties will cause an error.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Chores
+
+* **App:** Updated packages | MP | [e727e41a06453120d675d10959ae5792262278ae](https://github.com/mmpro/ac-sanitizer/commit/e727e41a06453120d675d10959ae5792262278ae)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.10.4"></a>
 
 ## [3.10.4](https://github.com/mmpro/ac-sanitizer/compare/v3.10.3..v3.10.4) (2022-06-08 18:30:35)

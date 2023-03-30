@@ -17,9 +17,10 @@ let config = {
     "no-console": ["error", { allow: ["error"] }]
   },
   'parserOptions': {
-    'ecmaVersion': 2018
+    'ecmaVersion': 2022
   },
   globals: {
+    expect: true, 
     describe: true,
     it: true
   }

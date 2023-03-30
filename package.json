@@ -4,22 +4,22 @@
   "author": "Mark Poepping (https://www.admiralcloud.com)",
   "license": "MIT",
   "repository": "admiralcloud/ac-sanitizer",
-  "version": "3.10.4",
+  "version": "3.10.7",
   "homepage": "https://www.admiralcloud.com",
   "dependencies": {
     "ac-countrylist": "^1.0.7",
     "ac-file-extensions": "^2.0.5",
-    "ac-ip": "^2.0.0",
-    "chai": "^4.3.6",
-    "date-and-time": "^2.3.1",
-    "hashids": "^2.2.10",
+    "ac-ip": "^3.0.1",
+    "chai": "^4.3.7",
+    "date-and-time": "^2.4.3",
+    "hashids": "^2.2.11",
     "lodash": "^4.17.21",
-    "validator": "^13.7.0"
+    "validator": "^13.9.0"
   },
   "devDependencies": {
-    "ac-semantic-release": "^0.3.0",
-    "eslint": "^8.17.0",
-    "mocha": "^10.0.0",
+    "ac-semantic-release": "^0.3.5",
+    "eslint": "^8.37.0",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0"
   },
   "scripts": {
@@ -27,6 +27,6 @@
     "coverage": "nyc yarn run test"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=16.0.0"
   }
 }
