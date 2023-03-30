@@ -15,6 +15,7 @@ module.exports = {
       { name: 'Any - with array of objects', type: 'any', value: [{ a: 123 }], expected: [{ a: 123 }] },
       { name: 'Any - with float', type: 'any', value: 123.235, expected: 123.235 },
       { name: 'Any - with Infinity - should fail', type: 'any', value: Infinity, error: 'any_couldNotResolveType' },
+      { name: 'Any - with null and nullAllowed', type: 'any', value: null, nullAllowed: true, expected: null },
     ]
 
     _.forEach(baseTests, (test) => {
@@ -24,7 +25,7 @@ module.exports = {
             any: _.get(test, 'value')
           },
           fields: [
-            { field: 'any', type: _.get(test, 'type') }
+            { field: 'any', type: _.get(test, 'type'), nullAllowed: _.get(test, 'nullAllowed') }
           ]
         }
         let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)

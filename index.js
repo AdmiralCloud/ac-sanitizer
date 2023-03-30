@@ -118,7 +118,10 @@ const sanitizer = function() {
         /// SPECIAL FIELDS
         // field type any, can be any field
         if (field.type === 'any') {
-          if (_.isString(value)) {
+          if (_.isNull(value)) {
+            // any can also be NULL, do not try to identify type
+          }
+          else if (_.isString(value)) {
             field.type = 'string'
           }
           else if (_.isPlainObject(value)) {
