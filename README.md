@@ -15,7 +15,7 @@ let fieldsToCheck = {
     stringVar: 'This is a string'
   },
   fields: [
-    { field: 'stringVar', type: 'string, required: true },
+    { field: 'stringVar', type: 'string', required: true },
     { field: 'forceJob', type: 'boolean', adminLevel: 64 }
   ],
   adminLevel: 32 // optional adminLevel of the user - must be at least the one defined in fields
@@ -34,7 +34,7 @@ let fieldsToCheck = {
       f1: true
   },
   fields: [
-    { field: 'obj', type: 'object, properties: [
+    { field: 'obj', type: 'object', properties: [
       { field: 'f1', type: 'boolean' },
       { field: 'f2', type: 'boolean', required: 'f1' } // if f1 is true, then f2 is required
     ]}
