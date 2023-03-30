@@ -1,6 +1,6 @@
-<a name="3.10.8"></a>
+<a name="4.0.0"></a>
 
-## [3.10.8](https://github.com/mmpro/ac-sanitizer/compare/v3.10.7..v3.10.8) (2023-03-30 16:00:08)
+## [4.0.0](https://github.com/mmpro/ac-sanitizer/compare/v3.10.7..v4.0.0) (2023-03-30 16:00:08)
 
 
 ### Bug Fix
@@ -18,6 +18,10 @@ Related issues: [undefined/undefined#master](undefined/browse/master)
 * **App:** Updated packages | MP | [36b04aab7f3ae7dcf2f601b020433184f2a4b30d](https://github.com/mmpro/ac-sanitizer/commit/36b04aab7f3ae7dcf2f601b020433184f2a4b30d)    
 Updated packages  
 Related issues: [undefined/undefined#master](undefined/browse/master)
+
+## BREAKING CHANGES
+At least Node 16 is required!
+
 <a name="3.10.7"></a>
 
 ## [3.10.7](https://github.com/mmpro/ac-sanitizer/compare/v3.10.6..v3.10.7) (2023-01-28 19:37:40)
