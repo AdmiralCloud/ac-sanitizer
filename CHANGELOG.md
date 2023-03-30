@@ -1,3 +1,23 @@
+<a name="3.10.8"></a>
+
+## [3.10.8](https://github.com/mmpro/ac-sanitizer/compare/v3.10.7..v3.10.8) (2023-03-30 16:00:08)
+
+
+### Bug Fix
+
+* **App:** Allow NULL for type any | MP | [9605532ed5b1db12df2940e9c9e1a5909cc83b4a](https://github.com/mmpro/ac-sanitizer/commit/9605532ed5b1db12df2940e9c9e1a5909cc83b4a)    
+Allow NULL for type any  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Use ECMA2022 for eslint | MP | [79c7f9856559e3b21670dca78bf284e7b3f8f7e5](https://github.com/mmpro/ac-sanitizer/commit/79c7f9856559e3b21670dca78bf284e7b3f8f7e5)    
+Use ECMA2022 for eslint  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [36b04aab7f3ae7dcf2f601b020433184f2a4b30d](https://github.com/mmpro/ac-sanitizer/commit/36b04aab7f3ae7dcf2f601b020433184f2a4b30d)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="3.10.7"></a>
 
 ## [3.10.7](https://github.com/mmpro/ac-sanitizer/compare/v3.10.6..v3.10.7) (2023-01-28 19:37:40)
