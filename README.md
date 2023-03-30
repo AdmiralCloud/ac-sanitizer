@@ -1,6 +1,10 @@
 # AC Sanitizer
 Sanitizes  payloads with given field definitions
 
+### Version 4 - Breaking changes
+Version 4 requires Node 16.
+
+
 ## Usage
 
 ```

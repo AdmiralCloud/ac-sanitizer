@@ -9,16 +9,16 @@
   "dependencies": {
     "ac-countrylist": "^1.0.7",
     "ac-file-extensions": "^2.0.5",
-    "ac-ip": "^2.0.0",
+    "ac-ip": "^3.0.1",
     "chai": "^4.3.7",
-    "date-and-time": "^2.4.2",
-    "hashids": "^2.2.10",
+    "date-and-time": "^2.4.3",
+    "hashids": "^2.2.11",
     "lodash": "^4.17.21",
-    "validator": "^13.7.0"
+    "validator": "^13.9.0"
   },
   "devDependencies": {
-    "ac-semantic-release": "^0.3.4",
-    "eslint": "^8.32.0",
+    "ac-semantic-release": "^0.3.5",
+    "eslint": "^8.37.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0"
   },
@@ -27,6 +27,6 @@
     "coverage": "nyc yarn run test"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=16.0.0"
   }
 }
