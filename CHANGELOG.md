@@ -1,3 +1,23 @@
+<a name="4.0.1"></a>
+
+## [4.0.1](https://github.com/mmpro/ac-sanitizer/compare/v4.0.0..v4.0.1) (2023-04-18 18:38:15)
+
+
+### Bug Fix
+
+* **App:** Sanitize array of objects | MP | [c00ea6869a250672b1af1f1c1520223686cc59b9](https://github.com/mmpro/ac-sanitizer/commit/c00ea6869a250672b1af1f1c1520223686cc59b9)    
+Make sure to sanitize (remove non-defined properties from) array of objects  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Tests
+
+* **App:** Added test for array of objects | MP | [7c3b698a09ef48398b95fdacc22542b14ef5cd30](https://github.com/mmpro/ac-sanitizer/commit/7c3b698a09ef48398b95fdacc22542b14ef5cd30)    
+Added test for array of objects  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [40d542dced814eebb74d384d999532f3e1c718ed](https://github.com/mmpro/ac-sanitizer/commit/40d542dced814eebb74d384d999532f3e1c718ed)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.0"></a>
 
 ## [4.0.0](https://github.com/mmpro/ac-sanitizer/compare/v3.10.7..v4.0.0) (2023-03-30 16:00:08)
