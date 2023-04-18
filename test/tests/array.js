@@ -30,6 +30,13 @@ module.exports = {
       { name: 'Array of fileExtensions - contains invalid', type: 'array', valueType: 'fileExtension', value: ['jpg', 'textimage'], error: 'array_atLeastOneValueFailed' },
       { name: 'Array of objects - valid', type: 'array', value: [{ 'createdAt': 'asc' }], enum: [{ 'createdAt': 'asc' }], expected: [{ 'createdAt': 'asc' }] },
       { name: 'Array of objects - invalid', type: 'array', value: [{ 'createdAt': 'desc' }], enum: [{ 'createdAt': 'asc' }], error: 'array_notAnAllowedValue' },
+      { name: 'Array of objects - check that object payload is sanitized', 
+        type: 'array', 
+        valueType: 'object', 
+        properties: [{ field: 'p1', type: 'string' }], 
+        value: [{ p1: 'isAString', p2: 'shouldBeRemoved' }, { p1: 'isAString2', p2: 'shouldBeRemoved2' }],
+        expected: [{ p1: 'isAString' },  { p1: 'isAString2' }]
+      }
     ]
 
 
@@ -40,7 +47,7 @@ module.exports = {
             array: _.get(test, 'value')
           },
           fields: [
-            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize') }
+            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize'), properties: _.get(test, "properties")}
           ]
         }
         if (test.enum) {

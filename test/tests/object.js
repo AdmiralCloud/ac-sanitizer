@@ -34,6 +34,26 @@ module.exports = {
         },
       },
       {
+        name: "Object with non-allowed properties - should be removed from payload by sanitizer",
+        type: "object",
+        properties: [
+          { field: "settings", type: "object", properties:[
+            { field: 'allowed', type: 'boolean' }
+          ] },
+        ],
+        value: {
+          settings: {
+            allowed: true,
+            notAllowed: true
+          }
+        },
+        expected: {
+          settings: {
+            allowed: true
+          }
+        }
+      },
+      {
         name: "Object with non-allowed properties - do not ignore in strict mode",
         type: "object",
         properties: [
