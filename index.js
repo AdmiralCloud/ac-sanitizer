@@ -265,7 +265,7 @@ const sanitizer = function() {
         else if (field.minSize && _.size(value) < field.minSize) error = { message: fieldName + '_minSizeBoundary', additionalInfo: { minSize: field.minSize } }
         else if (field.valueType) {
           // very value of the array must be of this type
-          _.every(value, v => {
+          _.every(value, (v, index, value) => {
             const fieldsToCheck = {
               params: {},
               fields: [{ field: fieldName, type: _.get(field, 'valueType'), properties: _.get(field, 'properties'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
@@ -276,6 +276,8 @@ const sanitizer = function() {
               error = { message: fieldName + '_atLeastOneValueFailed', additionalInfo: { error: _.get(check, 'error'), value: v, type: _.get(field, 'valueType') } }
               return false
             }
+            // set the sanitized value
+            value[index] = _.get(check, `params.${fieldName}`)
             return true
           })
         }
