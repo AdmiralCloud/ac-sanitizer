@@ -1,6 +1,8 @@
 # AC Sanitizer
 Sanitizes  payloads with given field definitions
 
+[![Node.js CI](https://github.com/AdmiralCloud/ac-sanitizer/actions/workflows/node.js.yml/badge.svg)](https://github.com/AdmiralCloud/ac-sanitizer/actions/workflows/node.js.yml)
+
 ### Version 4 - Breaking changes
 Version 4 requires Node 16.
 
