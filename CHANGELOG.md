@@ -1,3 +1,23 @@
+<a name="4.0.2"></a>
+
+## [4.0.2](https://github.com/mmpro/ac-sanitizer/compare/v4.0.1..v4.0.2) (2023-06-18 11:35:24)
+
+
+### Bug Fix
+
+* **App:** If base64 is an object, parse the converted string | MP | [cf9a49d9df121c7829932ae37192fd22f3d98438](https://github.com/mmpro/ac-sanitizer/commit/cf9a49d9df121c7829932ae37192fd22f3d98438)    
+Base64 might be a string or a stringified object. Try parsing the string to determine if it is an object  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [49da6b224e9382aa7cc6a298b2a0af06648931b8](https://github.com/mmpro/ac-sanitizer/commit/49da6b224e9382aa7cc6a298b2a0af06648931b8)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Add Github workflow | MP | [72668a139dda85330516077ef471af4aa4b68c3b](https://github.com/mmpro/ac-sanitizer/commit/72668a139dda85330516077ef471af4aa4b68c3b)    
+Add Github workflow  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.1"></a>
 
 ## [4.0.1](https://github.com/mmpro/ac-sanitizer/compare/v4.0.0..v4.0.1) (2023-04-18 18:38:15)
