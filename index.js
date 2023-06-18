@@ -330,6 +330,13 @@ const sanitizer = function() {
           if (!validator.isBase64(_.padEnd(value, (l+pad), '='))) error = { message: fieldName + '_notABase64String' }
           else if (field.convert) {
             _.set(paramsToCheck, fieldName, Buffer.from(value, 'base64').toString())
+            // the value might be a stringified object - try converting it
+            try {
+              _.set(paramsToCheck, fieldName, JSON.parse(_.get(paramsToCheck, fieldName)))
+            } 
+            catch(e) {
+              // ignore
+            }
           }
         }
       }
