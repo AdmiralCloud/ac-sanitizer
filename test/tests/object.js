@@ -199,6 +199,29 @@ module.exports = {
           }
         },
       },
+      {
+        name: "Object with complex nested properties",
+        type: "object",
+        properties: [
+          { field: "boo", type: "boolean" },
+          { field: "nested", type: "object", properties: [
+            { field: 'setId', type: 'boolean', required: false }
+          ] }
+        ],
+        value: {
+          boo: true,
+          enum: "blue",
+          nested: {
+            setId: false
+          }
+        },
+        expected: {
+          boo: true,
+          nested: {
+            setId: false
+          }
+        },
+      },
     ];
 
     _.forEach(baseTests, (test) => {
