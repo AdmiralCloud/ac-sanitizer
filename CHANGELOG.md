@@ -1,3 +1,18 @@
+<a name="4.0.3"></a>
+
+## [4.0.3](https://github.com/mmpro/ac-sanitizer/compare/v4.0.2..v4.0.3) (2023-07-21 19:16:42)
+
+
+### Bug Fix
+
+* **App:** Package updated | MP | [32ba9d92894d54a4575a0765bafbe5f1be6f8edf](https://github.com/mmpro/ac-sanitizer/commit/32ba9d92894d54a4575a0765bafbe5f1be6f8edf)    
+Packages updated  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Tests
+
+* **App:** Fixed test | MP | [05e575d49d3254bc6191a1b3e950bb7f89e07fd0](https://github.com/mmpro/ac-sanitizer/commit/05e575d49d3254bc6191a1b3e950bb7f89e07fd0)    
+Fixed nested object test  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="4.0.2"></a>
 
 ## [4.0.2](https://github.com/mmpro/ac-sanitizer/compare/v4.0.1..v4.0.2) (2023-06-18 11:35:24)
