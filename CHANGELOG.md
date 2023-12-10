@@ -1,3 +1,18 @@
+<a name="4.0.5"></a>
+
+## [4.0.5](https://github.com/mmpro/ac-sanitizer/compare/v4.0.4..v4.0.5) (2023-12-10 14:34:04)
+
+
+### Bug Fix
+
+* **App:** Fixed base64 enum checks | MP | [e581e9c1d1bb2cf503d1cd3cda3ff664e52dc387](https://github.com/mmpro/ac-sanitizer/commit/e581e9c1d1bb2cf503d1cd3cda3ff664e52dc387)    
+Fixed base64 enum checks  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [c343e6539772abe535743e30399de20d45e66af4](https://github.com/mmpro/ac-sanitizer/commit/c343e6539772abe535743e30399de20d45e66af4)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.4"></a>
 
 ## [4.0.4](https://github.com/mmpro/ac-sanitizer/compare/v4.0.3..v4.0.4) (2023-09-29 09:27:21)
