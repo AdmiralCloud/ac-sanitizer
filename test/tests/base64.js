@@ -15,6 +15,10 @@ module.exports = {
       { name: 'Base64 app.admiralcloud.com - with padding', type: 'base64', value: 'aHR0cHM6Ly9hcHAuYWRtaXJhbGNsb3VkLmNvbQ==', convert: true, expected: 'https://app.admiralcloud.com' },
       { name: 'Base64 encoded object', type: 'base64', value: 'eyJ1c2VySWQiOjEyMywiY3VzdG9tZXJJZCI6MTQ2LCJyZWFzb24iOiJCZWNhdXNlIEkgY2FuIn0=', convert: true, expected: { userId: 123, customerId: 146, reason: 'Because I can' } },
       { name: 'Base64 encoded object', type: 'base64', value: 'eyJ1c2VySWQiOjEyMywiY3VzdG9tZXJJZCI6MTQ2LCJyZWFzbOiJCZWNhdXNlIEkgY2FuIn0=', convert: true, error: 'base64_notABase64String' },
+      { name: 'Base64 array with enum', type: 'base64', value: 'WzAsMSw5OCw5OSwxMDBd', convert: true, expected: [0, 1, 98, 99, 100], enum: [0, 1, 98, 99, 100] },
+      { name: 'Base64 array with enum - fail', type: 'base64', value: 'WzAsMSw5OCw5OSwxMDBd', convert: true, error: 'base64_notAnAllowedValue', enum: [200] },
+      { name: 'Base64 string with enum', type: 'base64', value: 'bXlzdHJpbmc=', convert: true, expected: 'mystring', enum: ['mystring', 'otherstring'] },
+      { name: 'Base64 string with enum - fail', type: 'base64', value: 'bXlzdHJpbmc=', convert: true, error: 'base64_notAnAllowedValue', enum: ['otherstring'] }
     ]
 
     _.forEach(baseTests, (test) => {
@@ -24,7 +28,7 @@ module.exports = {
             base64: _.get(test, 'value')
           },
           fields: [
-            { field: 'base64', type: _.get(test, 'type'), convert: _.get(test, 'convert') }
+            { field: 'base64', type: _.get(test, 'type'), convert: _.get(test, 'convert'), enum: _.get(test, 'enum') }
           ]
         }
 
