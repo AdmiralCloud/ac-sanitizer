@@ -117,12 +117,11 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-ac-countrylist@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ac-countrylist/-/ac-countrylist-1.0.9.tgz#538e75111369667a123883ade9be3aeaa31b8fae"
-  integrity sha512-sC5SDp4SxodCr3fdUA2jxI4WnKcWHWGt4RHGB3E95Ot2lduWC6fVqqZ2N0lwKPkZhvBZFtVrNww6phbrbMLElQ==
+ac-countrylist@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/ac-countrylist/-/ac-countrylist-1.0.10.tgz#ce21671843d2809f4149337dd440512053975ab5"
+  integrity sha512-xcU4aCR8l6b/j9POJPnkKan8sIBp2E8mELofMfTWRQW9rssjntxoOcZwUa+ndHPsaSZILsr7VTFMOaa92p7dJA==
   dependencies:
-    chai "^4.3.10"
     lodash "^4.17.21"
 
 ac-file-extensions@^2.0.8:
@@ -304,10 +303,10 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-chai@^4.3.10:
-  version "4.3.10"
-  resolved "https://registry.yarnpkg.com/chai/-/chai-4.3.10.tgz#d784cec635e3b7e2ffb66446a63b4e33bd390384"
-  integrity sha512-0UXG04VuVbruMUYbJ6JctvH0YnC/4q3/AkT18q4NaITo91CUm0liMS9VqzT9vZhVQ/1eqPanMWjBM+Juhfb/9g==
+chai@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/chai/-/chai-4.4.1.tgz#3603fa6eba35425b0f2ac91a009fe924106e50d1"
+  integrity sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==
   dependencies:
     assertion-error "^1.1.0"
     check-error "^1.0.3"
