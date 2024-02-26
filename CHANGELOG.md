@@ -1,3 +1,13 @@
+<a name="4.0.9"></a>
+
+## [4.0.9](https://github.com/mmpro/ac-sanitizer/compare/v4.0.8..v4.0.9) (2024-02-26 07:33:14)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [8e13ef778380b6bb2d1808cf9659668dde5acede](https://github.com/mmpro/ac-sanitizer/commit/8e13ef778380b6bb2d1808cf9659668dde5acede)    
+Package updates  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.8"></a>
 
 ## [4.0.8](https://github.com/mmpro/ac-sanitizer/compare/v4.0.7..v4.0.8) (2024-01-27 18:18:31)
