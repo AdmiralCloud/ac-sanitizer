@@ -9,7 +9,7 @@
   "dependencies": {
     "ac-countrylist": "^1.0.11",
     "ac-file-extensions": "^2.0.8",
-    "ac-ip": "^3.1.0",
+    "ac-ip": "^3.1.1",
     "chai": "^4.4.1",
     "date-and-time": "^3.1.1",
     "hashids": "^2.3.0",
@@ -19,8 +19,8 @@
   "devDependencies": {
     "ac-semantic-release": "^0.4.2",
     "c8": "^9.1.0",
-    "eslint": "^8.56.0",
-    "mocha": "^10.2.0"
+    "eslint": "^8.57.0",
+    "mocha": "^10.3.0"
   },
   "scripts": {
     "test": "mocha --reporter spec",
