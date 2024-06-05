@@ -193,7 +193,7 @@ const sanitizer = function() {
           })
         }
         else {
-          error = { message: 'fieldName_adminLevelNotSufficient', additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
+          error = { message: `${fieldName}_adminLevelNotSufficient`, additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
         }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
@@ -312,8 +312,8 @@ const sanitizer = function() {
             params: value,
             fields: _.get(field, 'properties'),
             prefix: fieldName,
-            adminLevel,
-            omitFields
+            adminLevel: _.get(field, 'adminLevel', adminLevel),
+            omitFields: _.get(field, 'omitFields', omitFields)
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
           if (_.get(check, 'error')) error = _.get(check, 'error')
