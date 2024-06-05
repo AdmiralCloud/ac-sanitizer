@@ -1,3 +1,13 @@
+<a name="4.0.10"></a>
+
+## [4.0.10](https://github.com/mmpro/ac-sanitizer/compare/v4.0.9..v4.0.10) (2024-06-05 14:05:35)
+
+
+### Bug Fix
+
+* **App:** Check adminLevel and omitFields on nested field definitions | MP | [47ed625b7bc8e903f55f1151052a44b4f5e0fb50](https://github.com/mmpro/ac-sanitizer/commit/47ed625b7bc8e903f55f1151052a44b4f5e0fb50)    
+If a nested field has omitFields or adminLevel defined, check that instead of the root values  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.9"></a>
 
 ## [4.0.9](https://github.com/mmpro/ac-sanitizer/compare/v4.0.8..v4.0.9) (2024-02-26 07:33:14)
