@@ -1,3 +1,18 @@
+<a name="4.0.12"></a>
+
+## [4.0.12](https://github.com/mmpro/ac-sanitizer/compare/v4.0.11..v4.0.12) (2024-06-11 10:48:11)
+
+
+### Bug Fix
+
+* **App:** Honor minLength for valueTypes or type array | MP | [65faba758394a4e917e337da4322f0ef9898def2](https://github.com/mmpro/ac-sanitizer/commit/65faba758394a4e917e337da4322f0ef9898def2)    
+Honor minLength for valueTypes or type array  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [8220f8fa9545df64c29ca18448addcdd09a6aa61](https://github.com/mmpro/ac-sanitizer/commit/8220f8fa9545df64c29ca18448addcdd09a6aa61)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.11"></a>
 
 ## [4.0.11](https://github.com/mmpro/ac-sanitizer/compare/v4.0.10..v4.0.11) (2024-06-05 14:21:46)
