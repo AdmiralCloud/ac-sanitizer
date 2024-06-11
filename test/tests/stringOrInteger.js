@@ -11,6 +11,7 @@ module.exports = {
       { name: 'Valid integer', type: 'integer | string', value: 123, expected:  123 },
       { name: 'Invalid - neither string nor integer', type: 'integer | string', value: ['abc'], error: 'stringOrInteger_neitherStringNorInteger' },
       { name: 'Valid - no data - ignore', type: 'integer | string' },
+      { name: 'Array with string and integer', type: 'array', valueType: 'integer | string', minLength: 1, value: [1, '2'], expected: [1,'2'] }
     ]
 
 
@@ -19,7 +20,7 @@ module.exports = {
         let fieldsToCheck = {
           params: {},
           fields: [
-            { field: 'stringOrInteger', type: _.get(test, 'type'), required: _.get(test, 'required'), minLength: _.get(test, 'minLength') }
+            { field: 'stringOrInteger', type: _.get(test, 'type'), valueType: _.get(test, 'valueType'), required: _.get(test, 'required'), minLength: _.get(test, 'minLength') }
           ]
         }
         if (_.has(test, 'value')) fieldsToCheck.params.stringOrInteger = test.value
@@ -32,7 +33,7 @@ module.exports = {
           }
         }
         else {
-          expect(_.get(r, 'params.stringOrInteger')).to.equal(_.get(test, 'expected'))
+          expect(_.get(r, 'params.stringOrInteger')).to.eql(_.get(test, 'expected'))
         }
         return done()
       })

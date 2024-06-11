@@ -268,7 +268,7 @@ const sanitizer = function() {
           _.every(value, (v, index, value) => {
             const fieldsToCheck = {
               params: {},
-              fields: [{ field: fieldName, type: _.get(field, 'valueType'), properties: _.get(field, 'properties'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
+              fields: [{ field: fieldName, type: _.get(field, 'valueType'), minLength: _.get(field, 'minLength'), properties: _.get(field, 'properties'), wildcardAllowed: _.get(field, 'wildcardAllowed') }]
             }
             _.set(fieldsToCheck, `params.${fieldName}`, v)
             const check = checkAndSanitizeValues(fieldsToCheck)
