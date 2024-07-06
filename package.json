@@ -9,7 +9,7 @@
   "dependencies": {
     "ac-countrylist": "^1.0.12",
     "ac-file-extensions": "^2.0.9",
-    "ac-ip": "^4.0.0",
+    "ac-ip": "^4.1.0",
     "chai": "^4.4.1",
     "date-and-time": "^3.3.0",
     "hashids": "^2.3.0",
