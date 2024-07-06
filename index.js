@@ -392,9 +392,11 @@ const sanitizer = function() {
         if (!_.isArray(value)) {
           checkItem =  [{ cidr: value }]
         }
-        let check = acip.checkCIDR({ cidr: checkItem })
-        if (check) {
-          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: _.get(check, 'additionalInfo') }
+        try {
+          acip.checkCIDR({ cidr: checkItem })
+        }
+        catch (e) {
+          error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
       }
       else if (field.type === 'email') {
