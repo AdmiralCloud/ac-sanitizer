@@ -1,3 +1,18 @@
+<a name="4.0.16"></a>
+
+## [4.0.16](https://github.com/mmpro/ac-sanitizer/compare/v4.0.15..v4.0.16) (2024-09-20 12:35:35)
+
+
+### Bug Fix
+
+* **App:** Fixed handling objects with property array as null. | MP | [4e6e8035a335cc57e48bcddc5faef81d9437f588](https://github.com/mmpro/ac-sanitizer/commit/4e6e8035a335cc57e48bcddc5faef81d9437f588)    
+Array within object sent as null was accepted even if nullAllowed was not set.  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [7875c76c8cbb131ab8967b1687ddf59dfd6ed1be](https://github.com/mmpro/ac-sanitizer/commit/7875c76c8cbb131ab8967b1687ddf59dfd6ed1be)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="4.0.15"></a>
 
 ## [4.0.15](https://github.com/mmpro/ac-sanitizer/compare/v4.0.14..v4.0.15) (2024-07-06 19:12:15)
