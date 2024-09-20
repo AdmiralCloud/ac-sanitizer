@@ -108,6 +108,32 @@ module.exports = {
         error: "object_nested_id_notAFiniteNumber",
       },
       {
+        name: "Object with nested properties - array as null - strict mode - should fail",
+        type: "object",
+        properties: [
+          { field: "arr", type: "array", valueType: "integer", strict: true }
+        ],
+        value: {
+          arr: null
+        },
+        error: "object_arr_nullNotAllowed",
+      },
+      {
+        name: "Object with nested properties - array as null - lenient - should remove the property",
+        type: "object",
+        properties: [
+          { field: "arr", type: "array", valueType: "integer" },
+          { field: "boo", type: "boolean" }
+        ],
+        value: {
+          arr: null,
+          boo: true
+        },
+        expected: {
+          boo: true
+        }      
+      },
+      {
         name: "Object with nested properties - missing nested property",
         type: "object",
         properties: [
@@ -115,7 +141,7 @@ module.exports = {
           { field: "enum", type: "string", enum: ["blue", "green"] },
           { field: "nested", type: "object", properties: [
             { field: 'id', type: 'integer', required: true } 
-          ]}
+          ] }
         ],
         value: {
           boo: true,

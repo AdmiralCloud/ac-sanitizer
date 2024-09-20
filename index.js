@@ -180,11 +180,20 @@ const sanitizer = function() {
       if (error) {
         // do not process other conditions
       }
-      else if (!fieldIsRequired && _.isNil(_.get(paramsToCheck, fieldName))) {
-        // do nothing -> the value is optional and not present
-      }
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
         // do nothing null is allowed and sent!
+      }
+      else if (!fieldIsRequired && _.isNil(_.get(paramsToCheck, fieldName))) {
+        // value is optional, but sent as nil/null without nullAllowed = true
+        if (_.get(field, 'strict')) {
+          error = { message: `${fieldName}_nullNotAllowed` }
+        }
+        else {
+          // remove property
+          fields = _.filter(fields, item => {
+            if (item.field !== fieldName) return item
+          })
+        }
       }
       else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
         if (omitFields) {
