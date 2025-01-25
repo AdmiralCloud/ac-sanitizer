@@ -1,3 +1,17 @@
+ 
+# [4.1.0](https://github.com/mmpro/ac-sanitizer/compare/v4.0.16..v4.1.0) (2025-01-25 10:01:18)
+
+
+### Feature
+
+* **App:** Add option to ingoreCase for string/enum | MP | [92c41c2a5b3e6634e8458acadee47fad1d5e5dc3](https://github.com/mmpro/ac-sanitizer/commit/92c41c2a5b3e6634e8458acadee47fad1d5e5dc3)    
+With ignoreCase=true enum checks are case insensitive (e.g. abc in [ABC] is valid)  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [763b5fce7a31e867424ffb9bddb4a1b721ac0d9b](https://github.com/mmpro/ac-sanitizer/commit/763b5fce7a31e867424ffb9bddb4a1b721ac0d9b)    
+Updated packages  
+Related issues:
 <a name="4.0.16"></a>
 
 ## [4.0.16](https://github.com/mmpro/ac-sanitizer/compare/v4.0.15..v4.0.16) (2024-09-20 12:35:35)
