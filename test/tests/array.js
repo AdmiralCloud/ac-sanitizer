@@ -1,4 +1,4 @@
-const _ = require('lodash')
+const { runValidationTests } = require('./helper')
 const sanitizer = require('../../index')
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     const randomValueString = sanitizer.randomValue({ type: 'array' })
 
     const baseTests = [
-      { name: 'Valid array of numbers', type: 'array', value: randomValueInt, expected: randomValueInt},
+      { name: 'Valid array of numbers', type: 'array', value: randomValueInt, expected: randomValueInt },
       { name: 'Valid array of strings', type: 'array', value: randomValueString, expected: randomValueString },
       { name: 'Invalid array', type: 'array', value: 'a', error: 'array_notAnArray' },
       { name: 'Array with enum match', type: 'array', value: ['video'], enum: ['audio', 'video'], expected: ['video'] },
@@ -41,40 +41,6 @@ module.exports = {
       { name: 'Array of strings with enum - uppercase vs lowercase - with ignoreCase', type: 'array', valueType: 'string', ignoreCase: true, value: ['ABC', 'DEF'], enum: ['abc'], expected: ['ABC'] },
     ]
 
-
-    _.forEach(baseTests, (test) => {
-      it(test.name, (done) => {
-        let fieldsToCheck = {
-          params: {
-            array: _.get(test, 'value')
-          },
-          fields: [
-            { field: 'array', type: _.get(test, 'type'), ignoreCase: _.get(test, 'ignoreCase'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize'), properties: _.get(test, "properties")}
-          ]
-        }
-        if (test.enum) {
-          _.set(fieldsToCheck, 'fields[0].enum', test.enum)
-        }
-        if (test.wildcardAllowed) {
-          _.set(fieldsToCheck, 'fields[0].wildcardAllowed', test.wildcardAllowed)
-        }
-
-        let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).to.equal(test.error)
-          if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.equal(_.get(test, 'additionalInfo'))
-          }
-        }
-        else {
-          expect(_.get(r, 'params.array')).to.eql(_.get(test, 'expected'))
-        }
-        return done()
-      })
-
-    })
-
-
-
+    runValidationTests(baseTests, 'array', { equalityCheck: 'eql' })
   }
 }

@@ -1,3 +1,4 @@
+const { runValidationTests } = require('./helper')
 const _ = require('lodash')
 const sanitizer = require('../../index')
 
@@ -64,35 +65,7 @@ module.exports = {
         numberTests.push({ name: key , tests })
       })
 
-      _.forEach(numberTests, (numberTest) => {
-        describe('Test ' + numberTest.name, function() {
-          _.forEach(numberTest.tests, (test) => {
-              it(test.name, function(done) {
-              let options = _.get(test, 'options', {})
-              let fieldsToCheck = {
-                params: {
-                  integer: _.get(test, 'value')
-                },
-                fields: [
-                  { field: 'integer', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), convert: _.get(test, 'convert'), range: _.get(test, 'range') }
-                ]
-              }
-
-              let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-              if (_.get(test, 'error')) {
-                expect(_.get(r, 'error.message')).to.equal(test.error)
-                if (_.get(test, 'additionalInfo')) {
-                  expect(_.get(r, 'error.additionalInfo')).to.equal(_.get(test, 'additionalInfo'))
-                }
-              }
-              else {
-                expect(_.get(r, 'params.integer')).to.equal(_.get(test, 'expected'))
-              }
-              return done()
-            })
-          })
-        })
-      })
+      runValidationTests(rangeTests, 'integer')
     }
 
     const manualTests = () => {
@@ -105,34 +78,8 @@ module.exports = {
         { name: 'Integer as float with convert - 60.1 - should work', type: 'integer', convert: true, value: 60.1, expected: 60 },      
       ]
       
-      _.forEach(tests, (test) => {
-        it(test.name, (done) => {
-          let fieldsToCheck = {
-            params: {
-              number: _.get(test, 'value')
-            },
-            fields: [
-              { field: 'number', type: _.get(test, 'type'), subtype: _.get(test, 'subtype'), required: _.get(test, 'required'), convert: _.get(test, 'convert'), range: _.get(test, 'range') }
-            ]
-          }
-  
-          let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-          if (_.get(r, 'error')) {
-            expect(_.get(r, 'error.message')).to.eql(test.error)
-            if (_.get(test, 'additionalInfo')) {
-              expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
-            }
-          }
-          else {
-            expect(_.get(r, 'params.number')).to.eql(_.get(test, 'expected'))
-          }
-          return done()
-        })
-  
-      })
+      runValidationTests(manualTests, 'number')
     }
-
-
 
     describe('Range tests', () => {
       rangeTests()

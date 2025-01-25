@@ -1,5 +1,4 @@
-const _ = require("lodash");
-const sanitizer = require("../../index");
+const { runValidationTests } = require('./helper')
 
 module.exports = {
   test: () => {
@@ -78,7 +77,7 @@ module.exports = {
           { field: "enum", type: "string", enum: ["blue", "green"] },
           { field: "nested", type: "object", properties: [
             { field: 'id', type: 'integer', required: true } 
-          ]}
+          ] }
         ],
         value: {
           boo: true,
@@ -96,7 +95,7 @@ module.exports = {
           { field: "enum", type: "string", enum: ["blue", "green"] },
           { field: "nested", type: "object", properties: [
             { field: 'id', type: 'integer', required: true } 
-          ]}
+          ] }
         ],
         value: {
           boo: true,
@@ -161,7 +160,7 @@ module.exports = {
           { field: "nested", type: "object", properties: [
             { field: 'setId', type: 'boolean', required: true },
             { field: 'id', type: 'integer', required: 'setId' }
-          ]}
+          ] }
         ],
         value: {
           boo: true,
@@ -189,7 +188,7 @@ module.exports = {
           { field: "nested", type: "object", properties: [
             { field: 'setId', type: 'boolean', required: true },
             { field: 'id', type: 'integer', required: 'setId' }
-          ]}
+          ] }
         ],
         value: {
           boo: true,
@@ -208,7 +207,7 @@ module.exports = {
           { field: "enum", type: "string", enum: ["blue", "green"] },
           { field: "nested", type: "object", properties: [
             { field: 'setId', type: 'boolean', required: false }
-          ]}
+          ] }
         ],
         value: {
           boo: true,
@@ -248,35 +247,8 @@ module.exports = {
           }
         },
       },
-    ];
+    ]
 
-    _.forEach(baseTests, (test) => {
-      it(test.name, (done) => {
-        let fieldsToCheck = {
-          params: {
-            object: _.get(test, "value"),
-          },
-          fields: [
-            {
-              field: "object",
-              type: _.get(test, "type"),
-              required: _.get(test, "required"),
-              properties: _.get(test, "properties"),
-            },
-          ],
-        };
-        let r = sanitizer.checkAndSanitizeValues(fieldsToCheck);
-        if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).to.equal(test.error)
-          if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
-          }
-        }
-        else {
-          expect(_.get(r, "params.object")).to.eql(_.get(test, "expected"));
-        }
-        return done();
-      });
-    });
-  },
-};
+    runValidationTests(baseTests, 'object', { equalityCheck: 'eql' })
+  }
+}

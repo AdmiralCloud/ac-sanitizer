@@ -1,5 +1,4 @@
-const _ = require('lodash')
-const sanitizer = require('../../index')
+const { runValidationTests } = require('./helper')
 
 module.exports = {
 
@@ -21,33 +20,6 @@ module.exports = {
       { name: 'Base64 string with enum - fail', type: 'base64', value: 'bXlzdHJpbmc=', convert: true, error: 'base64_notAnAllowedValue', enum: ['otherstring'] }
     ]
 
-    _.forEach(baseTests, (test) => {
-      it(test.name, (done) => {
-        let fieldsToCheck = {
-          params: {
-            base64: _.get(test, 'value')
-          },
-          fields: [
-            { field: 'base64', type: _.get(test, 'type'), convert: _.get(test, 'convert'), enum: _.get(test, 'enum') }
-          ]
-        }
-
-        let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).to.equal(test.error)
-          if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.equal(_.get(test, 'additionalInfo'))
-          }
-        }
-        else {
-          expect(_.get(r, 'params.base64')).to.eql(_.get(test, 'expected'))
-        }
-        return done()
-      })
-
-    })
-
-
-
+    runValidationTests(baseTests, 'base64', { equalityCheck: 'eql' })
   }
 }

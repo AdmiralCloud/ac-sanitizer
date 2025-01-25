@@ -1,4 +1,4 @@
-const _ = require('lodash')
+const { runValidationTests } = require('./helper')
 const sanitizer = require('../../index')
 
 module.exports = {
@@ -20,34 +20,6 @@ module.exports = {
       { name: 'Valid - uppercase vs lowercase', type: 'string', ignoreCase: true, value: 'ABC', enum: ['abc'], expected: 'ABC' },
     ]
 
-
-    _.forEach(baseTests, (test) => {
-      it(test.name, (done) => {
-        let fieldsToCheck = {
-          params: {
-            string: _.get(test, 'value')
-          },
-          fields: [
-            { field: 'string', type: _.get(test, 'type'), ignoreCase: _.get(test, 'ignoreCase'), required: _.get(test, 'required'), enum: _.get(test, 'enum'), minLength: _.get(test, 'minLength'), maxLength: _.get(test, 'maxLength'), convert: _.get(test, 'convert') }
-          ]
-        }
-
-        let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).to.equal(test.error)
-          if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
-          }
-        }
-        else {
-          expect(_.get(r, 'params.string')).to.eql(_.get(test, 'expected'))
-        }
-        return done()
-      })
-
-    })
-
-
-
+    runValidationTests(baseTests, 'string', { equalityCheck: 'eql' })
   }
 }

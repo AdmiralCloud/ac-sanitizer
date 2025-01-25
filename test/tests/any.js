@@ -1,5 +1,4 @@
-const _ = require('lodash')
-const sanitizer = require('../../index')
+const { runValidationTests } = require('./helper')
 
 module.exports = {
 
@@ -18,32 +17,6 @@ module.exports = {
       { name: 'Any - with null and nullAllowed', type: 'any', value: null, nullAllowed: true, expected: null },
     ]
 
-    _.forEach(baseTests, (test) => {
-      it(test.name, (done) => {
-        let fieldsToCheck = {
-          params: {
-            any: _.get(test, 'value')
-          },
-          fields: [
-            { field: 'any', type: _.get(test, 'type'), nullAllowed: _.get(test, 'nullAllowed') }
-          ]
-        }
-        let r = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-        if (_.get(r, 'error')) {
-          expect(_.get(r, 'error.message')).to.equal(test.error)
-          if (_.get(test, 'additionalInfo')) {
-            expect(_.get(r, 'error.additionalInfo')).to.eql(_.get(test, 'additionalInfo'))
-          }
-        }
-        else {
-          expect(_.get(r, 'params.any')).to.eql(_.get(test, 'expected'))
-        }
-        return done()
-      })
-
-    })
-
-
-
+    runValidationTests(baseTests, 'any', { equalityCheck: 'eql' })
   }
 }
