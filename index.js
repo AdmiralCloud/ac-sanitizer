@@ -56,7 +56,7 @@ const sanitizer = function() {
    */
 
   const checkAndSanitizeValues = (params) => {
-    const paramsToCheck = params.params
+    let paramsToCheck = _.omitBy(params.params, _.isUndefined)
     if (!_.isObject(paramsToCheck)) return { error: { message: 'params_required' } }
     let fields = params.fields
     if (!_.isArray(fields) || !_.size(fields)) return { error: { message: 'fields_required' } }
@@ -107,7 +107,7 @@ const sanitizer = function() {
         else {
           if (_.get(field, 'required')) {
             fieldIsRequired = true
-            if (!_.has(paramsToCheck, fieldName)) {
+            if (!_.has(paramsToCheck, fieldName) || _.isUndefined(_.get(paramsToCheck, fieldName))) {
               error = { message: 'field_' + fieldName + '_required' }
             }
           }
@@ -211,7 +211,6 @@ const sanitizer = function() {
           //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
           if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
           if (field.type === 'number') field.type = 'integer'
-
 
           if (field.type !== 'float' && _.get(field, 'convert')) {
             // make sure the value is integer
@@ -544,8 +543,6 @@ const sanitizer = function() {
     if (_.get(check, 'error')) return res.badRequest(_.get(check, 'error'))
     else params = _.get(check, 'params')
     */
-
-
 
   /**
    * Return a random value for a given type
