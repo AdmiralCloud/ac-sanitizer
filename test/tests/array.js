@@ -36,7 +36,9 @@ module.exports = {
         properties: [{ field: 'p1', type: 'string' }], 
         value: [{ p1: 'isAString', p2: 'shouldBeRemoved' }, { p1: 'isAString2', p2: 'shouldBeRemoved2' }],
         expected: [{ p1: 'isAString' },  { p1: 'isAString2' }]
-      }
+      },
+      { name: 'Array of strings with enum - uppercase vs lowercase', type: 'array', valueType: 'string', value: ['ABC'], enum: ['abc'], error: 'array_notAnAllowedValue' },
+      { name: 'Array of strings with enum - uppercase vs lowercase - with ignoreCase', type: 'array', valueType: 'string', ignoreCase: true, value: ['ABC', 'DEF'], enum: ['abc'], expected: ['ABC'] },
     ]
 
 
@@ -47,7 +49,7 @@ module.exports = {
             array: _.get(test, 'value')
           },
           fields: [
-            { field: 'array', type: _.get(test, 'type'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize'), properties: _.get(test, "properties")}
+            { field: 'array', type: _.get(test, 'type'), ignoreCase: _.get(test, 'ignoreCase'), required: _.get(test, 'required'), valueType: _.get(test, 'valueType'), minSize: _.get(test, 'minSize'), maxSize: _.get(test, 'maxSize'), properties: _.get(test, "properties")}
           ]
         }
         if (test.enum) {
