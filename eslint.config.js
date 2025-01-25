@@ -22,7 +22,8 @@ module.exports = [
       'no-useless-escape': 'off',
       'standard/no-callback-literal': 'off',
       'new-cap': 'off',
-      'no-console': ['error', { allow: ['error'] }]
+      'no-console': ['error', { allow: ['error'] }],
+      "no-multiple-empty-lines": ["error", { "max": 1 }]
     },
     ignores: ['temp.js', 'config/*']
   }
