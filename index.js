@@ -497,27 +497,24 @@ const sanitizer = function() {
       }
 
       if (!error && allowedValues && value) {
-        let orgValue
-        if (field.ignoreCase && _.isString(value)) {
-          // convert value and allowesValues to lowercase
-          orgValue = _.clone(orgValue)
-          value = _.toLower(value)
-          allowedValues = _.map(allowedValues, _.toLower)
+        
+        const compareIgnoreCase = (a, b) => {
+          return a.toLowerCase() === b.toLowerCase()
         }
+        const compareFn = field.ignoreCase ? compareIgnoreCase : _.isEqual 
 
         if (_.isArray(value)) {
-          if (_.size(value) && !_.size(_.intersectionWith(value, allowedValues, _.isEqual))) {
+          if (_.size(value) && !_.size(_.intersectionWith(value, allowedValues, compareFn))) {
             error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
           }
           // remove non-matching entries, but do not fail/return error
-          value = _.intersectionWith(value, allowedValues, _.isEqual)
+          value = _.intersectionWith(value, allowedValues, compareFn)
           _.set(paramsToCheck, fieldName, value)
         }
-        else if (_.indexOf(allowedValues, value) < 0) {
+        else if (_.findIndex(allowedValues, val => compareFn(val, value)) < 0) {
           error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
         }
 
-        if (orgValue) value = orgValue
       } 
 
       if (error && field.customErrorMessage) _.set(error, 'message', field.customErrorMessage)
