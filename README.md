@@ -110,7 +110,7 @@ number | | Should no be used - use integer, long, short, floag
 ratio | | x:y
 rgb | | Check for valid RGB value (r,g,b) or (r%,g%, b%)
 short | | 0 - 2^15
-string | minLength (int), maxLength (int)| 
+string | minLength (int), maxLength (int), ignoreCase | With ignoreCase=true enum checks are case insensitive (e.g. abc in ['ABC'] is valid) 
 url| protocols, require_tld, require_protocol | Default values: protocols ['http', 'https'], required_tld true, require_protocol true
 
 # Examples

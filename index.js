@@ -497,6 +497,14 @@ const sanitizer = function() {
       }
 
       if (!error && allowedValues && value) {
+        let orgValue
+        if (field.ignoreCase && _.isString(value)) {
+          // convert value and allowesValues to lowercase
+          orgValue = _.clone(orgValue)
+          value = _.toLower(value)
+          allowedValues = _.map(allowedValues, _.toLower)
+        }
+
         if (_.isArray(value)) {
           if (_.size(value) && !_.size(_.intersectionWith(value, allowedValues, _.isEqual))) {
             error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
@@ -508,6 +516,8 @@ const sanitizer = function() {
         else if (_.indexOf(allowedValues, value) < 0) {
           error = { message: fieldName + '_notAnAllowedValue', additionalInfo: { value } }
         }
+
+        if (orgValue) value = orgValue
       } 
 
       if (error && field.customErrorMessage) _.set(error, 'message', field.customErrorMessage)

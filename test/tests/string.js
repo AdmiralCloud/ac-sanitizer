@@ -16,6 +16,8 @@ module.exports = {
       { name: 'Valid from enum', type: 'string', value: 'play', enum: ['play', 'pause'], expected: 'play' },
       { name: 'Invalid from enum', type: 'string', value: 'stop', enum: ['play', 'pause'], error: 'string_notAnAllowedValue', additionalInfo: { value: 'stop' } },
       { name: 'Valid string from randomValue function', type: 'string', value: randomValue, expected: randomValue },
+      { name: 'Invalid - uppercase vs lowercase', type: 'string', value: 'ABC', enum: ['abc'], error: 'string_notAnAllowedValue' },
+      { name: 'Valid - uppercase vs lowercase', type: 'string', ignoreCase: true, value: 'ABC', enum: ['abc'], expected: 'ABC' },
     ]
 
 
@@ -26,7 +28,7 @@ module.exports = {
             string: _.get(test, 'value')
           },
           fields: [
-            { field: 'string', type: _.get(test, 'type'), required: _.get(test, 'required'), enum: _.get(test, 'enum'), minLength: _.get(test, 'minLength'), maxLength: _.get(test, 'maxLength'), convert: _.get(test, 'convert') }
+            { field: 'string', type: _.get(test, 'type'), ignoreCase: _.get(test, 'ignoreCase'), required: _.get(test, 'required'), enum: _.get(test, 'enum'), minLength: _.get(test, 'minLength'), maxLength: _.get(test, 'maxLength'), convert: _.get(test, 'convert') }
           ]
         }
 
