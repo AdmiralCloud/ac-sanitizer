@@ -1,4 +1,23 @@
 
+## [4.1.2](https://github.com/mmpro/ac-sanitizer/compare/v4.1.1..v4.1.2) (2025-01-25 13:17:56)
+
+
+### Bug Fix
+
+* **App:** Minor adjustments | MP | [3c24752c112d8e92e66f2fd6c262005c616edc3c](https://github.com/mmpro/ac-sanitizer/commit/3c24752c112d8e92e66f2fd6c262005c616edc3c)    
+Make sure to remove undefined properties  
+Related issues:
+### Tests
+
+* **App:** Refactored tests | MP | [fcaf656fbeccfd8228038e64b4e520514faf31a8](https://github.com/mmpro/ac-sanitizer/commit/fcaf656fbeccfd8228038e64b4e520514faf31a8)    
+Use a generic test helper to reduce duplications  
+Related issues:
+### Chores
+
+* **App:** Improved ESLint | MP | [79b6879917027c07e9df6d6a44b51c199780a289](https://github.com/mmpro/ac-sanitizer/commit/79b6879917027c07e9df6d6a44b51c199780a289)    
+Improved ESLint  
+Related issues:
+
 ## [4.1.1](https://github.com/mmpro/ac-sanitizer/compare/v4.1.0..v4.1.1) (2025-01-25 10:27:26)
 
 
