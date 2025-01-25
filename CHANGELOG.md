@@ -1,3 +1,17 @@
+
+## [4.1.1](https://github.com/mmpro/ac-sanitizer/compare/v4.1.0..v4.1.1) (2025-01-25 10:27:26)
+
+
+### Bug Fix
+
+* **App:** Improved ignoreCase function | MP | [eff1e68bb1b5e32fa448e4c58645a4f06c0b0d15](https://github.com/mmpro/ac-sanitizer/commit/eff1e68bb1b5e32fa448e4c58645a4f06c0b0d15)    
+Improved ignoreCase function  
+Related issues:
+### Tests
+
+* **App:** Added test | MP | [7674a680a189868b6d20a2307a5f73b66b62b2f6](https://github.com/mmpro/ac-sanitizer/commit/7674a680a189868b6d20a2307a5f73b66b62b2f6)    
+Added test for arrays with ignoreCase  
+Related issues:
  
 # [4.1.0](https://github.com/mmpro/ac-sanitizer/compare/v4.0.16..v4.1.0) (2025-01-25 10:01:18)
 
