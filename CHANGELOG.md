@@ -1,3 +1,17 @@
+ 
+# [4.2.0](https://github.com/mmpro/ac-sanitizer/compare/v4.1.4..v4.2.0) (2025-05-09 07:40:18)
+
+
+### Feature
+
+* **App:** Option to anonymize IPs | MP | [6f7a63787467221db3e61a0c7ba27089518ee30f](https://github.com/mmpro/ac-sanitizer/commit/6f7a63787467221db3e61a0c7ba27089518ee30f)    
+Added option to anonymize IPs (v4 and v6), set number of octets/segments and optional replacement character  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [aba6b031d7b07cda75720e86a65c6fbe7606c5e9](https://github.com/mmpro/ac-sanitizer/commit/aba6b031d7b07cda75720e86a65c6fbe7606c5e9)    
+Updated packages  
+Related issues:
 
 ## [4.1.4](https://github.com/mmpro/ac-sanitizer/compare/v4.1.3..v4.1.4) (2025-04-19 18:34:41)
 
