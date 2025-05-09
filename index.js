@@ -390,9 +390,38 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'ip') {
-        const version = _.get(field, 'version')
+        let version = _.get(field, 'version')
         if (version && !validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
         if (!validator.isIP(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (field.anonymize) {
+          version = version || validator.isIP(value, '6') ? 6 : 4
+          const replacement = field.replacement || '0'
+          if (version === 4 && (field.anonymize >= 1 && field.anonymize <= 4)) {
+            const octets = value.split('.')
+            for (let i = 4; i > 4 - field.anonymize; i--) {
+              octets[i-1] = replacement
+            }
+            value = octets.join('.')
+          }
+          else if (version === 6) {
+            const segmentsToKeep = Math.max(0, 8 - (field.anonymize * 2))
+            if (segmentsToKeep === 0) {
+              value = "::"
+            }
+            if (value.includes("::")) {
+              const parts = value.split("::")
+              const frontPart = parts[0].split(":")
+              const keptSegments = frontPart.slice(0, segmentsToKeep)
+              value = keptSegments.length > 0 ? keptSegments.join(":") + "::" : "::"
+            }
+            else {
+              const segments = value.split(":")
+              const keptSegments = segments.slice(0, segmentsToKeep)              
+              value = keptSegments.join(":") + "::"
+            }
+          }
+          _.set(paramsToCheck, fieldName, value)
+        }
       }
       else if (field.type === 'cidr') {
         // cidr can be a plain value of an array of objects with properties cidr and optional type

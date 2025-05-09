@@ -103,7 +103,7 @@ integer | | 0 - 2^31
 integer \| string |  | Value can be an integer OR a string
 iso-639-1 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
 iso-639-2 | convert | With convert = nativeName you can retrieve the native name of the given ISO string
-ip | version | version can be "4" or "6", defaults to "4"
+ip | version, anonymize, replacement | version can be "4" or "6", defaults to "4", anonymize can be the number of octets/segments to anonymize, replacement (optional) defines the replacement character for IPv4 (defaults to 0)
 long | | 0 - 2^63
 object | properties | Use properties to define object structure, properties is equal to fields array
 number | | Should no be used - use integer, long, short, floag
@@ -145,6 +145,24 @@ let fieldsToCheck = {
 }
 let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
 
+```
+
+## IP
+```
+// CIDR Example
+
+const sanitizer = require('ac-sanitizer')
+
+let fieldsToCheck = {
+  params: {
+    ip: '8.8.8.8/32
+  },
+  fields: [
+    { field: 'ip, type: 'ip', anonymize: 4 }
+  ]
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+// ip -> 8.8.0.0
 ```
 
 ## Objects
