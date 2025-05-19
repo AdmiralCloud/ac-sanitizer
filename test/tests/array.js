@@ -37,9 +37,11 @@ module.exports = {
         value: [{ p1: 'isAString', p2: 'shouldBeRemoved' }, { p1: 'isAString2', p2: 'shouldBeRemoved2' }],
         expected: [{ p1: 'isAString' },  { p1: 'isAString2' }]
       },
-      { name: 'Array of strings with enum - uppercase vs lowercase', type: 'array', valueType: 'string', value: ['ABC'], enum: ['abc'], error: 'array_notAnAllowedValue' },
-      { name: 'Array of strings with enum - uppercase vs lowercase - with ignoreCase', type: 'array', valueType: 'string', ignoreCase: true, value: ['ABC', 'DEF'], enum: ['abc'], expected: ['ABC'] },
-    ]
+      { name: 'Array of strings with enum - uppercase vs lowercase', type: 'array', valueType: 'string', value: ['ABC'], enum: ['abc'], error: 'array_atLeastOneValueFailed' },
+      { name: 'Array of strings with enum - uppercase vs lowercase - with ignoreCase', type: 'array', valueType: 'string', ignoreCase: true, value: ['ABC', 'DEF'], enum: ['abc'], error: 'array_atLeastOneValueFailed' },
+      { name: 'Array of urls with https', type: 'array', valueType: 'url', value: ['https://www.admiralcloud.com'], expected: ['https://www.admiralcloud.com'] },
+      { name: 'Array of urls with http and https - only https is allowed', type: 'array', valueType: 'url', protocols: ['https'], value: ['http://www.admiralcloud.com'], error: 'array_atLeastOneValueFailed' },
+  ]
 
     runValidationTests(baseTests, 'array', { equalityCheck: 'eql' })
   }
