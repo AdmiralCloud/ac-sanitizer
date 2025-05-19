@@ -1,3 +1,17 @@
+
+## [4.2.1](https://github.com/mmpro/ac-sanitizer/compare/v4.2.0..v4.2.1) (2025-05-19 06:12:14)
+
+
+### Bug Fix
+
+* **App:** Fixed and improved valueType with array | MP | [0bfa6135e4588a5f24a11ab2a3024d608fe8aa21](https://github.com/mmpro/ac-sanitizer/commit/0bfa6135e4588a5f24a11ab2a3024d608fe8aa21)    
+If you set valueType for an array, we will now check all properties and return an error is there is any issue.  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [699b8a2a7a4d41cc7f58318e400937dfba21cf30](https://github.com/mmpro/ac-sanitizer/commit/699b8a2a7a4d41cc7f58318e400937dfba21cf30)    
+Updated packages  
+Related issues:
  
 # [4.2.0](https://github.com/mmpro/ac-sanitizer/compare/v4.1.4..v4.2.0) (2025-05-09 07:40:18)
 
