@@ -69,7 +69,7 @@ const sanitizer = function() {
     _.some(fields, (field) => {
       // FIELD definitions
       let fieldName = field.field
-      let minLength = _.isNumber(field.minLength) ? field.minLength : 2
+      let minLength = _.isNumber(field.minLength) ? field.minLength : 0
       let allowedValues = _.get(field, 'enum', _.get(field, 'isMemberOf.group'))
       if (_.isString(allowedValues)) {
         // placeholder for enum:
