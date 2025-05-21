@@ -1,3 +1,19 @@
+ 
+# [5.0.0](https://github.com/mmpro/ac-sanitizer/compare/v4.2.1..v5.0.0) (2025-05-21 15:57:54)
+
+
+### Bug Fix
+
+* **App:** Do not require minLength of 2 chars for strings | MP | [ff2c0d4c453725cfe3f6ecd84ca5160bd907b9b1](https://github.com/mmpro/ac-sanitizer/commit/ff2c0d4c453725cfe3f6ecd84ca5160bd907b9b1)    
+If you want to set minLength, you can still do so, but default for string is 0 = no minLength  
+Related issues:
+### Tests
+
+* **App:** Fixed test | MP | [0d335b956b012023bbe6f3214d2d961ff8baa04a](https://github.com/mmpro/ac-sanitizer/commit/0d335b956b012023bbe6f3214d2d961ff8baa04a)    
+Fixed test  
+Related issues:
+## BREAKING CHANGES
+* **App:** MinLength of 2 chars for strings is no longer hardcoded/required
 
 ## [4.2.1](https://github.com/mmpro/ac-sanitizer/compare/v4.2.0..v4.2.1) (2025-05-19 06:12:14)
 
