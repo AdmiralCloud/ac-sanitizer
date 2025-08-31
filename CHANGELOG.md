@@ -1,3 +1,17 @@
+
+## [5.0.1](https://github.com/mmpro/ac-sanitizer/compare/v5.0.0..v5.0.1) (2025-08-31 12:35:43)
+
+
+### Bug Fix
+
+* **App:** Add option unique for arrays | MP | [2484bd72c6ca31610361056eb05dd6b0b05bf3c3](https://github.com/mmpro/ac-sanitizer/commit/2484bd72c6ca31610361056eb05dd6b0b05bf3c3)    
+If unique is true, duplicates will be removed from array  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [f4689d9b3bdbde42098fef0827cad691dd5d651f](https://github.com/mmpro/ac-sanitizer/commit/f4689d9b3bdbde42098fef0827cad691dd5d651f)    
+Updated packages  
+Related issues:
  
 # [5.0.0](https://github.com/mmpro/ac-sanitizer/compare/v4.2.1..v5.0.0) (2025-05-21 15:57:54)
 
