@@ -87,6 +87,7 @@ iso-639 | { iso-639-2: 'tlh', translations: [] } -> tlh (with convert=iso-639-2)
 Type | Options | Remarks
 --- | --- | --- |
 any | | Any can be string, integer, boolean, object or array - it will be automatically detected.
+array | unique | If unique=true, duplicate entries will be removed from array
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
 boolean | | 
 cidr | | Check CIDR, see example

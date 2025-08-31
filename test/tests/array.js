@@ -41,6 +41,8 @@ module.exports = {
       { name: 'Array of strings with enum - uppercase vs lowercase - with ignoreCase', type: 'array', valueType: 'string', ignoreCase: true, value: ['ABC', 'DEF'], enum: ['abc'], error: 'array_atLeastOneValueFailed' },
       { name: 'Array of urls with https', type: 'array', valueType: 'url', value: ['https://www.admiralcloud.com'], expected: ['https://www.admiralcloud.com'] },
       { name: 'Array of urls with http and https - only https is allowed', type: 'array', valueType: 'url', protocols: ['https'], value: ['http://www.admiralcloud.com'], error: 'array_atLeastOneValueFailed' },
+      { name: 'Array with unique values', type: 'array', value: ['a', 'b', 'a'], unique: true, expected: ['a', 'b'] },
+      { name: 'Array with unique objects', type: 'array', value: [{ a: 1, x: true }, { a: 2, x: true }, { a: 2, x: false }, { a: 1, x: true }], unique: true, expected: [{ a: 1, x: true }, { a: 2, x: true }, { a: 2, x: false }] },
   ]
 
     runValidationTests(baseTests, 'array', { equalityCheck: 'eql' })

@@ -300,6 +300,8 @@ const sanitizer = function() {
         if (!error && _.isFunction(_.get(schema, 'verify'))) {
           error = schema.verify(value)
         }
+
+        if (field.unique) _.set(paramsToCheck, fieldName, _.uniqWith(value, _.isEqual))
       }
       else if (field.type === 'object') {
         if (!_.isPlainObject(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
