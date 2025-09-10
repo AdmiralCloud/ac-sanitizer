@@ -254,6 +254,15 @@ const sanitizer = function() {
           }
           else error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
         }
+        if (_.get(field, 'convert') === 'splitSpaceSeparated') {
+          try {
+            const decoded = decodeURIComponent(value)
+            _.set(paramsToCheck, fieldName, decoded.split(' ').filter(Boolean))
+          }
+          catch(e) {
+            error = { message: fieldName + '_couldNotDecodeURI' }
+          }
+        }
       }
       else if (field.type === 'boolean') {
         // GET params are strings -> try to make the boolean

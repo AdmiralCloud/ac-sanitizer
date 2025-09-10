@@ -80,6 +80,7 @@ integer | 60.1 -> 60 | Convert incoming number to integer - this way you can mak
 string | Hello Developer -> Hello (with maxLength = 5) | Reduce string to max length
 base64 | SGVsbG8= -> Hello | Convert base64 encoded string to UTF-8 string
 iso-639 | { iso-639-2: 'tlh', translations: [] } -> tlh (with convert=iso-639-2) | Returns only the select property for the ISO-639 object
+splitSpaceSeparated | user_read%20user_write -> ['user_read', 'user_write'] | Converts an URL encoded, space separated string into an array (e.g. for OAuth scopes)
 
 
 ## Available types
@@ -111,7 +112,7 @@ number | | Should no be used - use integer, long, short, floag
 ratio | | x:y
 rgb | | Check for valid RGB value (r,g,b) or (r%,g%, b%)
 short | | 0 - 2^15
-string | minLength (int), maxLength (int), ignoreCase | With ignoreCase=true enum checks are case insensitive (e.g. abc in ['ABC'] is valid) 
+string | minLength (int), maxLength (int), ignoreCase, splitSpaceSeparated | With ignoreCase=true enum checks are case insensitive (e.g. abc in ['ABC'] is valid) 
 url| protocols, require_tld, require_protocol | Default values: protocols ['http', 'https'], required_tld true, require_protocol true
 
 # Examples

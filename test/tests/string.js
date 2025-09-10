@@ -20,6 +20,7 @@ module.exports = {
       { name: 'Valid - uppercase vs lowercase', type: 'string', ignoreCase: true, value: 'ABC', enum: ['abc'], expected: 'ABC' },
       { name: 'Invalid - value too short', type: 'string', minLength: 5, value: 'ABC', error: 'string_stringTooShort_minLength5' },
       { name: 'Valid - value is longer than 5 chars', type: 'string', minLength: 5, value: 'ABCDEF', expected: 'ABCDEF' },
+      { name: 'Valid - value is a URL encoded, space separated string', type: 'string', convert: 'splitSpaceSeparated', value: 'one%20two%20three', expected: ['one', 'two', 'three'] }
     ]
 
     runValidationTests(baseTests, 'string', { equalityCheck: 'eql' })
