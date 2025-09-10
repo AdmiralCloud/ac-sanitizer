@@ -1,3 +1,17 @@
+ 
+# [5.1.0](https://github.com/mmpro/ac-sanitizer/compare/v5.0.1..v5.1.0) (2025-09-10 10:32:21)
+
+
+### Feature
+
+* **App:** Add option to convert a string with splitSpaceSeparated | MP | [d5974ea9286ceaa9cd6a3273e713ccf002cc7e7c](https://github.com/mmpro/ac-sanitizer/commit/d5974ea9286ceaa9cd6a3273e713ccf002cc7e7c)    
+Converts an URL encoded, space separated string into an array (e.g. for OAuth scopes)  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [3f832431642e3ae5705eb45f1c823ba5f29d9d50](https://github.com/mmpro/ac-sanitizer/commit/3f832431642e3ae5705eb45f1c823ba5f29d9d50)    
+Updated packages  
+Related issues:
 
 ## [5.0.1](https://github.com/mmpro/ac-sanitizer/compare/v5.0.0..v5.0.1) (2025-08-31 12:35:43)
 
