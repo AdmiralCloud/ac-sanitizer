@@ -1,3 +1,12 @@
+
+## [5.1.1](https://github.com/mmpro/ac-sanitizer/compare/v5.1.0..v5.1.1) (2025-09-10 13:15:18)
+
+
+### Bug Fix
+
+* **App:** Fixed error handling for UUID | MP | [c743db90d23e58513d0e785dbf8fc982ee041f9a](https://github.com/mmpro/ac-sanitizer/commit/c743db90d23e58513d0e785dbf8fc982ee041f9a)    
+Check that value is a string before checking for valid UUID  
+Related issues:
  
 # [5.1.0](https://github.com/mmpro/ac-sanitizer/compare/v5.0.1..v5.1.0) (2025-09-10 10:32:21)
 
