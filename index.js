@@ -472,7 +472,8 @@ const sanitizer = function() {
       }
       else if (field.type === 'uuid') {
         const uuidVersion = _.get(field, 'uuidVersion', 4)
-        if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { uuidVersion } }
+        if (!_.isString(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        else if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { uuidVersion } }
       }
       else if (field.type === 'gps') {
         // test value for a combination of LAT, LNG and optional third, comma-separated distance value (as number)
