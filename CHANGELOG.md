@@ -1,3 +1,17 @@
+ 
+# [5.2.0](https://github.com/mmpro/ac-sanitizer/compare/v5.1.3..v5.2.0) (2025-09-20 14:05:48)
+
+
+### Feature
+
+* **App:** Add new option optional  | MP | [1363c1fce0495baba599acd52409893d6484fa13](https://github.com/mmpro/ac-sanitizer/commit/1363c1fce0495baba599acd52409893d6484fa13)    
+With field property optional, fields are removed from payload if they are nil  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [b01e620c2d20b17155cfb29408dca292806a4969](https://github.com/mmpro/ac-sanitizer/commit/b01e620c2d20b17155cfb29408dca292806a4969)    
+Updated packages  
+Related issues:
 
 ## [5.1.3](https://github.com/mmpro/ac-sanitizer/compare/v5.1.2..v5.1.3) (2025-09-19 05:27:36)
 
