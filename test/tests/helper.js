@@ -31,6 +31,10 @@ const runValidationTests = (tests, fieldName, { equalityCheck = 'equal', adminLe
           expect(_.get(r, 'error.additionalInfo'))[equalityCheck](_.get(test, 'additionalInfo'))
         }
       } 
+      else if (_.get(test, 'optional') && _.isNil(_.get(test, 'value'))) {
+        // if field is optional and value is nil, the field is removed from params
+        expect(_.get(r, `params.${fieldName}`)).to.be.undefined
+      }
       else {
         expect(_.get(r, `params.${fieldName}`))[equalityCheck](_.get(test, 'expected'))
       }

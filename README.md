@@ -60,6 +60,7 @@ convert | [boolean OR string] | Some types can be automatically converted (e.g. 
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
 strict | [boolean] | For objects only - if true and payload contains a property not defined, an error will be returned.
 nullAllowed | [boolean] | If true, sending NULL is allowed.
+optional | [boolean] | If true and the value is nil, the property is removed/omitted from payload. Helpful to cleanup response payloads.
 
 [^1]: The path must be set with the parent propery as root, e.g. the actual field is settings.video.width, in property video the condition is then just "width" not the full path.
 

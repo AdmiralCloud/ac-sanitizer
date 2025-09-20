@@ -180,6 +180,12 @@ const sanitizer = function() {
       if (error) {
         // do not process other conditions
       }
+      else if (_.get(field, 'optional') && _.isNil(value)) {
+        // optional field can be removed from (response) payload if value is nil
+        fields  = _.filter(fields, item => {
+          if (item.field !== fieldName) return item
+        })
+      }
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
         // do nothing null is allowed and sent!
       }
