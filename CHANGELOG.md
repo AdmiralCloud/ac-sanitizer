@@ -1,3 +1,12 @@
+
+## [5.2.1](https://github.com/mmpro/ac-sanitizer/compare/v5.2.0..v5.2.1) (2025-10-27 19:11:12)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [2a3bde6187fa5bec09ee7cc879958353e3eb77cc](https://github.com/mmpro/ac-sanitizer/commit/2a3bde6187fa5bec09ee7cc879958353e3eb77cc)    
+Package updates  
+Related issues:
  
 # [5.2.0](https://github.com/mmpro/ac-sanitizer/compare/v5.1.3..v5.2.0) (2025-09-20 14:05:48)
 
