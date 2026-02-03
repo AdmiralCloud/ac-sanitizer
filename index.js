@@ -617,7 +617,7 @@ const sanitizer = function() {
       case 'short':
         return _.random(Math.pow(2,10), Math.pow(2,15))
       case 'long':
-        return _.random(Math.pow(2,16), Math.pow(2,63))
+        return _.random(Math.pow(2,16), Math.pow(2,53)-1)
       case 'iso-639-1':
         return _.get(_.sample(_.filter(iso639, 'iso-639-1')), 'iso-639-1')
       case 'iso-639-2':

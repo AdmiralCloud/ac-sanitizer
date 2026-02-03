@@ -3,8 +3,7 @@ const _ = require('lodash')
 const sanitizer = require('../../index')
 
 module.exports = {
-
-  test:  () => {
+  test: () => {
     const rangeTests = () => {
       const ranges = {
         integer: [0, Math.pow(2, 31)],
@@ -12,28 +11,40 @@ module.exports = {
         short: [0, Math.pow(2, 15)],
         float: [0, Math.pow(2, 31)]
       }
+      
       const baseTests = [
         { name: 'Random valid value - usedValue - should work', type: 'integer', value: 'random' },
         { name: 'Max valid value (range) - usedValue - should work', type: 'integer', value: 'maxValue' },
         { name: 'Max valid value (range) +1 - usedValue - should fail', type: 'integer', value: 'maxValue+1', error: 'integer_outOfRange' },
-        { name: 'Min valid value (range) - usedValue - should work', type: 'integer', value: 0, expected: 0 },
-        { name: 'Min valid value (range) -1 - usedValue - should fail', type: 'integer', value: -1, error: 'integer_outOfRange' },
+        { name: 'Min valid value (range) - usedValue - should work', type: 'integer', value: 'minValue', requiresSigned: true },
+        { name: 'Min valid value (range) -1 - usedValue - should fail', type: 'integer', value: 'minValue-1', error: 'integer_outOfRange', requiresSigned: true },
         { name: 'Min valid signed value (range) - usedValue - should work', type: 'integer', subtype: 'signed', value: 'maxValueNeg' },
         { name: 'Min valid signed value (range) - usedValue - should fail', type: 'integer', subtype: 'signed', value: 'maxValueNeg-1', error: 'integer_outOfRange' },
         { name: 'Valid signed integer - usedValue - should work', type: 'integer', subtype: 'signed', value: 'randomNeg' },
-        { name: 'Integer as string - A - should fail', type: 'integer', value: 'A', error: 'integer_notAFiniteNumber' },      
+        { name: 'Integer as string - A - should fail', type: 'integer', value: 'A', error: 'integer_notAFiniteNumber' }
       ]
 
-      const numberTests = []
-      _.forEach(ranges, (range, key) => {  
+      _.forEach(ranges, (range, key) => {
         const randomValue = sanitizer.randomValue({ type: key })
-
         let minValue = _.first(range)
         let maxValue = _.last(range)
         let tests = []
+        
         _.forEach(baseTests, (testTemplate) => {
           let test = _.clone(testTemplate)
-
+          
+          // Skip tests that require signed when minValue is negative
+          if (test.requiresSigned && minValue < 0 && !test.subtype) {
+            test.subtype = 'signed'
+          }
+          
+          if (test.value === 'minValue') {
+            test.value = minValue
+            test.expected = test.value
+          }
+          if (test.value === 'minValue-1') {
+            test.value = minValue - 1
+          }
           if (test.value === 'maxValue') {
             test.value = maxValue
             test.expected = test.value
@@ -56,29 +67,32 @@ module.exports = {
           if (test.value === 'maxValueNeg-1') {
             test.value = -(maxValue + 10)
           }
+          
+          // Update error messages to use the correct type
+          if (test.error) {
+            test.error = test.error.replace('integer_', key + '_')
+          }
+          
           test.name = key + ' - ' + test.name.replace('usedValue', test.value)
           test.type = key
-
-          //console.log(34, test)
           tests.push(test)
         })
-        numberTests.push({ name: key , tests })
+        
+        runValidationTests(tests, key)
       })
-
-      runValidationTests(rangeTests, 'integer')
     }
 
     const manualTests = () => {
       const tests = [
-        { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0,2147483648], value: -1 } },
+        { name: 'Unsigned float -1 - should fail and display additionalInfo', type: 'float', value: -1, error: 'number_outOfRange', additionalInfo: { range: [0, Math.pow(2, 31)], value: -1 } },
         { name: 'Array of numbers with one entry', type: 'integer', value: [123], error: 'number_notAFiniteNumber' },
         { name: 'Array of numbers with multiple entries', type: 'integer', value: [123, 456], error: 'number_notAFiniteNumber' },
         { name: 'Check float', type: 'float', range: [-90, 90], value: 53.15, expected: 53.15 },
-        { name: 'Integer as float - 60.1 - should fail', type: 'integer', value: 60.1, error: 'number_typeIncorrect' },      
-        { name: 'Integer as float with convert - 60.1 - should work', type: 'integer', convert: true, value: 60.1, expected: 60 },      
+        { name: 'Integer as float - 60.1 - should fail', type: 'integer', value: 60.1, error: 'number_typeIncorrect' },
+        { name: 'Integer as float with convert - 60.1 - should work', type: 'integer', convert: true, value: 60.1, expected: 60 }
       ]
       
-      runValidationTests(manualTests, 'number')
+      runValidationTests(tests, 'number', { equalityCheck: 'eql' })
     }
 
     describe('Range tests', () => {
