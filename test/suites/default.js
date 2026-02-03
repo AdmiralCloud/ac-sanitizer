@@ -78,7 +78,7 @@ module.exports = {
       tests.boolOrInteger.test()
     })
 
-    describe('COUNTY', function() {
+    describe('COUNTRY', function() {
       this.timeout(timeOut)
       tests.country.test()
     })
