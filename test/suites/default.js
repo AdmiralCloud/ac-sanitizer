@@ -52,7 +52,6 @@ module.exports = {
       tests.fqdn.test()
     })
 
-
     describe('EMAIL', function() {
       this.timeout(timeOut)
       tests.email.test()

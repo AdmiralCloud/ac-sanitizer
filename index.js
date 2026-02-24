@@ -37,8 +37,8 @@ const sanitizer = function() {
   ]
 
   const getTypeMapping = (type, property) => {
-    let query = {}
-    if (type) query.type = type
+    const query = {}
+    if (type) { query.type = type }
     const result = _.find(typeMapping, query)
     return (property ? _.get(result, property) : result)
   }
@@ -56,20 +56,20 @@ const sanitizer = function() {
    */
 
   const checkAndSanitizeValues = (params) => {
-    let paramsToCheck = _.omitBy(params.params, _.isUndefined)
-    if (!_.isObject(paramsToCheck)) return { error: { message: 'params_required' } }
+    const paramsToCheck = _.omitBy(params.params, _.isUndefined)
+    if (!_.isObject(paramsToCheck)) { return { error: { message: 'params_required' } } }
     let fields = params.fields
-    if (!_.isArray(fields) || !_.size(fields)) return { error: { message: 'fields_required' } }
+    if (!_.isArray(fields) || !_.size(fields)) { return { error: { message: 'fields_required' } } }
 
     const adminLevel = _.get(params, 'adminLevel')
     const omitFields = _.get(params, 'omitFields')
 
     let error
-    let deprecated = []
+    const deprecated = []
     _.some(fields, (field) => {
       // FIELD definitions
-      let fieldName = field.field
-      let minLength = _.isNumber(field.minLength) ? field.minLength : 0
+      const fieldName = field.field
+      const minLength = _.isNumber(field.minLength) ? field.minLength : 0
       let allowedValues = _.get(field, 'enum', _.get(field, 'isMemberOf.group'))
       if (_.isString(allowedValues)) {
         // placeholder for enum:
@@ -92,14 +92,14 @@ const sanitizer = function() {
       let value = _.get(paramsToCheck, fieldName)
 
       // mark deprecated fields
-      if (_.get(field, 'deprecated') && value) deprecated.push(fieldName)
+      if (_.get(field, 'deprecated') && value) { deprecated.push(fieldName) }
 
       // REQUIREMENTS
       let fieldIsRequired = false
       if (_.has(field, 'required')) {
         if (!_.isBoolean(field.required)) {
           // conditional field
-          if (_.get(paramsToCheck, field.required)) fieldIsRequired = true
+          if (_.get(paramsToCheck, field.required)) { fieldIsRequired = true }
           if (_.get(paramsToCheck, field.required) && !_.has(paramsToCheck, fieldName)) {
             error = { message: 'field_' + fieldName + '_required', additionalInfo: { condition: _.get(field, 'required') } }        
           }
@@ -183,7 +183,7 @@ const sanitizer = function() {
       else if (_.get(field, 'optional') && _.isNil(value)) {
         // optional field can be removed from (response) payload if value is nil
         fields  = _.filter(fields, item => {
-          if (item.field !== fieldName) return item
+          if (item.field !== fieldName) { return item }
         })
       }
       else if (field.nullAllowed && _.isNull(_.get(paramsToCheck, fieldName))) {
@@ -197,14 +197,14 @@ const sanitizer = function() {
         else {
           // remove property
           fields = _.filter(fields, item => {
-            if (item.field !== fieldName) return item
+            if (item.field !== fieldName) { return item }
           })
         }
       }
       else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
         if (omitFields) {
           fields = _.filter(fields, item => {
-            if (item.field !== fieldName) return item
+            if (item.field !== fieldName) { return item }
           })
         }
         else {
@@ -212,11 +212,11 @@ const sanitizer = function() {
         }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
-        if (typeof value != 'number' || isNaN(value)) error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') }
+        if (typeof value !== 'number' || isNaN(value)) { error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') } }
         else {
           //  Number types - usually we allow only non-negative values (unsigned). If you want negative values, set type.subtype 'signed'
-          if (field.type === 'number') console.error('SANITIZER - number should not be used, be more precise')
-          if (field.type === 'number') field.type = 'integer'
+          if (field.type === 'number') { console.error('SANITIZER - number should not be used, be more precise') }
+          if (field.type === 'number') { field.type = 'integer' }
 
           if (field.type !== 'float' && _.get(field, 'convert')) {
             // make sure the value is integer
@@ -232,19 +232,19 @@ const sanitizer = function() {
           }
           else {
             const subtype = _.get(field, 'subtype')
-            let ranges = {
+            const ranges = {
               integer: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)], 
               long: [(subtype === 'signed' ? -(Math.pow(2,53) - 1) : 0), Math.pow(2, 53)-1],
               short: [(subtype === 'signed' ? -Math.pow(2, 15) : 0), Math.pow(2, 15)],
               float: [(subtype === 'signed' ? -Math.pow(2, 31) : 0), Math.pow(2, 31)]
             }
-            let range = _.get(field, 'range', _.get(ranges, field.type, ranges.integer))
+            const range = _.get(field, 'range', _.get(ranges, field.type, ranges.integer))
 
-            if (field.type === 'float') value = parseFloat(value)
-            else value = parseInt(value)
+            if (field.type === 'float') { value = parseFloat(value) }
+            else { value = parseInt(value) }
 
-            let lowest = _.first(range)
-            let highest = _.size(range) === 2 && _.last(range)
+            const lowest = _.first(range)
+            const highest = _.size(range) === 2 && _.last(range)
             if (value < lowest || (highest && value > highest)) {
               error = { message: fieldName + '_outOfRange', additionalInfo: { range, value } }
             }
@@ -252,20 +252,20 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'string') {
-        if (!_.isString(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
-        else if (value.length < minLength) error = { message: fieldName + '_stringTooShort_minLength' + minLength }
+        if (!_.isString(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
+        else if (value.length < minLength) { error = { message: fieldName + '_stringTooShort_minLength' + minLength } }
         else if (_.get(field, 'maxLength') && value.length > _.get(field, 'maxLength')) {
           if (_.get(field, 'convert')) {
             _.set(paramsToCheck, fieldName, value.substring(0, _.get(field, 'maxLength')))
           }
-          else error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength }
+          else { error = { message: fieldName + '_stringTooLong_maxLength' + field.maxLength } }
         }
         if (_.get(field, 'convert') === 'splitSpaceSeparated') {
           try {
             const decoded = decodeURIComponent(value)
             _.set(paramsToCheck, fieldName, decoded.split(' ').filter(Boolean))
           }
-          catch(e) {
+          catch {
             error = { message: fieldName + '_couldNotDecodeURI' }
           }
         }
@@ -274,8 +274,8 @@ const sanitizer = function() {
         // GET params are strings -> try to make the boolean
         if (_.indexOf(['true', 'false'], value) > -1) {
           // convert string to bool params
-          if (value === 'true') value = true
-          else value = false
+          if (value === 'true') { value = true }
+          else { value = false }
           _.set(paramsToCheck, fieldName, value)
         }
         if (!_.isBoolean(value)) {
@@ -283,12 +283,13 @@ const sanitizer = function() {
         }
       }
       else if (field.type === 'array') {
-        if (!_.isArray(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
-        else if (field.maxSize && _.size(value) > field.maxSize) error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } }
-        else if (field.minSize && _.size(value) < field.minSize) error = { message: fieldName + '_minSizeBoundary', additionalInfo: { minSize: field.minSize } }
+        if (!_.isArray(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
+        else if (field.maxSize && _.size(value) > field.maxSize) { error = { message: fieldName + '_maxSizeBoundary', additionalInfo: { maxSize: field.maxSize } } }
+        else if (field.minSize && _.size(value) < field.minSize) { error = { message: fieldName + '_minSizeBoundary', additionalInfo: { minSize: field.minSize } } }
         else if (field.valueType) {
-          // very value of the array must be of this type
+          // every value of the array must be of this type
           _.every(value, (v, index, value) => {
+            // eslint-disable-next-line no-unused-vars
             const { valueType, type, ...fieldProps } = field
 
             const fieldsToCheck = {
@@ -316,10 +317,10 @@ const sanitizer = function() {
           error = schema.verify(value)
         }
 
-        if (field.unique) _.set(paramsToCheck, fieldName, _.uniqWith(value, _.isEqual))
+        if (field.unique) { _.set(paramsToCheck, fieldName, _.uniqWith(value, _.isEqual)) }
       }
       else if (field.type === 'object') {
-        if (!_.isPlainObject(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (!_.isPlainObject(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
 
         const schema = field.schema
         if (!error && _.isFunction(_.get(schema, 'verify'))) {
@@ -328,9 +329,9 @@ const sanitizer = function() {
 
         // strict mode -> if true, then check payload against definition and return error if a non-defined property is in payload
         if (_.get(field, 'strict')) {
-          let propsInPayload = _.keys(value)
-          let definedProps = _.map(_.get(field, 'properties'), 'field')
-          let diff = _.difference(propsInPayload, definedProps)
+          const propsInPayload = _.keys(value)
+          const definedProps = _.map(_.get(field, 'properties'), 'field')
+          const diff = _.difference(propsInPayload, definedProps)
           if (_.size(diff)) {
             error = { message: fieldName + '_containsInvalidProperties', additionalInfo: { properties: diff } }
           }
@@ -347,18 +348,18 @@ const sanitizer = function() {
             omitFields: _.get(field, 'omitFields', omitFields)
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
-          if (_.get(check, 'error')) error = _.get(check, 'error')
-          else _.set(paramsToCheck, fieldName, _.get(check, 'params'))
+          if (_.get(check, 'error')) { error = _.get(check, 'error') }
+          else { _.set(paramsToCheck, fieldName, _.get(check, 'params')) }
         }
       }
       else if (field.type === 'base64') {
-        if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
+        if (!_.isString(value)) { error = { message: fieldName + '_mustBeString' } }
         else {
           // value must have a length that can be divided by 4, otherwise it needs padding with =
           // https://en.wikipedia.org/wiki/Base64#Padding
-          let l = value.length
-          let pad = l % 4
-          if (!validator.isBase64(_.padEnd(value, (l+pad), '='))) error = { message: fieldName + '_notABase64String' }
+          const l = value.length
+          const pad = l % 4
+          if (!validator.isBase64(_.padEnd(value, (l+pad), '='))) { error = { message: fieldName + '_notABase64String' } }
           else if (field.convert) {
             value = Buffer.from(value, 'base64').toString()
             _.set(paramsToCheck, fieldName, value)
@@ -367,7 +368,7 @@ const sanitizer = function() {
               value = JSON.parse(value)
               _.set(paramsToCheck, fieldName, value)
             } 
-            catch(e) {
+            catch {
               // ignore
             }
           }
@@ -387,7 +388,7 @@ const sanitizer = function() {
       }
       else if (_.startsWith(field.type, 'iso-639')) {
         // use exact fields (iso-639-1,iso-639-2) or just iso-639 which tries to match iso-639-2 and falls back to iso-639-1
-        let query = {}
+        const query = {}
         let iso
         if (field.type === 'iso-639') {
           iso = _.find(iso639, { 'iso-639-2': value }) || _.find(iso639, { 'iso-639-1': value })
@@ -396,26 +397,26 @@ const sanitizer = function() {
           _.set(query, field.type, value)
           iso = _.find(iso639, query)  
         }
-        if (!iso) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (!iso) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         else if (field.convert) {
           _.set(paramsToCheck, fieldName, _.get(iso, field.convert))
         }
       }
       else if (field.type === 'hashids') {
-        if (!_.isString(value)) error = { message: fieldName + '_mustBeString' }
+        if (!_.isString(value)) { error = { message: fieldName + '_mustBeString' } }
         const hashids = new Hashids()
         value = hashids.decode(value)
 
-        if (!_.isArray(value)) error = { message: fieldName + '_decodedValue_notAnArray' }
-        else if (!_.size(value)) error = { message: fieldName + '_decodedValue_arrayIsEmpty' }
+        if (!_.isArray(value)) { error = { message: fieldName + '_decodedValue_notAnArray' } }
+        else if (!_.size(value)) { error = { message: fieldName + '_decodedValue_arrayIsEmpty' } }
         else {
           _.set(paramsToCheck, fieldName, value)
         }
       }
       else if (field.type === 'ip') {
         let version = _.get(field, 'version')
-        if (version && !validator.isIP(value, version)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } }
-        if (!validator.isIP(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (version && !validator.isIP(value, version)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { version } } }
+        if (!validator.isIP(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         if (field.anonymize) {
           version = version || validator.isIP(value, '6') ? 6 : 4
           const replacement = field.replacement || '0'
@@ -455,69 +456,69 @@ const sanitizer = function() {
         try {
           acip.checkCIDR({ cidr: checkItem })
         }
-        catch (e) {
+        catch {
           error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
         }
       }
       else if (field.type === 'email') {
-        if (!validator.isEmail(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (!validator.isEmail(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
       }
       else if (field.type === 'url') {
         const protocols = _.get(field, 'protocols', ['http', 'https'])
         const require_tld = _.get(field, 'require_tld', true)
         const require_protocol = _.get(field, 'require_protocol', true)
-        if (!validator.isURL(value, { protocols, require_tld, require_protocol })) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (!validator.isURL(value, { protocols, require_tld, require_protocol })) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
       }
       else if (field.type === 'fqdn') {
         if (_.get(field, 'wildcardAllowed')) {
-          if (!validator.isFQDN(value.replace('*.', ''))) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+          if (!validator.isFQDN(value.replace('*.', ''))) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         }
         else {
-          if (!validator.isFQDN(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+          if (!validator.isFQDN(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         }
       }
       else if (field.type === 'uuid') {
         const uuidVersion = _.get(field, 'uuidVersion', 4)
-        if (!_.isString(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
-        else if (!validator.isUUID(value, uuidVersion)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { uuidVersion } }
+        if (!_.isString(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
+        else if (!validator.isUUID(value, uuidVersion)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage'), additionalInfo: { uuidVersion } } }
       }
       else if (field.type === 'gps') {
         // test value for a combination of LAT, LNG and optional third, comma-separated distance value (as number)
         const parts = _.split(value, ',')
-        if (_.size(parts) < 2 || _.size(parts) > 3) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (_.size(parts) < 2 || _.size(parts) > 3) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         else {
           const lat = parseFloat(parts[0])
-          if (_.isNaN(lat)) error = { message: fieldName + '_latitudeMustBeANumber' }
-          if (lat > 90 || lat < -90) error = { message: fieldName + '_latitudeOutOfRange', additionalInfo: { range: [-90, 90] } }
+          if (_.isNaN(lat)) { error = { message: fieldName + '_latitudeMustBeANumber' } }
+          if (lat > 90 || lat < -90) { error = { message: fieldName + '_latitudeOutOfRange', additionalInfo: { range: [-90, 90] } } }
           const lon = parseFloat(parts[1])
-          if (_.isNaN(lon)) error = { message: fieldName + '_longitudeMustBeANumber' }
-          if (lon > 180 || lon < -180) error = { message: fieldName + '_longitudeOutOfRange', additionalInfo: { range: [-180, 180] } }
+          if (_.isNaN(lon)) { error = { message: fieldName + '_longitudeMustBeANumber' } }
+          if (lon > 180 || lon < -180) { error = { message: fieldName + '_longitudeOutOfRange', additionalInfo: { range: [-180, 180] } } }
           const distance = parseInt(parts[2])
-          if (distance && _.isNaN(distance)) error = { message: fieldName + '_distanceMustBeANumber' }  
+          if (distance && _.isNaN(distance)) { error = { message: fieldName + '_distanceMustBeANumber' } }  
         }
       }
       else if (field.type === 'ratio') {
         // ratio looks like this NUMBER:NUMBER
-        let parts = _.split(value, ':')
-        if (_.size(parts) !== 2) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
-        let ratio = _.map(parts, parseFloat)
-        if (!_.isNumber(_.first(ratio)) || _.isNaN(_.first(ratio))) error = { message:  fieldName + '_firstValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
-        else if (!_.isNumber(_.last(ratio)) || _.isNaN(_.last(ratio))) error = { message: fieldName + '_lastValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } }
-        else _.set(paramsToCheck, fieldName, ratio)
+        const parts = _.split(value, ':')
+        if (_.size(parts) !== 2) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
+        const ratio = _.map(parts, parseFloat)
+        if (!_.isNumber(_.first(ratio)) || _.isNaN(_.first(ratio))) { error = { message:  fieldName + '_firstValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } } }
+        else if (!_.isNumber(_.last(ratio)) || _.isNaN(_.last(ratio))) { error = { message: fieldName + '_lastValueOfRatioMustBeAFiniteNumber', additionalInfo: { ratio } } }
+        else { _.set(paramsToCheck, fieldName, ratio) }
       }
       else if (field.type === 'rgb') {
         const includePercentValues = _.get(field, 'includePercentValues', true)
         // rgb can be a string like 10,100,255 or like rgb(10,100,255)
-        if (!_.startsWith(value, 'rgb')) value = `rgb(${value})`
-        if (!validator.isRgbColor(value, includePercentValues)) error = { message: fieldName + '_notAValidRGB', additionalInfo: { includePercentValues } }
+        if (!_.startsWith(value, 'rgb')) { value = `rgb(${value})` }
+        if (!validator.isRgbColor(value, includePercentValues)) { error = { message: fieldName + '_notAValidRGB', additionalInfo: { includePercentValues } } }
       }
       else if (field.type === 'hexColor') {
-        if (!validator.isHexColor(value)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+        if (!validator.isHexColor(value)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
       }
       else if (field.type === 'date') {
         // Checks if the given value is a valid date or datetime
         if (field.dateFormat) {
-          if (!date.isValid(value, field.dateFormat)) error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') }
+          if (!date.isValid(value, field.dateFormat)) { error = { message: fieldName + '_' + getTypeMapping(field.type, 'errorMessage') } }
         }
         else {
           // test multiple formats
@@ -569,14 +570,14 @@ const sanitizer = function() {
 
       } 
 
-      if (error && field.customErrorMessage) _.set(error, 'message', field.customErrorMessage)
-      if (error && field.informSupport) _.set(error, 'additionalInfo.informSupport', true)
+      if (error && field.customErrorMessage) { _.set(error, 'message', field.customErrorMessage) }
+      if (error && field.informSupport) { _.set(error, 'additionalInfo.informSupport', true) }
 
       return error
     })
 
-    let sanitizedParams = _.pick(paramsToCheck, _.map(fields, 'field'))
-    if (params.prefix && error) _.set(error, 'message', params.prefix + '_' + _.get(error, 'message', ''))
+    const sanitizedParams = _.pick(paramsToCheck, _.map(fields, 'field'))
+    if (params.prefix && error) { _.set(error, 'message', params.prefix + '_' + _.get(error, 'message', '')) }
 
     return {
       params: (params.ignoreUnknownFields ? paramsToCheck : sanitizedParams),
@@ -623,7 +624,7 @@ const sanitizer = function() {
       case 'iso-639-2':
         return _.get(_.sample(_.filter(iso639, 'iso-639-2')), 'iso-639-2')
       case 'array': {
-        let arr = []
+        const arr = []
         for (let i=0; i<size; i+=1) {
           if (valueType === 'integer') {
             arr.push(_.random(100))

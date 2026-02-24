@@ -12,5 +12,5 @@ if (testMode) {
   _.set(suite, 2, require('./suites/localTest'))
 }
 
-if (testMode) suite[2].testsuite()
-else suite[1].testsuite()
+if (testMode) { suite[2].testsuite() }
+else { suite[1].testsuite() }
