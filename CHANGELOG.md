@@ -1,3 +1,29 @@
+ 
+# [6.0.0](https://github.com/mmpro/ac-sanitizer/compare/v5.2.5..v6.0.0) (2026-02-24 19:06:52)
+
+
+### Bug Fix
+
+* **Misc:** Package updates | MP | [42f4f4f5cbad0ec4e86d4b339aa3feb634198315](https://github.com/mmpro/ac-sanitizer/commit/42f4f4f5cbad0ec4e86d4b339aa3feb634198315)    
+Package updates incl ESLint 9 -> 10 and lint fixes  
+Related issues:
+### Tests
+
+* **App:** Fixed tests | MP | [0c934c269dfa079ea373c1bc695e62769e861018](https://github.com/mmpro/ac-sanitizer/commit/0c934c269dfa079ea373c1bc695e62769e861018)    
+Bring back and fix number tests  
+Related issues:
+### Style
+
+* **Misc:** Typo fix | MP | [e6b2e68dbf3f48a1756b5926f26e99894ca30285](https://github.com/mmpro/ac-sanitizer/commit/e6b2e68dbf3f48a1756b5926f26e99894ca30285)    
+Typo fix for test  
+Related issues:
+### Chores
+
+* **Misc:** Add permission to workflow | MP | [d211629fb28b3846b232c301ae483e1ebb9b9a37](https://github.com/mmpro/ac-sanitizer/commit/d211629fb28b3846b232c301ae483e1ebb9b9a37)    
+Add permission to workflow  
+Related issues:
+## BREAKING CHANGES
+* **Misc:** Requires minimum Node 20+
 
 ## [5.2.5](https://github.com/mmpro/ac-sanitizer/compare/v5.2.4..v5.2.5) (2026-02-03 08:24:52)
 
