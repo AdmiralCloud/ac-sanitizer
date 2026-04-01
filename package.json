@@ -13,7 +13,7 @@
     "chai": "^4.5.0",
     "date-and-time": "^4.4.0",
     "hashids": "^2.3.0",
-    "lodash": "^4.18.0",
+    "lodash": "^4.17.21",
     "validator": "^13.15.26"
   },
   "devDependencies": {
