@@ -1,4 +1,16 @@
 
+## [6.0.3](https://github.com/mmpro/ac-sanitizer/compare/v6.0.2..v6.0.3) (2026-04-01 15:31:40)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [821929117847c14ecb445f28e851c248543c13d7](https://github.com/mmpro/ac-sanitizer/commit/821929117847c14ecb445f28e851c248543c13d7)    
+Package updates
+### Chores
+
+* **App:** Remove Node 20 from Github action | MP | [a2e8886175c56b7e047ddeac1a1ff12b452a7cee](https://github.com/mmpro/ac-sanitizer/commit/a2e8886175c56b7e047ddeac1a1ff12b452a7cee)    
+Use Node 22 and 24 for Github actions
+
 ## [6.0.2](https://github.com/mmpro/ac-sanitizer/compare/v6.0.1..v6.0.2) (2026-03-21 11:30:30)
 
 
