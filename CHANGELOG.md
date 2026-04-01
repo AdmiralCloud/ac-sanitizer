@@ -1,4 +1,13 @@
 
+## [6.0.4](https://github.com/mmpro/ac-sanitizer/compare/v6.0.3..v6.0.4) (2026-04-01 15:36:34)
+
+
+### Bug Fix
+
+* **App:** Rollback to lodash 4.17.21 | MP | [6c388f69b413e20b4d77e379ebdefb2eea5b5bf0](https://github.com/mmpro/ac-sanitizer/commit/6c388f69b413e20b4d77e379ebdefb2eea5b5bf0)    
+Lodash 4.18.0 was marked as bad release.  
+Related issues:
+
 ## [6.0.3](https://github.com/mmpro/ac-sanitizer/compare/v6.0.2..v6.0.3) (2026-04-01 15:31:40)
 
 
