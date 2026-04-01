@@ -29,3 +29,4 @@ report.xml
 .jenkins.conf
 localTest.js
 .nyc_output
+.claude
