@@ -1,3 +1,11 @@
+## [6.0.7](https://github.com/mmpro/ac-sanitizer/compare/v6.0.6..v6.0.7) (2026-04-24 19:06:20)
+
+
+### Bug Fix
+
+
+* **App:** Package updates | MP | [024b188bfed5ec61d1b0b8105f61150dfe626c1e](https://github.com/mmpro/ac-sanitizer/commit/024b188bfed5ec61d1b0b8105f61150dfe626c1e)    
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 ## [6.0.6](https://github.com/mmpro/ac-sanitizer/compare/v6.0.5..v6.0.6) (2026-04-17 07:55:05)
 
 
