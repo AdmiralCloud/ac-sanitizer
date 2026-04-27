@@ -49,7 +49,7 @@ const sanitizer = function() {
    *
    * @param params.params OBJECT params object (e.g. from body paylod) to sanitize (example { id: 1, user: 'tom' })
    * @param params.fields ARRAY array of field definitions
-   * @param params.adminLevel INT level of the requesting user, will be compared against field's adminLevel
+   * @param params.adminLevel INT DEPRECATED level of the requesting user, will be compared against field's adminLevel
    *
    * @param return.error OBJECT returned error message (if there is an error)
    * @param return.params OBJECT returned sanitized object (invalid keys are removed)
@@ -61,7 +61,7 @@ const sanitizer = function() {
     let fields = params.fields
     if (!_.isArray(fields) || !_.size(fields)) { return { error: { message: 'fields_required' } } }
 
-    const adminLevel = _.get(params, 'adminLevel')
+    const adminLevel = _.get(params, 'adminLevel') // DEPRECATED, use iamPermissions instead
     const userPermissions = _.compact(_.get(params, 'userPermissions', []))
     const omitFields = _.get(params, 'omitFields')
 
@@ -202,7 +202,8 @@ const sanitizer = function() {
           })
         }
       }
-      else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
+      else if (_.get(field, 'adminLevel') && !(_.get(field, 'iamPermissions') && _.size(userPermissions)) && adminLevel < _.get(field, 'adminLevel')) {
+        console.warn('SANITIZER - adminLevel is deprecated for field %s, please migrate to iamPermissions', fieldName)
         if (omitFields) {
           fields = _.filter(fields, item => {
             if (item.field !== fieldName) { return item }

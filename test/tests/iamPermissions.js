@@ -51,6 +51,28 @@ module.exports = {
       return done()
     })
 
+    it('Field with both adminLevel and iamPermissions - userPermissions available -> iamPermissions wins, adminLevel is ignored', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { title: 'Hello' },
+        fields: [{ field: 'title', type: 'string', adminLevel: 100, iamPermissions: ['media.read'] }],
+        adminLevel: 0,  // would fail adminLevel check
+        userPermissions: ['media.read']
+      })
+      expect(r.error).to.be.undefined
+      expect(r.params.title).to.equal('Hello')
+      return done()
+    })
+
+    it('Field with both adminLevel and iamPermissions - no userPermissions -> falls back to adminLevel', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { title: 'Hello' },
+        fields: [{ field: 'title', type: 'string', adminLevel: 100, iamPermissions: ['media.read'] }],
+        adminLevel: 0  // no userPermissions -> adminLevel check applies
+      })
+      expect(r.error.message).to.equal('title_adminLevelNotSufficient')
+      return done()
+    })
+
     it('Field with iamPermissions - no userPermissions provided -> check is skipped, field is included', (done) => {
       const r = sanitizer.checkAndSanitizeValues({
         params: { title: 'Hello' },
