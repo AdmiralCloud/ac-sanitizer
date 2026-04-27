@@ -69,7 +69,7 @@ module.exports = {
           type: 'object',
           properties: [
             { field: 'level', type: 'integer' },
-            { field: 'secret', type: 'string', iamPermissions: 'settings.admin' }
+            { field: 'secret', type: 'string', iamPermissions: ['settings.admin'] }
           ]
         }],
         userPermissions: ['settings.admin']
@@ -87,7 +87,7 @@ module.exports = {
           type: 'object',
           properties: [
             { field: 'level', type: 'integer' },
-            { field: 'secret', type: 'string', iamPermissions: 'settings.admin' }
+            { field: 'secret', type: 'string', iamPermissions: ['settings.admin'] }
           ]
         }],
         userPermissions: ['media.read'],
@@ -96,6 +96,94 @@ module.exports = {
       expect(r.error).to.be.undefined
       expect(r.params.settings.level).to.equal(5)
       expect(r.params.settings.secret).to.be.undefined
+      return done()
+    })
+    it('Deeply nested object field with iamPermissions - user has permission -> field is included', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { settings: { nested: { level: 5, secret: 'topsecret' } } },
+        fields: [{
+          field: 'settings',
+          type: 'object',
+          properties: [{
+            field: 'nested',
+            type: 'object',
+            properties: [
+              { field: 'level', type: 'integer' },
+              { field: 'secret', type: 'string', iamPermissions: ['settings.admin'] }
+            ]
+          }]
+        }],
+        userPermissions: ['settings.admin']
+      })
+      expect(r.error).to.be.undefined
+      expect(r.params.settings.nested.secret).to.equal('topsecret')
+      return done()
+    })
+
+    it('Deeply nested object field with iamPermissions - user lacks permission and omitFields true -> field is omitted', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { settings: { nested: { level: 5, secret: 'topsecret' } } },
+        fields: [{
+          field: 'settings',
+          type: 'object',
+          properties: [{
+            field: 'nested',
+            type: 'object',
+            properties: [
+              { field: 'level', type: 'integer' },
+              { field: 'secret', type: 'string', iamPermissions: ['settings.admin'] }
+            ]
+          }]
+        }],
+        userPermissions: ['media.read'],
+        omitFields: true
+      })
+      expect(r.error).to.be.undefined
+      expect(r.params.settings.nested.level).to.equal(5)
+      expect(r.params.settings.nested.secret).to.be.undefined
+      return done()
+    })
+
+    it('Array of objects with iamPermissions - user has permission -> field is included in all items', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { items: [{ name: 'foo', secret: 'a' }, { name: 'bar', secret: 'b' }] },
+        fields: [{
+          field: 'items',
+          type: 'array',
+          valueType: 'object',
+          properties: [
+            { field: 'name', type: 'string' },
+            { field: 'secret', type: 'string', iamPermissions: ['media.admin'] }
+          ]
+        }],
+        userPermissions: ['media.admin']
+      })
+      expect(r.error).to.be.undefined
+      expect(r.params.items[0].secret).to.equal('a')
+      expect(r.params.items[1].secret).to.equal('b')
+      return done()
+    })
+
+    it('Array of objects with iamPermissions - user lacks permission and omitFields true -> field is omitted from all items', (done) => {
+      const r = sanitizer.checkAndSanitizeValues({
+        params: { items: [{ name: 'foo', secret: 'a' }, { name: 'bar', secret: 'b' }] },
+        fields: [{
+          field: 'items',
+          type: 'array',
+          valueType: 'object',
+          properties: [
+            { field: 'name', type: 'string' },
+            { field: 'secret', type: 'string', iamPermissions: ['media.admin'] }
+          ]
+        }],
+        userPermissions: ['media.read'],
+        omitFields: true
+      })
+      expect(r.error).to.be.undefined
+      expect(r.params.items[0].name).to.equal('foo')
+      expect(r.params.items[0].secret).to.be.undefined
+      expect(r.params.items[1].name).to.equal('bar')
+      expect(r.params.items[1].secret).to.be.undefined
       return done()
     })
   }

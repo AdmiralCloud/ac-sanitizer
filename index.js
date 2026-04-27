@@ -62,7 +62,7 @@ const sanitizer = function() {
     if (!_.isArray(fields) || !_.size(fields)) { return { error: { message: 'fields_required' } } }
 
     const adminLevel = _.get(params, 'adminLevel')
-    const userPermissions = _.get(params, 'userPermissions')
+    const userPermissions = _.compact(_.get(params, 'userPermissions', []))
     const omitFields = _.get(params, 'omitFields')
 
     let error
@@ -212,15 +212,15 @@ const sanitizer = function() {
           error = { message: `${fieldName}_adminLevelNotSufficient`, additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
         }
       }
-      else if (_.get(field, 'iamPermissions') && userPermissions) {
-        const required = _.castArray(field.iamPermissions)
-        if (!_.intersection(userPermissions, required).length) {
-          if (omitFields) {
-            fields = _.filter(fields, item => item.field !== fieldName)
-          }
-          else {
-            error = { message: `${fieldName}_iamPermissionNotSufficient`, additionalInfo: { required } }
-          }
+      else if (_.get(field, 'iamPermissions') && _.size(userPermissions) && !_.size(_.intersection(userPermissions, field.iamPermissions))) {
+        if (!_.isArray(field.iamPermissions)) {
+          console.error('SANITIZER - iamPermissions must be an array, field %s', fieldName)
+        }
+        if (omitFields) {
+          fields = _.filter(fields, item => item.field !== fieldName)
+        }
+        else {
+          error = { message: `${fieldName}_iamPermissionNotSufficient`, additionalInfo: { required: field.iamPermissions } }
         }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
@@ -306,11 +306,14 @@ const sanitizer = function() {
 
             const fieldsToCheck = {
               params: {},
-              fields: [{ 
-                field: fieldName, 
-                type: valueType, 
+              fields: [{
+                field: fieldName,
+                type: valueType,
                 ...fieldProps
-              }]
+              }],
+              adminLevel,
+              omitFields,
+              userPermissions
             }
             _.set(fieldsToCheck, `params.${fieldName}`, v)
             const check = checkAndSanitizeValues(fieldsToCheck)
