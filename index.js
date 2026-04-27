@@ -62,6 +62,7 @@ const sanitizer = function() {
     if (!_.isArray(fields) || !_.size(fields)) { return { error: { message: 'fields_required' } } }
 
     const adminLevel = _.get(params, 'adminLevel')
+    const userPermissions = _.get(params, 'userPermissions')
     const omitFields = _.get(params, 'omitFields')
 
     let error
@@ -211,6 +212,17 @@ const sanitizer = function() {
           error = { message: `${fieldName}_adminLevelNotSufficient`, additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
         }
       }
+      else if (_.get(field, 'iamPermissions') && userPermissions) {
+        const required = _.castArray(field.iamPermissions)
+        if (!_.intersection(userPermissions, required).length) {
+          if (omitFields) {
+            fields = _.filter(fields, item => item.field !== fieldName)
+          }
+          else {
+            error = { message: `${fieldName}_iamPermissionNotSufficient`, additionalInfo: { required } }
+          }
+        }
+      }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
         if (typeof value !== 'number' || isNaN(value)) { error = { message: fieldName + '_' + getTypeMapping('integer', 'errorMessage') } }
         else {
@@ -345,7 +357,8 @@ const sanitizer = function() {
             fields: _.get(field, 'properties'),
             prefix: fieldName,
             adminLevel: _.get(field, 'adminLevel', adminLevel),
-            omitFields: _.get(field, 'omitFields', omitFields)
+            omitFields: _.get(field, 'omitFields', omitFields),
+            userPermissions
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
           if (_.get(check, 'error')) { error = _.get(check, 'error') }

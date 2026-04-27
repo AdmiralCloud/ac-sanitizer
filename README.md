@@ -26,6 +26,29 @@ let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
 ```
 
 ```
+// IAM PERMISSIONS EXAMPLE
+// Fields can be protected by IAM permissions. The user must have at least one of the
+// listed permissions (OR logic). If userPermissions is not provided, the check is skipped.
+
+const sanitizer = require('ac-sanitizer')
+
+let fieldsToCheck = {
+  params: {
+    title: 'My Media',
+    internalNote: 'confidential'
+  },
+  fields: [
+    { field: 'title', type: 'string' },
+    { field: 'internalNote', type: 'string', iamPermissions: ['media.admin', 'media.write'] }  // array, at least one must match
+  ],
+  userPermissions: ['media.read'],  // user does not have media.admin or media.write
+  omitFields: true                  // omit instead of returning an error
+}
+let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+// result: { params: { title: 'My Media' } }  -> internalNote is silently removed
+```
+
+```
 // COMPLEX EXAMPLE WITH NESTED PROPERTIES AND CONDITIONAL REQUIREMENTS
 
 const sanitizer = require('ac-sanitizer')
@@ -55,7 +78,8 @@ type | string | Type of the field to sanitize, see below for available values
 required | [boolean OR string] | Set to true if required or set a path[^1] to a param (if that param is set, this value is required)
 enum | [array OR string] | Optional list of allowed values. You can a string placeholder for certain standard lists (see below)
 adminLevel | [integer] | Optional adminLevel required for this field
-omitFields | [boolean] | If adminLevel is set and you do not have the proper adminLevel the sanitizer will just omit the field (and not return an error) if omitFields is true
+iamPermissions | [array] | Optional list of IAM permissions required to access this field. At least one permission must match (OR logic). If `userPermissions` is not provided to `checkAndSanitizeValues`, the check is skipped.
+omitFields | [boolean] | If adminLevel/iamPermissions is set and the user does not have sufficient access, the sanitizer will just omit the field (and not return an error) if omitFields is true
 convert | [boolean OR string] | Some types can be automatically converted (e.g. base64 to string)
 valueType | [string] | Use it to sanitize values of an array by defining the allowed type here
 strict | [boolean] | For objects only - if true and payload contains a property not defined, an error will be returned.
