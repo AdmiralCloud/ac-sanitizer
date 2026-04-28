@@ -1,5 +1,6 @@
 module.exports = {
   any: require('./any'),
+  iamPermissions: require('./iamPermissions'),
   array: require('./array'),
   base64: require('./base64'),
   bool: require('./bool'),

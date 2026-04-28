@@ -12,6 +12,11 @@ module.exports = {
       tests.error.test()
     })
 
+    describe('IAM PERMISSIONS', function() {
+      this.timeout(timeOut)
+      tests.iamPermissions.test()
+    })
+
     describe('ANY', function() {
       this.timeout(timeOut)
       tests.any.test()

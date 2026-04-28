@@ -49,7 +49,7 @@ const sanitizer = function() {
    *
    * @param params.params OBJECT params object (e.g. from body paylod) to sanitize (example { id: 1, user: 'tom' })
    * @param params.fields ARRAY array of field definitions
-   * @param params.adminLevel INT level of the requesting user, will be compared against field's adminLevel
+   * @param params.adminLevel INT DEPRECATED level of the requesting user, will be compared against field's adminLevel
    *
    * @param return.error OBJECT returned error message (if there is an error)
    * @param return.params OBJECT returned sanitized object (invalid keys are removed)
@@ -61,7 +61,8 @@ const sanitizer = function() {
     let fields = params.fields
     if (!_.isArray(fields) || !_.size(fields)) { return { error: { message: 'fields_required' } } }
 
-    const adminLevel = _.get(params, 'adminLevel')
+    const adminLevel = _.get(params, 'adminLevel') // DEPRECATED, use iamPermissions instead
+    const userPermissions = _.compact(_.get(params, 'userPermissions', []))
     const omitFields = _.get(params, 'omitFields')
 
     let error
@@ -201,7 +202,8 @@ const sanitizer = function() {
           })
         }
       }
-      else if (_.get(field, 'adminLevel') && adminLevel < _.get(field, 'adminLevel')) {
+      else if (_.get(field, 'adminLevel') && !(_.get(field, 'iamPermissions') && _.size(userPermissions)) && adminLevel < _.get(field, 'adminLevel')) {
+        console.warn('SANITIZER - adminLevel is deprecated for field %s, please migrate to iamPermissions', fieldName)
         if (omitFields) {
           fields = _.filter(fields, item => {
             if (item.field !== fieldName) { return item }
@@ -209,6 +211,17 @@ const sanitizer = function() {
         }
         else {
           error = { message: `${fieldName}_adminLevelNotSufficient`, additionalInfo: { adminLevel, required: _.get(field, 'adminLevel') } }
+        }
+      }
+      else if (_.get(field, 'iamPermissions') && _.size(userPermissions) && !_.size(_.intersection(userPermissions, field.iamPermissions))) {
+        if (!_.isArray(field.iamPermissions)) {
+          console.error('SANITIZER - iamPermissions must be an array, field %s', fieldName)
+        }
+        if (omitFields) {
+          fields = _.filter(fields, item => item.field !== fieldName)
+        }
+        else {
+          error = { message: `${fieldName}_iamPermissionNotSufficient`, additionalInfo: { required: field.iamPermissions } }
         }
       }
       else if (_.indexOf(['number', 'integer', 'long', 'short', 'float'], field.type) > -1) {
@@ -294,11 +307,14 @@ const sanitizer = function() {
 
             const fieldsToCheck = {
               params: {},
-              fields: [{ 
-                field: fieldName, 
-                type: valueType, 
+              fields: [{
+                field: fieldName,
+                type: valueType,
                 ...fieldProps
-              }]
+              }],
+              adminLevel,
+              omitFields,
+              userPermissions
             }
             _.set(fieldsToCheck, `params.${fieldName}`, v)
             const check = checkAndSanitizeValues(fieldsToCheck)
@@ -345,7 +361,8 @@ const sanitizer = function() {
             fields: _.get(field, 'properties'),
             prefix: fieldName,
             adminLevel: _.get(field, 'adminLevel', adminLevel),
-            omitFields: _.get(field, 'omitFields', omitFields)
+            omitFields: _.get(field, 'omitFields', omitFields),
+            userPermissions
           }
           const check = checkAndSanitizeValues(fieldsToCheck)
           if (_.get(check, 'error')) { error = _.get(check, 'error') }
