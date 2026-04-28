@@ -1,3 +1,21 @@
+# [6.1.0](https://github.com/mmpro/ac-sanitizer/compare/v6.0.7..v6.1.0) (2026-04-28 11:20:30)
+
+
+### Feature
+
+
+* **App:** Added iamPermission to limit access to field | MP | [dce29ae609119fcaced0e966792157b2b3747631](https://github.com/mmpro/ac-sanitizer/commit/dce29ae609119fcaced0e966792157b2b3747631)    
+Added iamPermission to limit access to field  
+Related issues:
+### Bug Fix
+
+
+* **App:** Prefer IAM permissions | MP | [c8fa1271c179e93c175bdf43ce0aaad43ea8ec23](https://github.com/mmpro/ac-sanitizer/commit/c8fa1271c179e93c175bdf43ce0aaad43ea8ec23)    
+If IAM permissions are set and send, ignore adminLevel  
+Related issues:
+* **App:** Minor adjustments after CoPilot review | MP | [2847150158b7ac325a648c5fcea5a8ba3d805462](https://github.com/mmpro/ac-sanitizer/commit/2847150158b7ac325a648c5fcea5a8ba3d805462)    
+iamPermissions must be an array. Added test for deeply nested objects  
+Related issues:
 ## [6.0.7](https://github.com/mmpro/ac-sanitizer/compare/v6.0.6..v6.0.7) (2026-04-24 19:06:20)
 
 
