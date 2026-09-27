@@ -1,3 +1,18 @@
+## [6.1.7](https://github.com/mmpro/ac-sanitizer/compare/v6.1.6..v6.1.7) (2026-09-27 13:47:32)
+
+
+### Bug Fix
+
+
+* **App:** Make sure base64url is handled properly | MP | [08ff4263f35634ead451b34274e58af974852770](https://github.com/mmpro/ac-sanitizer/commit/08ff4263f35634ead451b34274e58af974852770)    
+Added support for base64url  
+Related issues:
+### Chores
+
+
+* **App:** Updated packages | MP | [f728837f031c59ad0a5b9415ed9af55231ba6a5b](https://github.com/mmpro/ac-sanitizer/commit/f728837f031c59ad0a5b9415ed9af55231ba6a5b)    
+Updated packages  
+Related issues:
 ## [6.1.6](https://github.com/mmpro/ac-sanitizer/compare/v6.1.5..v6.1.6) (2026-08-23 11:18:35)
 
 
