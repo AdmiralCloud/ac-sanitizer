@@ -17,6 +17,7 @@ const sanitizer = function() {
     { type: 'array', errorMessage: 'notAnArray' },
     { type: 'object', errorMessage: 'notAPlainObject' },
     { type: 'base64', errorMessage: 'notABase64String' },
+    { type: 'base64url', errorMessage: 'notABase64UrlString' },
     { type: 'countryCode', errorMessage: 'notAValidCountryCode' },
     { type: 'fileExtension', errorMessage: 'notAValidFileExtension' },
     { type: 'iso-639', errorMessage: 'notAValidIso-639' },
@@ -385,6 +386,24 @@ const sanitizer = function() {
               value = JSON.parse(value)
               _.set(paramsToCheck, fieldName, value)
             } 
+            catch {
+              // ignore
+            }
+          }
+        }
+      }
+      else if (field.type === 'base64url') {
+        if (!_.isString(value)) { error = { message: fieldName + '_mustBeString' } }
+        else {
+          if (!validator.isBase64(value, { urlSafe: true })) { error = { message: fieldName + '_notABase64UrlString' } }
+          else if (field.convert) {
+            value = Buffer.from(value, 'base64url').toString()
+            _.set(paramsToCheck, fieldName, value)
+            // the value might be a stringified object - try converting it
+            try {
+              value = JSON.parse(value)
+              _.set(paramsToCheck, fieldName, value)
+            }
             catch {
               // ignore
             }

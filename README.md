@@ -104,6 +104,7 @@ Type | Example | Remarks
 integer | 60.1 -> 60 | Convert incoming number to integer - this way you can make your check more lenient
 string | Hello Developer -> Hello (with maxLength = 5) | Reduce string to max length
 base64 | SGVsbG8= -> Hello | Convert base64 encoded string to UTF-8 string
+base64url | SGVsbG8 -> Hello | Convert base64url (URL-safe, no padding) encoded string to UTF-8 string
 iso-639 | { iso-639-2: 'tlh', translations: [] } -> tlh (with convert=iso-639-2) | Returns only the select property for the ISO-639 object
 splitSpaceSeparated | user_read%20user_write -> ['user_read', 'user_write'] | Converts an URL encoded, space separated string into an array (e.g. for OAuth scopes)
 
@@ -115,6 +116,7 @@ Type | Options | Remarks
 any | | Any can be string, integer, boolean, object or array - it will be automatically detected.
 array | unique | If unique=true, duplicate entries will be removed from array
 base64 | | Checks if a string is base64 encoded, optional with field option "convert" (to string)
+base64url | | Checks if a string is base64url encoded (URL-safe alphabet), optional with field option "convert" (to string)
 boolean | | 
 cidr | | Check CIDR, see example
 integer \| boolean |  | Value can be an integer OR a boolean

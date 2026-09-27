@@ -72,6 +72,11 @@ module.exports = {
       tests.base64.test()
     })
 
+    describe('BASE64URL', function() {
+      this.timeout(timeOut)
+      tests.base64url.test()
+    })
+
     describe('STRING OR INTEGER', function() {
       this.timeout(timeOut)
       tests.stringOrInteger.test()

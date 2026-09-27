@@ -3,6 +3,7 @@ module.exports = {
   iamPermissions: require('./iamPermissions'),
   array: require('./array'),
   base64: require('./base64'),
+  base64url: require('./base64url'),
   bool: require('./bool'),
   boolOrInteger: require('./boolOrInteger'),
   cidr: require('./cidr'),
