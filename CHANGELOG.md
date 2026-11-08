@@ -1,3 +1,15 @@
+## [6.1.8](https://github.com/mmpro/ac-sanitizer/compare/v6.1.7..v6.1.8) (2026-11-08 12:23:58)
+
+
+### Chores
+
+
+* **App:** Updated packages | MP | [0bd95009e3277ceec74baefca95da719f5fc69f2](https://github.com/mmpro/ac-sanitizer/commit/0bd95009e3277ceec74baefca95da719f5fc69f2)    
+Updated packages  
+Related issues:
+* **Misc:** Updated packages | MP | [1bc0d474fb2899a5b438445f0c6274b9090c4abc](https://github.com/mmpro/ac-sanitizer/commit/1bc0d474fb2899a5b438445f0c6274b9090c4abc)    
+Updated packages  
+Related issues:
 ## [6.1.7](https://github.com/mmpro/ac-sanitizer/compare/v6.1.6..v6.1.7) (2026-09-27 13:47:32)
 
 
